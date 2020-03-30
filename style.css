@@ -1,70 +1,76 @@
 body {
   font-family: 'Fira Code', monospace;
+  margin: 0;
+  padding: 5
 }
 
 header {
   background-color: #ffce1d;
   font-family: 'Major Mono Display', monospace;
   text-align: center;
+  padding: 0.25em;
 }
 
 header h1 {
   font-size: 70px;
+  margin-top: 0em;
+  margin-bottom: 0em;
 }
 
 header h2 {
   font-size: 30px;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding: 0.3em;
 }
 
 nav {
   background-color: #ff1d83;
   font-family: 'Nova Mono', monospace;
   text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+nav h2 {
+  margin: 0;
+}
+
+.contents {
+  color: #000000;
+}
+
+.contents:hover {
+  color: #ffce1d;
+}
+
+section {
+  min-height: 100vh;
+}
+
+section h2, p {
+  padding: 5vh;
 }
 
 #carousel {
-  background-color: #1de8ff;
-  height: 100vh;
-  width: 100vw;
+  height: 70vh;
 }
 
-#bio {
+#carousel, #fandc, #prereqs, #robot{
+  background-color: #1de8ff;
+}
+
+#bio, #me, #bytesized{
   background-color: #ffffff;
-  height: 100vh;
-  width: 100vw;
-}
-
-#fandc {
-  background-color: #1de8ff;
-  height: 100vh;
-  width: 100vw;
-}
-
-#me {
-  background-color: ##ffffff;
-  height: 100vh;
-  width: 100vw;
-}
-
-#prereqs {
-  background-color: #1de8ff;
-  height: 100vh;
-  width: 100vw;
-}
-
-#bytesized {
-  background-color: #ffffff;
-  height: 100vh;
-  width: 100vw;
-}
-
-#robot {
-  background-color: #1de8ff;
-  height: 100vh;
-  width: 100vw;
 }
 
 footer {
   background-color: #ffce1d;
   text-align: center;
+  margin-bottom: -1.5em;
+  margin-top: -1.5em;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
 }
