@@ -1,0 +1,70 @@
+body {
+  font-family: 'Fira Code', monospace;
+}
+
+header {
+  background-color: #ffce1d;
+  font-family: 'Major Mono Display', monospace;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 70px;
+}
+
+header h2 {
+  font-size: 30px;
+}
+
+nav {
+  background-color: #ff1d83;
+  font-family: 'Nova Mono', monospace;
+  text-align: center;
+}
+
+#carousel {
+  background-color: #1de8ff;
+  height: 100vh;
+  width: 100vw;
+}
+
+#bio {
+  background-color: #ffffff;
+  height: 100vh;
+  width: 100vw;
+}
+
+#fandc {
+  background-color: #1de8ff;
+  height: 100vh;
+  width: 100vw;
+}
+
+#me {
+  background-color: ##ffffff;
+  height: 100vh;
+  width: 100vw;
+}
+
+#prereqs {
+  background-color: #1de8ff;
+  height: 100vh;
+  width: 100vw;
+}
+
+#bytesized {
+  background-color: #ffffff;
+  height: 100vh;
+  width: 100vw;
+}
+
+#robot {
+  background-color: #1de8ff;
+  height: 100vh;
+  width: 100vw;
+}
+
+footer {
+  background-color: #ffce1d;
+  text-align: center;
+}
