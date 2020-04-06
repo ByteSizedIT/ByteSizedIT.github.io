@@ -1,11 +1,17 @@
+/* Custom properties/variables  */
+:root {
+  --orange: #ffce1d;
+  --pink: #ff1d83;
+  --blue: #1de8ff;
+}
+
 body {
   font-family: 'Fira Code', monospace;
   margin: 0;
-  padding: 5
 }
 
 header {
-  background-color: #ffce1d;
+  background-color: var(--orange);
   font-family: 'Major Mono Display', monospace;
   text-align: center;
   padding: 0.25em;
@@ -25,7 +31,7 @@ header h2 {
 }
 
 nav {
-  background-color: #ff1d83;
+  background-color: var(--pink);
   font-family: 'Nova Mono', monospace;
   text-align: center;
   position: -webkit-sticky;
@@ -38,19 +44,29 @@ nav h2 {
 }
 
 .contents {
-  color: #000000;
+  color: black;
 }
 
 .contents:hover {
-  color: #ffce1d;
+  color: var(--orange);
 }
 
 section {
   min-height: 100vh;
+
+  font-size: 20px;
+  line-height: 2;
 }
 
-section h2, p {
-  padding: 5vh;
+section h2 {
+  padding-top: 5vh;
+  font-family: 'Nova Mono', monospace;
+  text-align: center;
+}
+
+section p {
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 #carousel {
@@ -58,15 +74,15 @@ section h2, p {
 }
 
 #carousel, #fandc, #prereqs, #robot{
-  background-color: #1de8ff;
+  background-color: var(--blue);
 }
 
 #bio, #me, #bytesized{
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 footer {
-  background-color: #ffce1d;
+  background-color: var(--orange);
   text-align: center;
   margin-bottom: -1.5em;
   margin-top: -1.5em;
