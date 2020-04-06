@@ -1,4 +1,5 @@
 /* Custom properties/variables  */
+
 :root {
   --orange: #ffce1d;
   --pink: #ff1d83;
@@ -9,6 +10,8 @@ body {
   font-family: 'Fira Code', monospace;
   margin: 0;
 }
+
+/*Header section fonts and margins*/
 
 header {
   background-color: var(--orange);
@@ -30,10 +33,13 @@ header h2 {
   padding: 0.3em;
 }
 
+/*Navigation bar fonts coloring and margins*/
+
 nav {
   background-color: var(--pink);
   font-family: 'Nova Mono', monospace;
   text-align: center;
+  /*make navigation bar stay at the top of the page when scrolling down*/
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -50,6 +56,8 @@ nav h2 {
 .contents:hover {
   color: var(--orange);
 }
+
+/*Sizing of the webpage sections identified in navigation bar*/
 
 section {
   min-height: 100vh;
@@ -69,9 +77,13 @@ section p {
   padding-right: 5vw;
 }
 
+/*Unique sizing of the first, carousel section of the webpage*/
+
 #carousel {
-  height: 70vh;
+  min-height: 80vh;
 }
+
+/*Alternate the background coloring of individual webpage sections identified in the navigation bar*/
 
 #carousel, #fandc, #prereqs, #robot{
   background-color: var(--blue);
