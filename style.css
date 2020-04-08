@@ -112,6 +112,8 @@ button:hover {
 /*Sizing and positioning of 'carousel' div (containing the slide show and arrow buttons)*/
 
 .carousel {
+  height: 30vw;
+  padding-top: 5vw;
   position: relative;
 
   background-color: yellow;
@@ -121,6 +123,30 @@ button:hover {
 
 .carousel__arrows {
   font-size: 3.5vw;
+
+  padding: 1vw 1vh;
+  margin: 1vw 1vh;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/*Positioning the previous arrow button*/
+.carousel__arrows--prev {
+  left: 5vw;
+}
+
+/*Positioning the next arrow button*/
+.carousel__arrows--next {
+  right: 5vw;
+}
+
+/* On hover, add a black background color*/
+.carousel__arrows:hover {
+  background-color: black;
+  color: var(--orange);
+  transition: 1s;
 }
 
 /*Sizing and positioning of carousel viewing window, as well as the border*/
@@ -144,6 +170,8 @@ button:hover {
 .carousel__queue {
   list-style: none;
 
+  margin: 0;
+
   background-color: red;
 }
 
@@ -151,6 +179,8 @@ button:hover {
 .carousel__slide {
   height: 25vw;
   width: 75vw;
+
+  position: absolute;
 
   background-color: pink;
 }
