@@ -11,7 +11,7 @@ body {
   margin: 0;
 }
 
-/*Header section fonts and margins*/
+/*Header section fonts, coloring and margins*/
 
 header {
   background-color: var(--orange);
@@ -33,7 +33,7 @@ header h2 {
   padding: 0.3em;
 }
 
-/*Navigation bar fonts coloring and margins*/
+/*Navigation bar fonts, coloring and margins*/
 
 nav {
   background-color: var(--pink);
@@ -57,7 +57,17 @@ nav h2 {
   color: var(--orange);
 }
 
-/*Sizing of the webpage sections identified in navigation bar*/
+/*Alternate the background coloring of individual webpage sections identified in the navigation bar*/
+
+#home, #fandc, #prereqs, #robot{
+  background-color: var(--blue);
+}
+
+#bio, #me, #bytesized{
+  background-color: var(--white);
+}
+
+/*Sizing of the webpage sections identified in navigation bar, fonts, text alignment*/
 
 section {
   min-height: 100vh;
@@ -77,20 +87,70 @@ section p {
   padding-right: 5vw;
 }
 
-/*Unique sizing of the first, carousel section of the webpage*/
+/*All buttons on webpage - including 'Home'(carousel) and 'Robot Prototype' sections*/
 
-#carousel {
+button {
+  background-color: var(--pink);
+  height: 3em;
+  font-family: 'Nova Mono', monospace;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--orange);
+}
+
+/*Unique sizing of the first 'home' section of the webpage, containing the carousel and the */
+
+#home {
   min-height: 80vh;
 }
 
-/*Alternate the background coloring of individual webpage sections identified in the navigation bar*/
+/*Sizing and positioning of 'carousel' div (containing the slide show and arrow buttons)*/
 
-#carousel, #fandc, #prereqs, #robot{
-  background-color: var(--blue);
+.carousel {
+  position: relative;
+
 }
 
-#bio, #me, #bytesized{
-  background-color: var(--white);
+/*Shared sizing and positioning of the arrow buttons for the carousel*/
+
+.carousel__arrows {
+  font-size: 3.5vw;
+}
+
+/*Sizing and positioning of carousel viewing window, as well as the border*/
+
+.carousel__viewer {
+  height: 25vw;
+  width: 75vw;
+
+  margin: 0 auto;
+
+  position: relative;
+
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
+}
+
+/*Queue(list) of slides for the viewer*/
+.carousel__queue {
+  list-style: none;
+}
+
+/*Size and positioning of individual slides within the queue(list)*/
+.carousel__slide {
+  height: 25vw;
+  width: 75vw;
+}
+
+.image{
+  height: inherit;
+  width: inherit;
 }
 
 footer {

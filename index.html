@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <!-- metadata elements -->
   <head>
     <title>Founders and Coders Application: Neville Keemer</title>
@@ -37,8 +37,40 @@
 
     <main>
 
-      <!-- Carousel section of webpage-->
-      <section id="carousel">
+      <!-- Home section of webpage, housing carousel (incl arrow buttons & viewer) and play/pause-->
+      <section id="home">
+
+        <!--Carousel div, housing arrow buttons and carousel viewing area-->
+        <div class="carousel">
+          <!-- Previous arrow button -->
+          <button class="carousel__arrows carousel__arrows--prev">&#10094;</button>
+
+          <div class="carousel__viewer">
+            <!-- Queue (list) carousel slides-->
+            <ul class="carousel__queue">
+              <!-- Individual carousel slides and the images contained-->
+              <li class="carousel__slide current-slide">
+                <img class="image" src="slides/test1.png" alt="Slide 1 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/test2.png" alt="Slide 2 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/test3.png" alt="Slide 3 of Carousel">
+              </li>
+            </ul>
+          </div>
+
+          <!-- Next arrow button -->
+          <button class="carousel__arrows carousel__arrows--next">&#10095;</button>
+
+        </div>
+
+        <!--Play/pause button-->
+        <div id="control-panel">
+          <button>Play / Pause</button>
+        </div>
+
       </section>
 
       <!--My Bio: 'Why Coding?' section of webpage-->
