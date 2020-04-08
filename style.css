@@ -114,6 +114,7 @@ button:hover {
 .carousel {
   position: relative;
 
+  background-color: yellow;
 }
 
 /*Shared sizing and positioning of the arrow buttons for the carousel*/
@@ -135,17 +136,23 @@ button:hover {
   border-style: solid;
   border-width: medium;
   border-color: black;
+
+  background-color: green;
 }
 
 /*Queue(list) of slides for the viewer*/
 .carousel__queue {
   list-style: none;
+
+  background-color: red;
 }
 
 /*Size and positioning of individual slides within the queue(list)*/
 .carousel__slide {
   height: 25vw;
   width: 75vw;
+
+  background-color: pink;
 }
 
 .image{
