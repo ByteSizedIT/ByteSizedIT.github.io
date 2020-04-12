@@ -1,4 +1,4 @@
-/* Custom properties/variables  */
+/*Custom properties/variables*/
 
 :root {
   --orange: #ffce1d;
@@ -103,15 +103,15 @@ button:hover {
   background-color: var(--orange);
 }
 
-/*Unique sizing of the first 'home' section of the webpage, containing the carousel and the */
+/*Unique sizing of the first 'home' section of the webpage, containing the carousel and the control panel*/
 
 #home {
   min-height: 80vh;
 }
 
-/*Sizing and positioning of 'carousel' div (containing the slide show and arrow buttons)*/
+/*Sizing and positioning of 'carousel' div (containing the viewer and arrow buttons)*/
 
-.carousel {
+#carousel {
   height: 30vw;
   padding-top: 5vw;
   position: relative;
@@ -151,7 +151,7 @@ button:hover {
 
 /*Sizing and positioning of carousel viewing window, as well as the border*/
 
-.carousel__viewer {
+#carousel__viewer {
   height: 25vw;
   width: 75vw;
 
@@ -162,17 +162,13 @@ button:hover {
   border-style: solid;
   border-width: medium;
   border-color: black;
-
-  background-color: green;
 }
 
-/*Queue(list) of slides for the viewer*/
-.carousel__queue {
+/*Deck(list) of slides for the viewer*/
+#carousel__deck {
   list-style: none;
 
   margin: 0;
-
-  background-color: red;
 }
 
 /*Size and positioning of individual slides within the queue(list)*/
@@ -182,7 +178,7 @@ button:hover {
 
   position: absolute;
 
-  background-color: pink;
+  left:0;
 }
 
 .image{
