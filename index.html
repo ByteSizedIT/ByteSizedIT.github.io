@@ -10,11 +10,11 @@
 
     <link href="style.css" rel="stylesheet">
 
-    <!--advised by w3 school website = Setting the Viewport, RWD; -->
+    <!-- advised by w3 school website = Setting the Viewport, RWD; -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
-  <!-- page contents -->
+  <!--Page contents-->
   <body>
 
     <header id="header">
@@ -22,7 +22,7 @@
       <h2>A Story in Development...</h2>
     </header>
 
-    <!--horizontal navigation bar-->
+    <!--Horizontal navigation bar-->
     <nav>
       <h2>
         <a href="#header" class="contents">Home</a> |
@@ -37,18 +37,19 @@
 
     <main>
 
-      <!-- Home section of webpage, housing carousel (incl arrow buttons & viewer) and play/pause-->
+      <!-- Home section of webpage, housing carousel (incl arrow buttons & viewer) and play/pause -->
       <section id="home">
 
         <!--Carousel div, housing arrow buttons and carousel viewing area-->
-        <div class="carousel">
+        <div id="carousel">
           <!-- Previous arrow button -->
           <button class="carousel__arrows carousel__arrows--prev">&#10094;</button>
 
-          <div class="carousel__viewer">
-            <!-- Queue (list) carousel slides-->
-            <ul class="carousel__queue">
-              <!-- Individual carousel slides and the images contained-->
+          <!--Viewing space in which the 'current' slide in the carousel deck can be viewed-->
+          <div id="carousel__viewer">
+            <!--Deck (list) of carousel slides-->
+            <ul id="carousel__deck">
+              <!--Individual carousel slides and the images contained-->
               <li class="carousel__slide current-slide">
                 <img class="image" src="slides/test1.png" alt="Slide 1 of Carousel">
               </li>
@@ -61,7 +62,7 @@
             </ul>
           </div>
 
-          <!-- Next arrow button -->
+          <!--Next arrow button-->
           <button class="carousel__arrows carousel__arrows--next">&#10095;</button>
 
         </div>
@@ -136,6 +137,8 @@
       <h5>&copy; 2019 N.Keemer</h5>
     </footer>
 
+    <!--Link to JavaScript file-->
+    <script src="script.js"></script>"
   </body>
 
 </html>
