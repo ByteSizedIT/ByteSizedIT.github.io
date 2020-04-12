@@ -162,6 +162,8 @@ button:hover {
   border-style: solid;
   border-width: medium;
   border-color: black;
+
+  overflow: hidden;
 }
 
 /*Deck(list) of slides for the viewer*/
