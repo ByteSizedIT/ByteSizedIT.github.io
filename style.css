@@ -171,6 +171,8 @@ button:hover {
   list-style: none;
 
   margin: 0;
+
+  transition: 500ms ease-out;
 }
 
 /*Size and positioning of individual slides within the queue(list)*/
