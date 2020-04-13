@@ -44,8 +44,23 @@ nextArrow.addEventListener('click', () => {
 
 //Identify target slide as previous in the deck when the right arrow is clicked
 prevArrow.addEventListener('click', () => {
-  //initiate variables
   targetSlide = currentSlide.previousElementSibling;
   //Run function to view target slide
   viewTargetSlide(targetSlide);
+})
+
+//Identify target slide as previous/next in the deck when the left/right keys are pressed
+document.addEventListener('keydown', (e) => {
+  //console.log(e);
+  //console.log(e.keyCode);
+  if(e.keyCode === 37) {
+    targetSlide = currentSlide.previousElementSibling;
+    //Run function to view target slide
+    viewTargetSlide(targetSlide);
+  }
+  else if(e.keyCode === 39){
+    targetSlide = currentSlide.nextElementSibling;
+    //Run function to view target slide
+    viewTargetSlide(targetSlide);
+  }
 })
