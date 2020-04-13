@@ -1,12 +1,18 @@
 //Initialise carousel-deck of slides as object in JS, and slides as an array
 const deck = document.getElementById('carousel__deck');
 
-//Put all slides from the deck in an array(object)
+//Initialise an array(object) of all slides from the deck
 const slidesArr = Array.from(deck.children);
+
+//initialise current slide as object in JS?/
+let currentSlide = deck.querySelector('.current-slide');
 
 //initialise individual arrows as objects in JS
 const prevArrow = document.querySelector(".carousel__arrows--prev");
 const nextArrow = document.querySelector(".carousel__arrows--next");
+
+//Declare a variable for the slide being targeted, to move to
+let targetSlide;
 
 //get width of individual slides and initialise as a variable (number)
 const slideWidth = slidesArr[0].getBoundingClientRect().width;
@@ -19,28 +25,27 @@ const positionSlide = (slide, index) => {
 }
 slidesArr.forEach(positionSlide);
 
-//Move line to the left when right arrow is clicked
-//sense click...
-nextArrow.addEventListener('click', () => {
-  //initiate variables
-  const currentSlide = deck.querySelector('.current-slide');
-  const nextSlide = currentSlide.nextElementSibling;
-  const dist = nextSlide.style.left;
+//Function to move target slide into the carousel viewer
+const viewTargetSlide = (targetSlide) => {
+  dist = targetSlide.style.left;
   //shuffle to slide on right...
   deck.style.transform = 'translateX(-' + dist + ')';
   currentSlide.classList.remove('current-slide');
-  nextSlide.classList.add('current-slide');
+  targetSlide.classList.add('current-slide');
+  currentSlide = deck.querySelector('.current-slide');
+}
+
+//Identify target slide as next in the deck when the right arrow is clicked
+nextArrow.addEventListener('click', () => {
+  targetSlide = currentSlide.nextElementSibling;
+  //Run function to view target slide
+  viewTargetSlide(targetSlide);
 })
 
-//Move line to the right when the left arrow is clicked
-//sense click...
+//Identify target slide as previous in the deck when the right arrow is clicked
 prevArrow.addEventListener('click', () => {
   //initiate variables
-  const currentSlide = deck.querySelector('.current-slide');
-  const prevSlide = currentSlide.previousElementSibling;
-  const dist = prevSlide.style.left;
-  //shuffle to slide on left...
-  deck.style.transform = 'translateX(-' + dist + ')';
-  currentSlide.classList.remove('current-slide');
-  prevSlide.classList.add('current-slide');
+  targetSlide = currentSlide.previousElementSibling;
+  //Run function to view target slide
+  viewTargetSlide(targetSlide);
 })
