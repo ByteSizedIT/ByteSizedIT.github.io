@@ -28,12 +28,18 @@ slidesArr.forEach(positionSlide);
 //Function to move target slide into the carousel viewer
 const viewTargetSlide = (targetSlide) => {
   dist = targetSlide.style.left;
-  //shuffle to slide on right...
+  //shuffle to target slide...
   deck.style.transform = 'translateX(-' + dist + ')';
   currentSlide.classList.remove('current-slide');
   targetSlide.classList.add('current-slide');
   currentSlide = deck.querySelector('.current-slide');
 }
+
+setInterval(() => {
+  targetSlide = currentSlide.nextElementSibling;
+  //Run function to view target slide
+  //viewTargetSlide(targetSlide);
+}, 3000)
 
 //Identify target slide as next in the deck when the right arrow is clicked
 nextArrow.addEventListener('click', () => {
