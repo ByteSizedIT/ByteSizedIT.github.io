@@ -35,10 +35,14 @@ const viewTargetSlide = (targetSlide) => {
   currentSlide = deck.querySelector('.current-slide');
 }
 
+//setInterval method to 'play' through slides at 3 sec interval
 setInterval(() => {
-  targetSlide = currentSlide.nextElementSibling;
-  //Run function to view target slide
-  //viewTargetSlide(targetSlide);
+  //ensure set interval does not cause error by trying to 'play' past end slide
+  if(targetSlide != slidesArr[slidesArr.length-1]) {
+    targetSlide = currentSlide.nextElementSibling;
+    //Run function to view target slide
+    viewTargetSlide(targetSlide);
+  };
 }, 3000)
 
 //Identify target slide as next in the deck when the right arrow is clicked
