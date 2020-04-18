@@ -4,17 +4,23 @@ const deck = document.getElementById('carousel__deck');
 //Initialise an array(object) of all slides from the deck
 const slidesArr = Array.from(deck.children);
 
-//initialise current slide as object in JS?/
+//Initialise current slide as object in JS
 let currentSlide = deck.querySelector('.current-slide');
 
 //initialise individual arrows as objects in JS
 const prevArrow = document.querySelector(".carousel__arrows--prev");
 const nextArrow = document.querySelector(".carousel__arrows--next");
 
+//Initialise carousel control button as object in JS
+const controlButton = document.getElementById('play-pause');
+
 //Declare a variable for the slide being targeted, to move to
 let targetSlide;
 
-//get width of individual slides and initialise as a variable (number)
+//Declare a variable ready for set interval method on 'play' button pushed
+let slideInterval;
+
+//Get width of individual slides and initialise as a variable (number)
 const slideWidth = slidesArr[0].getBoundingClientRect().width;
 
 //Spread out the deck of slides in a line
@@ -33,17 +39,54 @@ const viewTargetSlide = (targetSlide) => {
   currentSlide.classList.remove('current-slide');
   targetSlide.classList.add('current-slide');
   currentSlide = deck.querySelector('.current-slide');
+  if (currentSlide === slidesArr.length[-1]){
+    controlButton.innerHTML="Play";
+    controlButton.classList.add("play");
+  }
 }
 
-//setInterval method to 'play' through slides at 3 sec interval
-setInterval(() => {
-  //ensure set interval does not cause error by trying to 'play' past end slide
-  if(targetSlide != slidesArr[slidesArr.length-1]) {
+//Function to setInterval method to 'play' through slides at 3 sec interval
+const playSlides = () => {
+  slideInterval = setInterval(() => {
+      //Run function to view target slide
+      viewTargetSlide(targetSlide);
+      //Change target slide if not at end of deck
+      if(currentSlide != slidesArr[slidesArr.length-1]) {
+        targetSlide = currentSlide.nextElementSibling;
+      }
+      //Or exit method and change button to prompt 'play'
+      else {
+        controlButton.innerHTML="Play";
+        return;
+      }
+    //}
+  }, 3000)
+}
+
+//Function to clear('pause') setInterval method
+const pauseSlides = () => clearInterval(slideInterval);
+
+//Toggle between 'play' and 'pause' slides when controlButton is clicked
+controlButton.addEventListener('click', () => {
+  controlButton.classList.toggle("play");
+//Play slides from current position, return to start, or pause
+  if(controlButton.classList.contains("play") && currentSlide !== slidesArr[slidesArr.length-1]){
     targetSlide = currentSlide.nextElementSibling;
-    //Run function to view target slide
+    playSlides();
+    controlButton.innerHTML = "Pause";
+  }
+  else if (controlButton.classList.contains("play") && currentSlide === slidesArr[slidesArr.length-1]) {
+    targetSlide = slidesArr[0];
     viewTargetSlide(targetSlide);
-  };
-}, 3000)
+    controlButton.innerHTML = "Pause";
+    targetSlide = slidesArr[1];
+    playSlides();
+  }
+  else {
+    pauseSlides();
+    controlButton.innerHTML = "Play";
+  }
+})
 
 //Identify target slide as next in the deck when the right arrow is clicked
 nextArrow.addEventListener('click', () => {
