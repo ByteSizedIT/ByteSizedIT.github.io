@@ -232,6 +232,10 @@ button:hover {
   background-color: var(--orange);
 }
 
+.current-dot  {
+    background-color: var(--orange);
+}
+
 footer {
   background-color: var(--orange);
   text-align: center;

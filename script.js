@@ -7,6 +7,15 @@ const slidesArr = Array.from(deck.children);
 //Initialise current slide as object in JS
 let currentSlide = deck.querySelector('.current-slide');
 
+//Initialise navigation dots div as object in JS
+const navDots = document.getElementById('dots');
+
+//Initialise an array(object) of all nav dots
+const dotsArr = Array.from(navDots.children);
+
+//Initialise current nav dot as object in JS
+let currentDot = navDots.querySelector('.current-dot');
+
 //Initialise individual arrows as objects in JS
 const prevArrow = document.querySelector(".carousel__arrows--prev");
 const nextArrow = document.querySelector(".carousel__arrows--next");
@@ -40,12 +49,19 @@ const viewTargetSlide = (targetSlide) => {
   currentSlide.classList.remove('current-slide');
   targetSlide.classList.add('current-slide');
   currentSlide = deck.querySelector('.current-slide');
+  //update currentDot
+  currentDot.classList.remove("current-dot");
+  targetIndex = slidesArr.findIndex(slide => slide === currentSlide);
+  currentDot = dotsArr[targetIndex];
+  currentDot.classList.add("current-dot");
   //Hide prev arrow on first slide, next arrow on last
+  //update control button to catch if using nav dots and not controlButton Listener
   if (currentSlide === slidesArr[slidesArr.length-1]){
-    controlButton.innerHTML="Play";
-    controlButton.classList.add("pause");
     nextArrow.classList.add("hidden");
     prevArrow.classList.remove("hidden");
+
+    controlButton.innerHTML="Play";
+    controlButton.classList.add("pause");
   }
   else if(currentSlide === slidesArr[0]){
     prevArrow.classList.add("hidden");
@@ -90,6 +106,7 @@ controlButton.addEventListener('click', () => {
     controlButton.innerHTML = "Pause";
     targetSlide = slidesArr[0];
     viewTargetSlide(targetSlide);
+    targetSlide = slidesArr[1];
     playSlides();
   }
   else {
@@ -124,6 +141,19 @@ document.addEventListener('keydown', (e) => {
   else if(e.keyCode === 39){
     targetSlide = currentSlide.nextElementSibling;
     //Run function to view target slide
+    viewTargetSlide(targetSlide);
+  }
+})
+
+//Identify target slide when navigation dots are clicked
+navDots.addEventListener('click', (e) => {
+  const clickedDot = e.target.closest('.dot');
+  if(!clickedDot) {
+    return
+  }
+  else {
+    targetIndex = dotsArr.findIndex(dot => dot === clickedDot);
+    targetSlide = slidesArr[targetIndex];
     viewTargetSlide(targetSlide);
   }
 })
