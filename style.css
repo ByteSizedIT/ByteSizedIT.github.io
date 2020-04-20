@@ -149,6 +149,11 @@ button:hover {
   //transition: 1s;
 }
 
+/*Hidden class, to be called on prev/next arrows at start/end of carousel*/
+.hidden {
+  display: none;
+}
+
 /*Sizing and positioning of carousel viewing window, as well as the border*/
 
 #carousel__viewer {

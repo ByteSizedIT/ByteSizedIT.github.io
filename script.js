@@ -40,9 +40,20 @@ const viewTargetSlide = (targetSlide) => {
   currentSlide.classList.remove('current-slide');
   targetSlide.classList.add('current-slide');
   currentSlide = deck.querySelector('.current-slide');
+  //Hide prev arrow on first slide, next arrow on last
   if (currentSlide === slidesArr[slidesArr.length-1]){
     controlButton.innerHTML="Play";
     controlButton.classList.add("pause");
+    nextArrow.classList.add("hidden");
+    prevArrow.classList.remove("hidden");
+  }
+  else if(currentSlide === slidesArr[0]){
+    prevArrow.classList.add("hidden");
+    nextArrow.classList.remove("hidden");
+  }
+  else{
+    prevArrow.classList.remove("hidden");
+    nextArrow.classList.remove("hidden");
   }
 }
 
@@ -79,7 +90,6 @@ controlButton.addEventListener('click', () => {
     controlButton.innerHTML = "Pause";
     targetSlide = slidesArr[0];
     viewTargetSlide(targetSlide);
-    //targetSlide = slidesArr[1];
     playSlides();
   }
   else {
