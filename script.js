@@ -1,4 +1,4 @@
-//Initialise carousel-deck of slides as object in JS, and slides as an array
+//Initialise carousel-deck of slides as object in JS
 const deck = document.getElementById('carousel__deck');
 
 //Initialise an array(object) of all slides from the deck
@@ -7,7 +7,7 @@ const slidesArr = Array.from(deck.children);
 //Initialise current slide as object in JS
 let currentSlide = deck.querySelector('.current-slide');
 
-//initialise individual arrows as objects in JS
+//Initialise individual arrows as objects in JS
 const prevArrow = document.querySelector(".carousel__arrows--prev");
 const nextArrow = document.querySelector(".carousel__arrows--next");
 
@@ -36,30 +36,30 @@ const viewTargetSlide = (targetSlide) => {
   dist = targetSlide.style.left;
   //shuffle to target slide...
   deck.style.transform = 'translateX(-' + dist + ')';
+  //update currentSlide
   currentSlide.classList.remove('current-slide');
   targetSlide.classList.add('current-slide');
   currentSlide = deck.querySelector('.current-slide');
-  if (currentSlide === slidesArr.length[-1]){
+  if (currentSlide === slidesArr[slidesArr.length-1]){
     controlButton.innerHTML="Play";
-    controlButton.classList.add("play");
+    controlButton.classList.add("pause");
   }
 }
 
 //Function to setInterval method to 'play' through slides at 3 sec interval
 const playSlides = () => {
   slideInterval = setInterval(() => {
+    //Change target slide if not at end of deck
+    if(currentSlide !== slidesArr[slidesArr.length-1]) {
+      targetSlide = currentSlide.nextElementSibling;
       //Run function to view target slide
       viewTargetSlide(targetSlide);
-      //Change target slide if not at end of deck
-      if(currentSlide != slidesArr[slidesArr.length-1]) {
-        targetSlide = currentSlide.nextElementSibling;
-      }
-      //Or exit method and change button to prompt 'play'
-      else {
-        controlButton.innerHTML="Play";
-        return;
-      }
-    //}
+    }
+    //Or exit method and change button to prompt 'play'
+    else {
+      pauseSlides();
+      return;
+    }
   }, 3000)
 }
 
@@ -68,23 +68,23 @@ const pauseSlides = () => clearInterval(slideInterval);
 
 //Toggle between 'play' and 'pause' slides when controlButton is clicked
 controlButton.addEventListener('click', () => {
-  controlButton.classList.toggle("play");
+  controlButton.classList.toggle("pause");
 //Play slides from current position, return to start, or pause
-  if(controlButton.classList.contains("play") && currentSlide !== slidesArr[slidesArr.length-1]){
+  if(!controlButton.classList.contains("pause") && currentSlide !== slidesArr[slidesArr.length-1]){
+    controlButton.innerHTML = "Pause";
     targetSlide = currentSlide.nextElementSibling;
     playSlides();
-    controlButton.innerHTML = "Pause";
   }
-  else if (controlButton.classList.contains("play") && currentSlide === slidesArr[slidesArr.length-1]) {
+  else if (!controlButton.classList.contains("pause") && currentSlide == slidesArr[slidesArr.length-1]) {
+    controlButton.innerHTML = "Pause";
     targetSlide = slidesArr[0];
     viewTargetSlide(targetSlide);
-    controlButton.innerHTML = "Pause";
-    targetSlide = slidesArr[1];
+    //targetSlide = slidesArr[1];
     playSlides();
   }
   else {
-    pauseSlides();
     controlButton.innerHTML = "Play";
+    pauseSlides();
   }
 })
 
