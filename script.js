@@ -40,6 +40,16 @@ const positionSlide = (slide, index) => {
 }
 slidesArr.forEach(positionSlide);
 
+//When window resizes, resize distance between target slides to resolve bug
+//Logic fails when trying to call an eventListener as per below
+/*window.addEventListener("resize", () => {
+  slideWidth = slidesArr[0].getBoundingClientRect().width;
+  slidesArr.forEach(positionSlide);
+  viewTargetSlide(targetSlide);
+});*/
+//Alternative method to above using reload(disadvantage = it resets to first slide)
+window.onresize = () => location.reload();
+
 //Function to move target slide into the carousel viewer
 const viewTargetSlide = (targetSlide) => {
   dist = targetSlide.style.left;
@@ -92,6 +102,7 @@ const playSlides = () => {
 
 //Function to clear('pause') setInterval method
 const pauseSlides = () => clearInterval(slideInterval);
+
 
 //Toggle between 'play' and 'pause' slides when controlButton is clicked
 controlButton.addEventListener('click', () => {
