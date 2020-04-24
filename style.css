@@ -4,6 +4,11 @@
   --orange: #ffce1d;
   --pink: #ff1d83;
   --blue: #1de8ff;
+  --black: #000000;
+  --white: #ffffff;
+  --lightgrey: #f0f0f0;
+  --darkgrey: #303841;
+  --grey-blue: #45567d;
 }
 
 body {
@@ -169,6 +174,8 @@ button:hover {
   border-color: black;
 
   overflow: hidden;
+
+  box-shadow: 0 2vh 4vh 0 var(--darkgrey), 0 3vh 10vh 0 var(--grey-blue);
 }
 
 /*Deck(list) of slides for the viewer*/
@@ -177,7 +184,7 @@ button:hover {
 
   margin: 0;
 
-  transition: 500ms ease-out;
+  transition: transform 500ms ease-out;
 }
 
 /*Size and positioning of individual slides within the queue(list)*/
@@ -233,7 +240,16 @@ button:hover {
 }
 
 .current-dot  {
-    background-color: var(--orange);
+  background-color: var(--orange);
+}
+
+#robot__player {
+  text-align:center;
+}
+
+#robot__vid {
+  height: 60vh;
+  box-shadow: 0 2vh 4vh 0 var(--darkgrey), 0 3vh 10vh 0 var(--grey-blue);
 }
 
 footer {
