@@ -11,12 +11,22 @@
   --grey-blue: #45567d;
 }
 
+/*Ensure padding and border are included in the total width and height of the elements*/
+* {
+  box-sizing: border-box;
+}
+
+/*/Added to center images within  grid in prerequisites*/
+img {
+  vertical-align: middle;
+}
+
 body {
   font-family: 'Fira Code', monospace;
   margin: 0;
 }
 
-/*Header section fonts, coloring and margins*/
+/*Header fonts, coloring and margins*/
 
 header {
   background-color: var(--orange);
@@ -48,6 +58,7 @@ nav {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 nav h2 {
@@ -61,6 +72,9 @@ nav h2 {
 .contents:hover {
   color: var(--orange);
 }
+
+
+/*ALL SECTIONS*/
 
 /*Alternate the background coloring of individual webpage sections identified in the navigation bar*/
 
@@ -109,14 +123,15 @@ button:hover {
   transition: 0.6s;
 }
 
-/*Unique sizing of the first 'home' section of the webpage, containing the carousel and the control panel*/
 
+/*CAROUSEL SECTION*/
+
+/*Unique sizing of the first 'home' section of the webpage, containing the carousel and the control panel*/
 #home {
   min-height: 80vh;
 }
 
 /*Sizing and positioning of 'carousel' div (containing the viewer and arrow buttons)*/
-
 #carousel {
   //height: 30vw;
   padding-top: 5vw;
@@ -125,7 +140,6 @@ button:hover {
 }
 
 /*Shared sizing and positioning of the arrow buttons for the carousel*/
-
 .carousel__arrows {
   font-size: 3.5vw;
 
@@ -160,7 +174,6 @@ button:hover {
 }
 
 /*Sizing and positioning of carousel viewing window, as well as the border*/
-
 #carousel__viewer {
   height: 25vw;
   width: 75vw;
@@ -243,6 +256,64 @@ button:hover {
   background-color: var(--orange);
 }
 
+
+
+/*WHY CODING SECTION*/
+
+
+/*WHY F&C SECTION*/
+
+
+/*WHY ME SECTION*/
+
+
+/*PREREQUISITES SECTION*/
+
+#prereqs__intro ul {
+  padding-left: 7vw;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+.prereqs__item {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/*Name all prereqs items, ready for grid container*/
+#prereqs__intro {grid-area: intro; background: pink;}
+#prereqs__bullets {grid-area: bullet; background: yellow;}
+#prereqs__item1 {grid-area: codeCamp;}
+#prereqs__item2 {grid-area: codeCampSquare; display: none;}
+#prereqs__item3 {grid-area: codeWars;}
+#prereqs__item4 {grid-area: codecademy; display: none;}
+#prereqs__item5 {grid-area: codecademySquare;}
+#prereqs__item6 {grid-area: CS50;}
+#prereqs__item7 {grid-area: git; display: none;}
+#prereqs__item8 {grid-area: gitSquare;display: none;}
+#prereqs__item9 {grid-area: founders; display: none;}
+#prereqs__item10 {grid-area: foundersSquare; display: none;}
+
+/*Default grid container*/
+#prereqs__grid-container {
+  display: grid;
+  padding: 2vw;
+  grid-gap: 2vw;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto auto (1, 16.5vw);
+  grid-template-areas:
+  "intro intro intro intro intro intro"
+  "bullet bullet bullet bullet bullet bullet"
+  "codeCamp codeCamp codeWars codecademySquare CS50 CS50"
+}
+
+
+/*ROBOT PROTOTYPE SECTION*/
+
 #robot__player {
   text-align:center;
 }
@@ -251,6 +322,7 @@ button:hover {
   height: 60vh;
   box-shadow: 0 2vh 4vh 0 var(--darkgrey), 0 3vh 10vh 0 var(--grey-blue);
 }
+
 
 footer {
   background-color: var(--orange);
