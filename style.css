@@ -95,6 +95,12 @@ section {
   line-height: 2;
 }
 
+@media (min-height: 1000px) {
+  section {
+    min-height: 0vh;
+  }
+}
+
 section h2 {
   padding-top: 5vh;
   font-family: 'Nova Mono', monospace;
@@ -285,32 +291,141 @@ figure {
 }
 
 /*Name all prereqs items, ready for grid container*/
-#prereqs__intro {grid-area: intro; background: pink;}
-#prereqs__bullets {grid-area: bullet; background: yellow;}
+#prereqs__intro {grid-area: intro;}
 #prereqs__item1 {grid-area: codeCamp;}
-#prereqs__item2 {grid-area: codeCampSquare; display: none;}
-#prereqs__item3 {grid-area: codeWars;}
+#prereqs__item2 {grid-area: codeCampSquare;}
+#prereqs__item3 {grid-area: codeWarsSquare;}
 #prereqs__item4 {grid-area: codecademy; display: none;}
 #prereqs__item5 {grid-area: codecademySquare;}
 #prereqs__item6 {grid-area: CS50;}
-#prereqs__item7 {grid-area: git; display: none;}
+#prereqs__item7 {grid-area: git; display: grid;}
 #prereqs__item8 {grid-area: gitSquare;display: none;}
 #prereqs__item9 {grid-area: founders; display: none;}
-#prereqs__item10 {grid-area: foundersSquare; display: none;}
+#prereqs__item10 {grid-area: foundersSquare;}
+#prereqs__item11 {grid-area: codeWars;}
 
-/*Default grid container*/
+/*Default grid container - Small Mobile Devices, e.g. mobile phones*/
 #prereqs__grid-container {
   display: grid;
-  padding: 2vw;
   grid-gap: 2vw;
+  padding: 2vw;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto auto (1, 16.5vw);
+  grid-template-rows: (2, 16.5vw);
   grid-template-areas:
   "intro intro intro intro intro intro"
-  "bullet bullet bullet bullet bullet bullet"
-  "codeCamp codeCamp codeWars codecademySquare CS50 CS50"
+  "codeCamp codeCamp codeWarsSquare CS50 CS50 codecademySquare"
+  "foundersSquare git git codeCampSquare codeWars codeWars"
 }
 
+/*Medium Mobile Devices e.g landscape mobile phones and tablets*/
+@media (min-width: 480px) {
+  #prereqs__item2 {display: none;}
+  #prereqs__item7 {display: none;}
+  #prereqs__item10 {display: none;}
+  #prereqs__item11 {display: none;}
+
+  #prereqs__grid-container {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto (1, 16.5vw);
+    grid-template-areas:
+    "intro intro intro intro intro intro"
+    "codeCamp codeCamp codeWarsSquare CS50 CS50 codecademySquare "
+}
+
+/*Large Mobile Devices, e.g. landscape tablets*/
+@media (min-width: 830px) {
+  #prereqs__item2 {display: none;}
+  #prereqs__item3 {display: none;}
+  #prereqs__item5 {display: none;}
+  #prereqs__item1 {display: grid;}
+  #prereqs__item4 {display: grid;}
+  #prereqs__item7 {display: grid;}
+  #prereqs__item9 {display: grid;}
+  #prereqs__item11 {display: grid;}
+
+  #prereqs__grid-container {
+  padding-bottom: 6vw;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 14vw);
+  grid-template-areas:
+  "intro intro intro intro intro founders founders"
+  "intro intro intro intro intro codecademy codecademy"
+  "intro intro intro intro intro codeCamp codeCamp"
+  "intro intro intro intro intro CS50 CS50"
+  "intro intro intro intro intro git git"
+  "intro intro intro intro intro codeWars codeWars"
+  }
+}
+
+/*Extra-Large Mobile Devices, e.g. large tablets, laptops*/
+@media (min-width: 900px) {
+  #prereqs__item6 {display: none;}
+
+  #prereqs__grid-container {
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 14vw);
+  grid-template-areas:
+  "intro intro intro intro intro founders founders"
+  "intro intro intro intro intro codecademy codecademy"
+  "intro intro intro intro intro codeCamp codeCamp"
+  "intro intro intro intro intro git git"
+  "intro intro intro intro intro codeWars codeWars"
+  }
+}
+
+/*Small non-Mobile*/
+@media (min-width: 1000px) {
+  #prereqs__item4 {display: none;}
+  #prereqs__item2 {display: grid;}
+  #prereqs__item3 {display: grid;}
+  #prereqs__item5 {display: grid;}
+  #prereqs__item6 {display: grid;}
+  #prereqs__item8 {display: grid;}
+  #prereqs__item10 {display: grid;}
+
+
+  #prereqs__grid-container {
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 12.5vw);
+  grid-template-areas:
+  "intro intro intro intro intro codeCampSquare founders founders"
+  "intro intro intro intro intro git git codeWarsSquare"
+  "intro intro intro intro intro codecademySquare CS50 CS50"
+  "intro intro intro intro intro codeWars codeWars gitSquare"
+  "intro intro intro intro intro foundersSquare codeCamp codeCamp"
+  }
+}
+
+/*Medium non-Mobile*/
+@media (min-width: 1200px) {
+  #prereqs__item1 {display: none;}
+  #prereqs__item10 {display: none;}
+
+  #prereqs__grid-container {
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(4, 12.5vw);
+  grid-template-areas:
+  "intro intro intro intro intro codeCampSquare founders founders"
+  "intro intro intro intro intro git git codeWarsSquare"
+  "intro intro intro intro intro codecademySquare CS50 CS50"
+  "intro intro intro intro intro codeWars codeWars gitSquare"
+  }
+}
+
+/*Large non-Mobile*/
+@media (min-width: 1300px) {
+  #prereqs__item8 {display: none;}
+  #prereqs__item11 {display: none;}
+
+  #prereqs__grid-container {
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 12.5vw);
+  grid-template-areas:
+  "intro intro intro intro intro codeCampSquare founders founders"
+  "intro intro intro intro intro git git codeWarsSquare"
+  "intro intro intro intro intro codecademySquare CS50 CS50"
+  }
+}
 
 /*ROBOT PROTOTYPE SECTION*/
 
