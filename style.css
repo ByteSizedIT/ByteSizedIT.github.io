@@ -221,6 +221,7 @@ button:hover {
   width: inherit;
 }
 
+
 /* Div for the Carousel control button(s)*/
 #control-panel{
   text-align: center;
@@ -263,14 +264,68 @@ button:hover {
 }
 
 
-
 /*WHY CODING SECTION*/
 
 
 /*WHY F&C SECTION*/
 
 
-/*WHY ME SECTION*/
+/*WHY ME? SECTION OF WEBSITE*/
+
+#calculator {
+  height: 40vw;
+  width: 25vw;
+  background-color: var(--blue);
+  margin: 0 auto;
+  border-radius: 5%;
+  box-shadow: 0 4px 8px 0 var(--darkgrey), 0 6px 20px 0 var(--grey-blue);
+}
+
+#calculation {
+  height: 5vw;
+  //background-color: yellow;
+  margin: 0;
+  padding-top: 1vw;
+  font-size: 1.5vw;
+  color: var(--darkgrey);
+}
+
+#output {
+  height: 5vw;
+  //background-color: red;
+  margin: 0;
+  padding: 0;
+  font-size: 3vw;
+  color: var(--grey-blue);
+}
+
+#calculation__value, #output__value {
+  margin: 0;
+  padding: 0vw 3vw;
+  text-align: right;
+}
+
+#keyboard {
+  height: 30vw;
+}
+
+.operator, .number, .blank {
+  height: 4vw;
+  width: 4vw;
+  margin: 1vw;
+  float: left;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.5vw;
+}
+
+.operator:active, .number:active {
+  font-size: ;
+}
+
+.blank {
+  background-color: var(--blue);
+}
 
 
 /*PREREQUISITES SECTION*/
@@ -427,6 +482,7 @@ figure {
   }
 }
 
+
 /*ROBOT PROTOTYPE SECTION*/
 
 #robot__player {
@@ -437,7 +493,6 @@ figure {
   height: 60vh;
   box-shadow: 0 2vh 4vh 0 var(--darkgrey), 0 3vh 10vh 0 var(--grey-blue);
 }
-
 
 footer {
   background-color: var(--orange);
