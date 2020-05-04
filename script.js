@@ -1,3 +1,5 @@
+//CAROUSEL SECTION OF WEBSITE
+
 //Initialise carousel-deck of slides as object in JS
 const deck = document.getElementById('carousel__deck');
 
@@ -166,5 +168,29 @@ navDots.addEventListener('click', (e) => {
     targetIndex = dotsArr.findIndex(dot => dot === clickedDot);
     targetSlide = slidesArr[targetIndex];
     viewTargetSlide(targetSlide);
+  }
+})
+
+
+//WHY ME? SECTION OF WEBSITE
+
+// Initiate the modal
+const modal = document.getElementById("myModal");
+
+// Initiate the element that opens the modal
+const open = document.getElementById("openModal");
+
+// Initiate element that closes the modal
+const close = document.getElementById("closeModal");
+
+// When the user clicks 'here' text, open the modal
+open.addEventListener('click', () => {
+  modal.style.display = "block";
+})
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener('click', (e) => {
+  if (e.target == modal) {
+    modal.style.display = "none";
   }
 })

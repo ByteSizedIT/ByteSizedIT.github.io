@@ -272,6 +272,18 @@ button:hover {
 
 /*WHY ME? SECTION OF WEBSITE*/
 
+#myModal {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0, 0.5);
+  padding-top: 100px;
+  position: fixed;
+  z-index: 1;
+  display: none;
+}
+
 #calculator {
   height: 40vw;
   width: 25vw;
@@ -282,7 +294,7 @@ button:hover {
 }
 
 #calculation {
-  height: 5vw;
+  height: 3vw;
   //background-color: yellow;
   margin: 0;
   padding-top: 1vw;
@@ -319,11 +331,7 @@ button:hover {
   font-size: 1.5vw;
 }
 
-.operator:active, .number:active {
-  font-size: ;
-}
-
-.blank {
+.blank, .blank:hover  {
   background-color: var(--blue);
 }
 
