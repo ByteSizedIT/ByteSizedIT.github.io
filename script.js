@@ -28,11 +28,14 @@ const controlButton = document.getElementById('play-pause');
 //Declare a variable for the slide being targeted, to move to
 let targetSlide;
 
+//Declare variable for the distance to targetSide (or currentSlide on resize)
+let dist;
+
 //Declare a variable ready for set interval method on 'play' button pushed
 let slideInterval;
 
 //Get width of individual slides and initialise as a variable (number)
-const slideWidth = slidesArr[0].getBoundingClientRect().width;
+let slideWidth = slidesArr[0].getBoundingClientRect().width;
 
 //Spread out the deck of slides in a line
 //(i.e. instead of on top of each other now position = absolute)
@@ -43,18 +46,24 @@ const positionSlide = (slide, index) => {
 slidesArr.forEach(positionSlide);
 
 //When window resizes, resize distance between target slides to resolve bug
-//Logic fails when trying to call an eventListener as per below
-/*window.addEventListener("resize", () => {
+window.onresize = () => {
+  //updated previous version (that used location reload)..
+  //..by recalculating dist to current slide and transitioning with no delay
+  //better than location reload, which refreshed to first slide each time
   slideWidth = slidesArr[0].getBoundingClientRect().width;
   slidesArr.forEach(positionSlide);
-  viewTargetSlide(targetSlide);
-});*/
-//Alternative method to above using reload(disadvantage = it resets to first slide)
-window.onresize = () => location.reload();
+  dist = currentSlide.style.left;
+  //remove timed transition used when shuffling with viewTargetSlide function
+  deck.style.transitionDuration = '0ms';
+  //shuffle to target slide...
+  deck.style.transform = 'translateX(-' + dist + ')';
+}
 
 //Function to move target slide into the carousel viewer
 const viewTargetSlide = (targetSlide) => {
   dist = targetSlide.style.left;
+  //confirm timed transition used when shuffling with viewTargetSlide function
+  deck.style.transitionDuration = '500ms';
   //shuffle to target slide...
   deck.style.transform = 'translateX(-' + dist + ')';
   //update currentSlide
@@ -174,13 +183,13 @@ navDots.addEventListener('click', (e) => {
 
 //WHY ME? SECTION OF WEBSITE
 
-// Initiate the modal
+// Initialise the modal
 const modal = document.getElementById("myModal");
 
-// Initiate the element that opens the modal
+// Initialise the element that opens the modal
 const open = document.getElementById("openModal");
 
-// Initiate element that closes the modal
+// Initialise the element that closes the modal
 const close = document.getElementById("closeModal");
 
 // When the user clicks 'here' text, open the modal
