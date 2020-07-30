@@ -6,6 +6,6 @@ This is a one-page website using HTML, CSS and JavaScript. It was created as par
 
 Founders and Coders is a UK-based nonprofit that develops and runs tuition-free training programmes in web development, guided by our core values of cooperation, inclusion and social impact.
 
-To visit my webpage, please click [here](https://bytesizedit.github.io) or copy the following address in to your browser.
+To visit my webpage, please click [here](https://bytesizedit.github.io) or copy the following address in to your browser: https://bytesizedit.github.io
 
 Thanks!
