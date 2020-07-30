@@ -74,7 +74,7 @@ nav h2 {
 }
 
 
-/*ALL SECTIONS*/
+/* ********ALL SECTIONS******** */
 
 /*Alternate the background coloring of individual webpage sections identified in the navigation bar*/
 
@@ -130,7 +130,7 @@ button:hover {
 }
 
 
-/*CAROUSEL SECTION*/
+/* ********CAROUSEL SECTION******** */
 
 /*Unique sizing of the first 'home' section of the webpage, containing the carousel and the control panel*/
 #home {
@@ -264,13 +264,13 @@ button:hover {
 }
 
 
-/*WHY CODING SECTION*/
+/* ******** WHY CODING SECTION ******** */
 
 
-/*WHY F&C SECTION*/
+/* ******** WHY F&C SECTION ******** */
 
 
-/*WHY ME? SECTION OF WEBSITE*/
+/* ******** WHY ME? SECTION OF WEBSITE ******** */
 
 #myModal {
   width: 100%;
@@ -278,7 +278,7 @@ button:hover {
   left: 0;
   top: 0;
   background-color: rgba(0,0,0, 0.5);
-  padding-top: 100px;
+  padding-top: 10vw;
   position: fixed;
   z-index: 1;
   display: none;
@@ -289,25 +289,35 @@ button:hover {
   width: 25vw;
   background-color: var(--blue);
   margin: 0 auto;
+  padding-top: 1.5vw;
   border-radius: 5%;
-  box-shadow: 0 4px 8px 0 var(--darkgrey), 0 6px 20px 0 var(--grey-blue);
+  box-shadow: 0 4vh 8vh 0 var(--darkgrey), 0 6vh 20vh 0 var(--grey-blue);
+}
+
+#closeModal {
+  font-weight: bold;
+  float: left;
+  font-size: 1vw;
+  padding-left: 1vw;
+}
+
+#closeModal:hover {
+  color: var(--pink);
+  cursor: pointer;
 }
 
 #calculation {
-  height: 3vw;
-  //background-color: yellow;
-  margin: 0;
+  height: 2vw;
   padding-top: 1vw;
   font-size: 1.5vw;
+  text-align: right;
   color: var(--darkgrey);
 }
 
 #output {
   height: 5vw;
-  //background-color: red;
-  margin: 0;
-  padding: 0;
   font-size: 3vw;
+  text-align: right;
   color: var(--grey-blue);
 }
 
@@ -331,12 +341,12 @@ button:hover {
   font-size: 1.5vw;
 }
 
-.blank, .blank:hover  {
+.blank, .blank:hover {
   background-color: var(--blue);
 }
 
 
-/*PREREQUISITES SECTION*/
+/*  ******** PREREQUISITES SECTION ******** */
 
 #prereqs__intro ul {
   padding-left: 7vw;
@@ -491,7 +501,7 @@ figure {
 }
 
 
-/*ROBOT PROTOTYPE SECTION*/
+/* ******** ROBOT PROTOTYPE SECTION ******** */
 
 #robot__player {
   text-align:center;
