@@ -182,19 +182,10 @@ navDots.addEventListener('click', (e) => {
 
 // ******** WHY ME? SECTION OF WEBSITE ********
 
-// Initialise the modal elements as variables in JS
+// Initialise modal elements as variables in JS
 const modal = document.getElementById("myModal");
-const calc = document.getElementById('calculator');
 const open = document.getElementById("openModal");
 const close = document.getElementById("closeModal");
-const calcul = document.getElementById('calculation');
-const calculVal = document.getElementById('calculation__value');
-const out = document.getElementById('output');
-const outVal = document.getElementById('output__value');
-const keyboard = document.getElementById('keyboard');
-const numbers = document.getElementsByClassName("number");
-const operators = document.getElementsByClassName("operator");
-const blanks = document.getElementsByClassName("blank");
 
 // When the user clicks 'here' text, open the modal
 open.addEventListener('click', () => {
@@ -212,78 +203,3 @@ window.addEventListener('click', (e) => {
     modal.style.display = "none";
   }
 })
-
-// Function to resize modal elsements based on Viewer Width if window height>width
-// or base modal element sizes on Viewer Height if width>height
-const resizeCalc = () => {
-  if (window.innerHeight>window.innerWidth){
-    modal.style.paddingTop = "10vw";
-    calc.style.height = "80vw";
-    calc.style.width = "50vw";
-    close.style.fontSize = "2vw";
-    close.style.paddingLeft = "2vw";
-    calcul.style.height = "4vw";
-    calcul.style.paddingTop = "2vw";
-    calcul.style.fontSize = "3vw";
-    calculVal.style.padding = "0vw 6vw";
-    out.style.height = "10vw";
-    out.style.fontSize = "6vw";
-    outVal.style.padding = "0vw 6vw";
-    keyboard.style.height = "60vw";
-    for (let i = 0; i < numbers.length; i++) {
-      numbers[i].style.height = "8vw";
-      numbers[i].style.width = "8vw";
-      numbers[i].style.margin = "2vw";
-      numbers[i].style.fontSize = "3vw";
-    }
-    for (let i = 0; i < operators.length; i++) {
-      operators[i].style.height = "8vw";
-      operators[i].style.width = "8vw";
-      operators[i].style.margin = "2vw";
-      operators[i].style.fontSize = "3vw";
-    }
-    for (let i = 0; i < blanks.length; i++) {
-      blanks[i].style.height = "8vw";
-      blanks[i].style.width = "8vw";
-      blanks[i].style.margin = "2vw";
-      blanks[i].style.fontSize = "3vw";
-    }
-  }
-  else {
-    modal.style.paddingTop = "10vh";
-    calc.style.height = "80vh";
-    calc.style.width = "50vh";
-    close.style.fontSize = "2vh";
-    close.style.paddingLeft = "2vh";
-    calcul.style.height = "4vh";
-    calcul.style.paddingTop = "2vh";
-    calcul.style.fontSize = "3vh";
-    calculVal.style.padding = "0vh 6vh";
-    out.style.height = "10vh";
-    out.style.fontSize = "6vh";
-    outVal.style.padding = "0vh 6vh";
-    keyboard.style.height = "60vh";
-    for (let i = 0; i < numbers.length; i++) {
-      numbers[i].style.height = "8vh";
-      numbers[i].style.width = "8vh";
-      numbers[i].style.margin = "2vh";
-      numbers[i].style.fontSize = "3vh";
-    }
-    for (let i = 0; i < operators.length; i++) {
-      operators[i].style.height = "8vh";
-      operators[i].style.width = "8vh";
-      operators[i].style.margin = "2vh";
-      operators[i].style.fontSize= "3vh";
-    }
-    for (let i = 0; i < blanks.length; i++) {
-      blanks[i].style.height = "8vh";
-      blanks[i].style.width = "8vh";
-      blanks[i].style.margin = "2vh";
-      blanks[i].style.fontSize = "3vh";
-    }
-  }
-}
-
-//Call function to resize modal/calculator elements on browser refresh or resize
-window.addEventListener('load', resizeCalc());
-window.addEventListener('resize', resizeCalc());

@@ -278,27 +278,21 @@ button:hover {
   left: 0;
   top: 0;
   background-color: rgba(0,0,0, 0.5);
-  padding-top: 10vw;
   position: fixed;
   z-index: 1;
   display: none;
 }
 
 #calculator {
-  height: 40vw;
-  width: 25vw;
   background-color: var(--blue);
   margin: 0 auto;
-  padding-top: 1.5vw;
   border-radius: 5%;
-  box-shadow: 0 4vh 8vh 0 var(--darkgrey), 0 6vh 20vh 0 var(--grey-blue);
+  box-shadow: 0 4vw 8vw 0 var(--darkgrey), 0 6vw 20vw 0 var(--grey-blue);
 }
 
 #closeModal {
   font-weight: bold;
   float: left;
-  font-size: 1vw;
-  padding-left: 1vw;
 }
 
 #closeModal:hover {
@@ -307,44 +301,118 @@ button:hover {
 }
 
 #calculation {
-  height: 2vw;
-  padding-top: 1vw;
-  font-size: 1.5vw;
   text-align: right;
   color: var(--darkgrey);
 }
 
 #output {
-  height: 5vw;
-  font-size: 3vw;
   text-align: right;
   color: var(--grey-blue);
 }
 
 #calculation__value, #output__value {
   margin: 0;
-  padding: 0vw 3vw;
   text-align: right;
 }
 
-#keyboard {
-  height: 30vw;
-}
-
 .operator, .number, .blank {
-  height: 4vw;
-  width: 4vw;
-  margin: 1vw;
   float: left;
   border-radius: 50%;
   font-weight: bold;
-  font-size: 1.5vw;
 }
 
 .blank, .blank:hover {
   background-color: var(--blue);
 }
 
+
+@media all and (orientation:portrait) {
+  #myModal {
+    padding-top: 10vw;
+  }
+
+  #calculator {
+    height: 80vw;
+    width: 50vw;
+    padding-top: 1.5vw;
+  }
+
+  #closeModal {
+    font-size: 2vw;
+    padding-left: 2vw;
+  }
+
+  #calculation {
+    height: 4vw;
+    padding-top: 2vw;
+    font-size: 3vw;
+  }
+
+  #output {
+    height: 10vw;
+    font-size: 6vw;
+  }
+
+  #calculation__value, #output__value {
+    padding: 0vw 6vw;
+  }
+
+  #keyboard {
+    height: 60vw;
+  }
+
+  .operator, .number, .blank {
+    height: 8vw;
+    width: 8vw;
+    margin: 2vw;
+    font-size: 3vw;
+  }
+
+}
+
+@media all and (orientation:landscape) {
+  #myModal {
+    padding-top: 10vh;
+  }
+
+  #calculator {
+    height: 80vh;
+    width: 50vh;
+    padding-top: 1.5vh;
+  }
+
+  #closeModal {
+    font-size: 2vh;
+    padding-left: 2vh;
+  }
+
+  #calculation {
+    height: 4vh;
+    padding-top: 2vh;
+    font-size: 3vh;
+  }
+
+  #output {
+    height: 10vh;
+    font-size: 6vh;
+  }
+
+  #calculation__value, #output__value {
+    padding: 0vh 6vh;
+  }
+
+  #keyboard {
+    height: 60vh;
+  }
+
+  .operator, .number, .blank {
+    height: 8vh;
+    width: 8vh;
+    margin: 2vh;
+    font-size: 3vh;
+  }
+
+}
 
 /*  ******** PREREQUISITES SECTION ******** */
 
