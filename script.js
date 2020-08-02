@@ -203,3 +203,113 @@ window.addEventListener('click', (e) => {
     modal.style.display = "none";
   }
 })
+
+// Initialise calculator elements as variables in JS
+let calculation = document.getElementById("calculation__value");
+let output = document.getElementById("output__value");
+
+// Declare variables to hold values/data when calculating input to calculation and output elements
+let calcData;
+let outputData
+
+// Declare variable to indicate whether equals was last button pressed
+let sumDone
+
+// Initialise an array of number buttons
+const numbers = document.getElementsByClassName("number");
+
+//Initialise an array of operator buttons
+const operators = document.getElementsByClassName("operator");
+
+// Function to transform num into comma seperated number, for displaying (setOutput)
+function formatNum(num) {
+  const f = Number(num);
+  return f.toLocaleString("en");
+}
+
+// Function to transfomr comma seperated number in to non-comma seperated, for ????????????
+function unformatNum(num) {
+  return Number(num.replace(/,/g,""));
+}
+
+// Getter and setter functions for 'calculation' string value
+function getCalculation() {
+  return calculation.innerText;
+}
+
+function setCalculation(val) {
+  calculation.innerText = val;
+}
+
+// Getter and setter functions for calculator 'output' number value
+function getOutput() {
+  return output.innerText;
+}
+
+function setOutput(val) {
+  output.innerText = formatNum(val);
+}
+
+// Append to output value when a number button is pressed
+for(let i=0; i<numbers.length; i++) {
+  numbers[i].addEventListener('click', function() {
+    outputData = unformatNum(getOutput());
+    if(isNaN(outputData)) { // Lines to remove initial emoji value etc
+      outputData = 0;
+      setCalculation("");
+    }
+    if (sumDone = true) {
+      outputData = this.id;
+      setOutput(outputData);
+    }
+    else {
+    outputData = outputData + this.id;
+    setOutput(outputData);
+    }
+  })
+}
+
+//
+for(let i=0; i<operators.length; i++) {
+  operators[i].addEventListener('click', function() {
+
+    if (this.id == "clear") {
+      setCalculation("");
+      setOutput("");
+    }
+
+    else if (this.id == "CE") {
+    outputData = unformatNum(getOutput()).toString(); //remove commas and convert to string
+    outputData = outputData.substring(0, outputData.length-1);
+      if(isNaN(outputData)) { // Lines to remove initial emoji value etc
+        outputData = 0;
+        setCalculation("");
+      }
+    setOutput(outputData);
+    }
+
+    else {
+      outputData = getOutput();
+      calcData = getCalculation();
+      if(isNaN(outputData)) { // Lines to remove initial emoji value etc
+        setCalculation("0"+this.id);
+        output.innerText = "";
+      }
+
+      else if (outputData!="") {
+        outputData = unformatNum(outputData);
+        calcData = calcData + outputData;
+        if (this.id == "=") {
+          let result = eval(calcData);
+          setOutput(result);
+          setCalculation("");
+        }
+        else {
+          calcData = calcData + this.id;
+          setCalculation(calcData);
+          output.innerText = "";
+        }
+      }
+    }
+  })
+}
