@@ -213,7 +213,7 @@ let calcData;
 let outputData
 
 // Declare variable to indicate whether equals was last button pressed
-let sumDone
+let sumDone = false;
 
 // Initialise an array of number buttons
 const numbers = document.getElementsByClassName("number");
@@ -258,9 +258,10 @@ for(let i=0; i<numbers.length; i++) {
       outputData = 0;
       setCalculation("");
     }
-    if (sumDone = true) {
+    if (sumDone == true) {
       outputData = this.id;
       setOutput(outputData);
+      sumDone = false;
     }
     else {
     outputData = outputData + this.id;
@@ -303,6 +304,7 @@ for(let i=0; i<operators.length; i++) {
           let result = eval(calcData);
           setOutput(result);
           setCalculation("");
+          sumDone = true;
         }
         else {
           calcData = calcData + this.id;
