@@ -144,11 +144,11 @@
       <!--'WHY ME?' SECTION OF WEBPAGE-->
       <section id="me">
         <h2>Why me?</h2>
-        <p>One, two, three...Don't just trust me, click <button id="openModal">here</button> and you can do the math &#128521;!</p>
+        <p>One, two, three...Don't just trust me, click <button id="openCalc">here</button> and you can do the math &#128521;!</p>
 
-        <div id="myModal">
+        <div id="cModal" class="modal">
           <div id="calculator">
-            <span id="closeModal">close &times;</span>
+            <span id="closeCalc" class="closeModal">close &times;</span>
             <div id="display">
               <div id="calculation">
                 <p id="calculation__value">Neville + FAC =</p>
@@ -191,6 +191,7 @@
             <p>Click on the links below to see my freeCodeCamp and CodeWars profile pages, as well as Codecademy courses that I have used to solidify and
               extend my learning in areas including Git. I have also found HarvardX to be awesome in helping me to understand many concepts.<br>
               Together, these sites have given me the building blocks to get creative with code.<br>
+              Click the brick <img id="lego" src="images/noun_lego_1722097.svg"> to see an example!</p>
             <ul>
               <li>450+ points earned on <a href="https://www.freecodecamp.org/bytesizedit" target="_blank">freeCodeCamp</a></li>
               <li>5 kyu reached & 400+ honour points earned on <a href="https://www.codewars.com/users/bytesizedit" target="_blank">Codewars</a></li>
@@ -199,6 +200,7 @@
                 <a href="https://www.edx.org/course/cs50s-web-programming-with-python-and-javascript" target="_blank">Web Programming with Python and JavaScript</a></li>
             </ul>
             <p>Click <a href="https://github.com/ByteSizedIT/ByteSizedIT.github.io" target="_blank">here</a> for this site's GitHub repo.<br></p>
+            <p id="credit">*lego brick by <a href="https://thenounproject.com/search/?q=lego%20brick&i=847021">Lluisa Iborra</a> from the <a href="https://thenounproject.com">Noun Project</a></p>
           </div>
 
           <figure id="prereqs__item1">
@@ -234,6 +236,12 @@
           <figure id="prereqs__item11">
             <img class="prereqs__item" src="images/CodeWars.png" alt="Founders and Coders logo">
           </figure>
+        </div>
+
+        <div id="tModal" class="modal">
+          <div id="tetris">
+            <span id="closeTetris" class="closeModal">close &times;</span>
+          <div>
         </div>
       </section>
 

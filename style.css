@@ -130,6 +130,29 @@ button:hover {
 }
 
 
+/* ********ALL MODALS******** */
+
+.modal {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0, 0.5);
+  position: fixed;
+  z-index: 1;
+  display: none;
+}
+
+.closeModal {
+  font-weight: bold;
+  float: left;
+}
+
+.closeModal:hover {
+  color: var(--pink);
+  cursor: pointer;
+}
+
 /* ********CAROUSEL SECTION******** */
 
 /*Unique sizing of the first 'home' section of the webpage, containing the carousel and the control panel*/
@@ -221,7 +244,6 @@ button:hover {
   width: inherit;
 }
 
-
 /* Div for the Carousel control button(s)*/
 #control-panel{
   text-align: center;
@@ -285,15 +307,15 @@ button:hover {
   background-position: 15px 12px;
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
-  }
+}
 
 #text:hover {
   box-shadow: 0 0 10px #ddd;
-  }
+}
 
 #text:focus {
   outline: none;
-  }
+}
 
 #empty {
   font-family: Arial, Helvetica, sans-serif;
@@ -335,32 +357,11 @@ input[type=submit]:hover {
 
 /* ******** WHY ME? SECTION OF WEBSITE ******** */
 
-#myModal {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-color: rgba(0,0,0, 0.5);
-  position: fixed;
-  z-index: 1;
-  display: none;
-}
-
 #calculator {
   background-color: var(--blue);
   margin: 0 auto;
   border-radius: 5%;
   box-shadow: 0 4vw 8vw 0 var(--darkgrey), 0 6vw 20vw 0 var(--grey-blue);
-}
-
-#closeModal {
-  font-weight: bold;
-  float: left;
-}
-
-#closeModal:hover {
-  color: var(--pink);
-  cursor: pointer;
 }
 
 #calculation {
@@ -390,7 +391,7 @@ input[type=submit]:hover {
 
 
 @media all and (orientation:portrait) {
-  #myModal {
+  #cModal {
     padding-top: 10vw;
   }
 
@@ -400,7 +401,7 @@ input[type=submit]:hover {
     padding-top: 1.5vw;
   }
 
-  #closeModal {
+  #closeCalc {
     font-size: 2vw;
     padding-left: 2vw;
   }
@@ -430,11 +431,11 @@ input[type=submit]:hover {
     margin: 2vw;
     font-size: 3vw;
   }
-
+C
 }
 
 @media all and (orientation:landscape) {
-  #myModal {
+  #cModal {
     padding-top: 10vh;
   }
 
@@ -444,13 +445,13 @@ input[type=submit]:hover {
     padding-top: 1.5vh;
   }
 
-  #closeModal {
+  #closeCalc {
     font-size: 2vh;
     padding-left: 2vh;
   }
 
   #calculation {
-    height: 4vh;
+    height: 4vh;C
     padding-top: 2vh;
     font-size: 3vh;
   }
@@ -631,6 +632,32 @@ figure {
   }
 }
 
+
+#lego {
+  top: -20px;
+  width: 30px;
+  height: auto;
+  animation: bouncing 0.8s infinite;
+  animation-direction: alternate-reverse;
+  cursor: pointer;
+}
+
+@keyframes bouncing {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50px); }
+}
+
+#credit {
+  font-family: arial, sans-serif;
+  font-size: 10px;
+}
+
+#tetris {
+  height: 95vh;
+  width: 40vh;
+  margin: auto auto;
+  background-color: var(--lightgrey);
+}
 
 /* ******** ROBOT PROTOTYPE SECTION ******** */
 

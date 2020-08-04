@@ -205,25 +205,25 @@ empty.addEventListener("click", () => searchBox.value = "");
 
 // ******** WHY ME? SECTION OF WEBSITE ********
 
-// Initialise modal elements as variables in JS
-const modal = document.getElementById("myModal");
-const open = document.getElementById("openModal");
-const close = document.getElementById("closeModal");
+// Initialise calculator modal elements as variables in JS
+const cModal = document.getElementById("cModal");
+const openCalc = document.getElementById("openCalc");
+const closeCalc = document.getElementById("closeCalc");
 
-// When the user clicks 'here' text, open the modal
-open.addEventListener('click', () => {
-  modal.style.display = "block";
+// When the user clicks 'here' text, open the calculator modal
+openCalc.addEventListener('click', () => {
+  cModal.style.display = "block";
 })
 
-// When the user clicks on close (x), close the modal
-close.addEventListener('click', () => {
-  modal.style.display = "none";
+// When the user clicks on close (x), close the calculator modal
+closeCalc.addEventListener('click', () => {
+  cModal.style.display = "none";
 })
 
-// When the user clicks anywhere outside of the modal, close it
+// When the user clicks anywhere outside of the calculator modal, close it
 window.addEventListener('click', (e) => {
-  if (e.target == modal) {
-    modal.style.display = "none";
+  if (e.target == cModal) {
+    cModal.style.display = "none";
   }
 })
 
@@ -338,3 +338,26 @@ for(let i=0; i<operators.length; i++) {
     }
   })
 }
+
+
+// Initialise tetris modal elements as variables in JS
+const tModal = document.getElementById("tModal");
+const openTetris = document.getElementById("lego");
+const closeTetris = document.getElementById("closeTetris");
+
+// When the user clicks 'here' text, open the calculator modal
+openTetris.addEventListener('click', () => {
+  tModal.style.display = "block";
+})
+
+// When the user clicks on close (x), close the calculator modal
+closeTetris.addEventListener('click', () => {
+  tModal.style.display = "none";
+})
+
+// When the user clicks anywhere outside of the calculator modal, close it
+window.addEventListener('click', (e) => {
+  if (e.target == tModal) {
+    tModal.style.display = "none";
+  }
+})
