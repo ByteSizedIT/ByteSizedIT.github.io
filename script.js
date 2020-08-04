@@ -180,6 +180,29 @@ navDots.addEventListener('click', (e) => {
 })
 
 
+// ******** WHY CODING? SECTION OF WEBSITE ********
+
+//Initialise `Google 'empty' (X) buttton and 'search box' as objects in JS
+const empty = document.getElementById('empty');
+const searchBox = document.getElementById('text');
+
+//Make the 'empty' button (X) appear in Google Search page's text box (when text is entered)
+function toggleEmpty() {
+    if(searchBox.value === "") {
+        empty.style.visibility = "hidden";
+        action.style.action = "";
+    }
+    else {
+        empty.style.visibility = "visible";
+    }
+}
+
+searchBox.addEventListener("keyup", toggleEmpty);
+
+//Make the text in the Google Search page's text box disappear when the 'empty' button (X) is pressed
+empty.addEventListener("click", () => searchBox.value = "");
+
+
 // ******** WHY ME? SECTION OF WEBSITE ********
 
 // Initialise modal elements as variables in JS
@@ -227,12 +250,12 @@ function formatNum(num) {
   return f.toLocaleString("en");
 }
 
-// Function to transfomr comma seperated number in to non-comma seperated, for ????????????
+// Function to transform comma seperated number in to non-comma seperated
 function unformatNum(num) {
   return Number(num.replace(/,/g,""));
 }
 
-// Getter and setter functions for 'calculation' string value
+// Functions to get/set 'calculation' string value
 function getCalculation() {
   return calculation.innerText;
 }
@@ -241,7 +264,7 @@ function setCalculation(val) {
   calculation.innerText = val;
 }
 
-// Getter and setter functions for calculator 'output' number value
+// Functions to get/set calculator 'output' number value
 function getOutput() {
   return output.innerText;
 }
@@ -250,7 +273,7 @@ function setOutput(val) {
   output.innerText = formatNum(val);
 }
 
-// Append to output value when a number button is pressed
+// Create listeners to append a number to output value when a number button is pressed
 for(let i=0; i<numbers.length; i++) {
   numbers[i].addEventListener('click', function() {
     outputData = unformatNum(getOutput());
@@ -270,7 +293,7 @@ for(let i=0; i<numbers.length; i++) {
   })
 }
 
-//
+// Create listeners to respond to operators being pressed
 for(let i=0; i<operators.length; i++) {
   operators[i].addEventListener('click', function() {
 
@@ -282,7 +305,7 @@ for(let i=0; i<operators.length; i++) {
     else if (this.id == "CE") {
     outputData = unformatNum(getOutput()).toString(); //remove commas and convert to string
     outputData = outputData.substring(0, outputData.length-1);
-      if(isNaN(outputData)) { // Lines to remove initial emoji value etc
+      if(isNaN(outputData)) { // lines to remove initial emoji value etc
         outputData = 0;
         setCalculation("");
       }
@@ -292,7 +315,7 @@ for(let i=0; i<operators.length; i++) {
     else {
       outputData = getOutput();
       calcData = getCalculation();
-      if(isNaN(outputData)) { // Lines to remove initial emoji value etc
+      if(isNaN(outputData)) { // lines to remove initial emoji value etc
         setCalculation("0"+this.id);
         output.innerText = "";
       }
