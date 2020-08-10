@@ -395,15 +395,15 @@ input[type=submit]:hover {
     padding-top: 10vw;
   }
 
+  #closeCalc {
+    font-size: 2vw;
+    padding-left: 1.5vw;
+  }
+
   #calculator {
     height: 80vw;
     width: 50vw;
     padding-top: 1.5vw;
-  }
-
-  #closeCalc {
-    font-size: 2vw;
-    padding-left: 2vw;
   }
 
   #calculation {
@@ -431,7 +431,6 @@ input[type=submit]:hover {
     margin: 2vw;
     font-size: 3vw;
   }
-C
 }
 
 @media all and (orientation:landscape) {
@@ -439,15 +438,15 @@ C
     padding-top: 10vh;
   }
 
+  #closeCalc {
+    font-size: 2vh;
+    padding-left: 1.5vh;
+  }
+
   #calculator {
     height: 80vh;
     width: 50vh;
     padding-top: 1.5vh;
-  }
-
-  #closeCalc {
-    font-size: 2vh;
-    padding-left: 2vh;
   }
 
   #calculation {
@@ -632,7 +631,7 @@ figure {
   }
 }
 
-
+/*Lego brick animation*/
 #lego {
   top: -20px;
   width: 30px;
@@ -647,17 +646,95 @@ figure {
     100% { transform: translateY(-50px); }
 }
 
+/*credit for the original Noun Project lego image */
 #credit {
   font-family: arial, sans-serif;
   font-size: 10px;
 }
 
-#tetris {
+/*size/centre/colour tetris container*/
+#tetris-container {
   height: 95vh;
   width: 40vh;
   margin: auto auto;
   background-color: var(--lightgrey);
 }
+
+/*Name all prereqs items, ready for grid container*/
+#closeTetris {grid-area: close;}
+#score-display {grid-area: score;}
+#start-button {grid-area: startbtn;}
+#next-grid {grid-area: next;}
+
+#dash {
+  display: grid;
+  margin: 0 1vh;
+  grid-column-gap: 4vh;
+  align-items: center;
+  grid-template-columns: repeat(2, 17vh);
+  grid-template-rows: repeat(4, 4.5vh);
+  grid-template-areas:
+  "close next"
+  ". next"
+  "score next"
+  "startbtn next"
+}
+
+#score-display {
+  font-size: 2vh;
+  text-align: center;
+}
+
+#start-button {
+  margin-bottom: 1vh;
+  padding: 0;
+}
+
+#next-grid {
+  background-color: var(--orange);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#grid {
+  width: 40vh;
+  height: 80vh;
+  background-color: var(--blue);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: Baloo, monospace;
+  font-size: 4vh;
+}
+
+#grid-base {
+  width: 40vh;
+  height: 4vh;
+  background-color: red;
+}
+
+.square, .next-square{
+  width: 4vh;
+  height: 4vh;
+}
+
+.tetrimino {background-color: var(--pink);}
+
+@media all and (orientation:portrait) {
+  #closeTet {
+    font-size: 1vw;
+    padding-top: .5vw;
+  }
+}
+
+@media all and (orientation:landscape) {
+  #closeTet {
+    font-size: 1vh;
+    padding-top: .5vh;
+  }
+}
+
 
 /* ******** ROBOT PROTOTYPE SECTION ******** */
 
