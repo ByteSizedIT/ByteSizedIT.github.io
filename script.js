@@ -154,15 +154,21 @@ prevArrow.addEventListener('click', () => {
 document.addEventListener('keydown', (e) => {
   //console.log(e);
   //console.log(e.keyCode);
-  if(e.keyCode === 37) {
-    targetSlide = currentSlide.previousElementSibling;
-    //Run function to view target slide
-    viewTargetSlide(targetSlide);
-  }
-  else if(e.keyCode === 39){
-    targetSlide = currentSlide.nextElementSibling;
-    //Run function to view target slide
-    viewTargetSlide(targetSlide);
+  if(tModal.style.display != "block") {
+    if(e.keyCode === 37) {
+      if(currentSlide !== slidesArr[0]) {
+        targetSlide = currentSlide.previousElementSibling;
+        //Run function to view target slide
+        viewTargetSlide(targetSlide);
+      }
+    }
+    else if(e.keyCode === 39){
+      if(currentSlide !== slidesArr[slidesArr.length-1]) {
+        targetSlide = currentSlide.nextElementSibling;
+        //Run function to view target slide
+        viewTargetSlide(targetSlide);
+      }
+    }
   }
 })
 
@@ -376,7 +382,7 @@ const gridBase = document.getElementById('grid-base');
 
 const nextGrid = document.getElementById('next-grid');
 
-const width = 10;
+const gridWidth = 10;
 const nextWidth = 4;
 
 // Function to create/append a div as child element of another (parent) div(divName)
@@ -414,11 +420,11 @@ let nextArr = Array.from(document.getElementsByClassName('next-square'));
 
 
 // Create Tetriminoes to be used on main grid - array for each, containing 4 diff rotations
-const lType = [[1, width+1, width*2+1, 2], [0, 1, 2, width+2], [1, width+1, width*2+1, width*2], [0, width, width+1, width+2]];
-const zType = [[0, width, width+1, width*2+1], [1, 2, width, width+1], [0, width, width+1, width*2+1], [1, 2, width, width+1]];
-const tType = [[1, width, width+1, width+2], [1, width+1, width+2, width*2+1], [0, 1, 2, width+1], [1, width, width+1, width*2+1]];
-const oType = [[0, 1, width, width+1], [0, 1, width, width+1], [0, 1, width, width+1], [0, 1, width, width+1]];
-const iType = [[1, width+1, width*2+1, width*3+1], [0, 1, 2, 3], [1, width+1, width*2+1, width*3+1], [0, 1, 2, 3]];
+const lType = [[1, gridWidth+1, gridWidth*2+1, 2], [0, 1, 2, gridWidth+2], [1, gridWidth+1, gridWidth*2+1, gridWidth*2], [0, gridWidth, gridWidth+1, gridWidth+2]];
+const zType = [[0, gridWidth, gridWidth+1, gridWidth*2+1], [1, 2, gridWidth, gridWidth+1], [0, gridWidth, gridWidth+1, gridWidth*2+1], [1, 2, gridWidth, gridWidth+1]];
+const tType = [[1, gridWidth, gridWidth+1, gridWidth+2], [1, gridWidth+1, gridWidth+2, gridWidth*2+1], [0, 1, 2, gridWidth+1], [1, gridWidth, gridWidth+1, gridWidth*2+1]];
+const oType = [[0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1]];
+const iType = [[1, gridWidth+1, gridWidth*2+1, gridWidth*3+1], [0, 1, 2, 3], [1, gridWidth+1, gridWidth*2+1, gridWidth*3+1], [0, 1, 2, 3]];
 
 // Create array of all 5 Tetriminoes to be used on main grid, with each one containing own array of 4 rotations)
 const tetArr = [lType, zType, tType, oType, iType];
@@ -490,29 +496,45 @@ function newTetrimino() {
   draw();
 }
 
-//Function to move current Tetrimo down
+// Functions to confirm space to the left/right of Tetrimino
+
+function spaceLeft(tetrimino) {
+  const atLeftBoundary = tetrimino.some(index => (currentPosition + index)%gridWidth === 0);
+  return (!atLeftBoundary)? true: false;
+}
+
+function spaceRight(tetrimino) {
+  const atRightBoundary = tetrimino.some(index => (currentPosition + index)%gridWidth === 9);
+  return (!atRightBoundary)? true: false;
+}
+
+// Function to move current Tetrimo down
 function moveDown() {
   undraw();
-  currentPosition += width;
+  currentPosition += gridWidth;
   draw();
 }
 
-//Function to move currentTetrimino left
+// Function to move currentTetrimino left
 function moveLeft() {
-  undraw();
-  currentPosition -=1;
-  draw();
+  if (spaceLeft(currentTet)){
+    undraw();
+    currentPosition -=1;
+    draw();
+  }
 }
 
-//Function to move currentTetrimino right
+// Function to move currentTetrimino right
 function moveRight() {
-  undraw();
-  currentPosition +=1;
-  draw();
+  if (spaceRight(currentTet)){
+    undraw();
+    currentPosition +=1;
+    draw();
+  }
 }
 
 
-//Function to rotate tetrimino
+// Function to rotate currentTetrimino
 function rotate() {
   undraw();
   currentRotation ++;
@@ -524,17 +546,19 @@ function rotate() {
 
 // Event listener to run movement functions (down/left/right/down - rotate block)
 document.addEventListener('keydown', (e) => {
-  if(e.keyCode === 37){
-    moveLeft();
-  }
-  else if (e.keyCode === 39) {
-    moveRight();
-  }
-  else if (e.keyCode === 38) {
-    rotate();
-  }
-  else if (e.keyCode === 40) {
-    moveDown();
+  if(tModal.style.display === "block") {
+    if(e.keyCode === 37){
+      moveLeft();
+    }
+    else if (e.keyCode === 39) {
+      moveRight();
+    }
+    else if (e.keyCode === 38) {
+      rotate();
+    }
+    else if (e.keyCode === 40) {
+      moveDown();
+    }
   }
 })
 
