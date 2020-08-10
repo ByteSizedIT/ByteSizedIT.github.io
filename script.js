@@ -414,11 +414,11 @@ let nextArr = Array.from(document.getElementsByClassName('next-square'));
 
 
 // Create Tetriminoes to be used on main grid - array for each, containing 4 diff rotations
-const lType = [[1, width+1, width*2+1, 2], [width, width+1, width+2, width*2+2], [1, width+1, width*2+1, width*2], [width, width*2, width*2+1, width*2+2]];
-const zType = [[0, width, width+1, width*2+1], [width+1, width+2, width*2, width*2+1], [0, width, width+1, width*2+1], [width+1, width+2, width*2, width*2+1]];
-const tType = [[1, width, width+1, width+2], [1, width+1, width+2, width*2+1], [width, width+1, width+2, width*2+1], [1, width, width+1, width*2+1]];
+const lType = [[1, width+1, width*2+1, 2], [0, 1, 2, width+2], [1, width+1, width*2+1, width*2], [0, width, width+1, width+2]];
+const zType = [[0, width, width+1, width*2+1], [1, 2, width, width+1], [0, width, width+1, width*2+1], [1, 2, width, width+1]];
+const tType = [[1, width, width+1, width+2], [1, width+1, width+2, width*2+1], [0, 1, 2, width+1], [1, width, width+1, width*2+1]];
 const oType = [[0, 1, width, width+1], [0, 1, width, width+1], [0, 1, width, width+1], [0, 1, width, width+1]];
-const iType = [[1, width+1, width*2+1, width*3+1], [width, width+1, width+2, width+3], [1, width+1, width*2+1, width*3+1], [width, width+1, width+2, width+3]];
+const iType = [[1, width+1, width*2+1, width*3+1], [0, 1, 2, 3], [1, width+1, width*2+1, width*3+1], [0, 1, 2, 3]];
 
 // Create array of all 5 Tetriminoes to be used on main grid, with each one containing own array of 4 rotations)
 const tetArr = [lType, zType, tType, oType, iType];
@@ -458,24 +458,26 @@ function drawNext() {
   nextTet.forEach(index => nextArr[index].classList.add("tetrimino"));
 }
 
-//Function to undraw the nextTetrimino
+// Function to undraw the nextTetrimino
 function undrawNext() {
   nextTet.forEach(index => nextArr[index].classList.remove("tetrimino"));
 }
 
-//Function to create a new Tetrimo for the main grid, copied from preview grid
+// Function to create a new Tetrimo for the main grid, copied from preview grid
 let currentPosition;
 
-//Function to draw the initial rotation of a Tetrimino i.e. currentTet
+// Function to draw the initial rotation of a Tetrimino i.e. currentTet
 function draw() {
   currentTet.forEach(index => squaresArr[currentPosition+index].classList.add("tetrimino"))
 }
 
-//Function to undraw the currentTetrimino
+// Function to undraw the currentTetrimino
 function undraw() {
   currentTet.forEach(index => squaresArr[currentPosition+index].classList.remove("tetrimino"))
 }
 
+// Function to redefine 'current Tetrimino' based on 'next Tetrimino' type and rotation,
+// ...before selecting a new 'Next Tetrimino and '
 function newTetrimino() {
   currType = nextType;
   currentRotation = nextRotation;
@@ -488,6 +490,54 @@ function newTetrimino() {
   draw();
 }
 
+//Function to move current Tetrimo down
+function moveDown() {
+  undraw();
+  currentPosition += width;
+  draw();
+}
+
+//Function to move currentTetrimino left
+function moveLeft() {
+  undraw();
+  currentPosition -=1;
+  draw();
+}
+
+//Function to move currentTetrimino right
+function moveRight() {
+  undraw();
+  currentPosition +=1;
+  draw();
+}
+
+
+//Function to rotate tetrimino
+function rotate() {
+  undraw();
+  currentRotation ++;
+  currentRotation = currentRotation%4;
+  currentTet = tetArr[currType][currentRotation];
+  draw();
+}
+
+
+// Event listener to run movement functions (down/left/right/down - rotate block)
+document.addEventListener('keydown', (e) => {
+  if(e.keyCode === 37){
+    moveLeft();
+  }
+  else if (e.keyCode === 39) {
+    moveRight();
+  }
+  else if (e.keyCode === 38) {
+    rotate();
+  }
+  else if (e.keyCode === 40) {
+    moveDown();
+  }
+})
+
 //Start/Pause button functionality
 startBtn.addEventListener("click", () => {
   points = 0;
@@ -496,4 +546,5 @@ startBtn.addEventListener("click", () => {
   undrawNext();
   nextTetrimino();
   newTetrimino();
+  console.log(currentTet);
 })
