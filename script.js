@@ -547,6 +547,7 @@ function rotate() {
 // Event listener to run movement functions (down/left/right/down - rotate block)
 document.addEventListener('keydown', (e) => {
   if(tModal.style.display === "block") {
+    e.preventDefault();
     if(e.keyCode === 37){
       moveLeft();
     }
