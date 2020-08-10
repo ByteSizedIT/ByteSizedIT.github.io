@@ -340,10 +340,11 @@ for(let i=0; i<operators.length; i++) {
 }
 
 
-// Initialise tetris modal elements as variables in JS
+// Initialise Tetris modal elements as variables in JS
+
 const tModal = document.getElementById("tModal");
 const openTetris = document.getElementById("lego");
-const closeTetris = document.getElementById("closeTetris");
+const closeTetris = document.getElementById("closeTet");
 
 // When the user clicks 'here' text, open the calculator modal
 openTetris.addEventListener('click', () => {
@@ -360,4 +361,139 @@ window.addEventListener('click', (e) => {
   if (e.target == tModal) {
     tModal.style.display = "none";
   }
+})
+
+
+// Inititialise Tetris game variables
+
+const startBtn = document.getElementById('start-button');
+
+const score = document.getElementById('score');
+let points = 0;
+
+const grid = document.getElementById('grid');
+const gridBase = document.getElementById('grid-base');
+
+const nextGrid = document.getElementById('next-grid');
+
+const width = 10;
+const nextWidth = 4;
+
+// Function to create/append a div as child element of another (parent) div(divName)
+// ...adding classA and classB to the the child div that has been created
+function appendDiv(divName, classA, classB) {
+  let div = document.createElement('div');
+  if(classA){
+    div.classList.add(classA);
+  }
+  if(classB){
+    div.classList.add(classB);
+  }
+  divName.appendChild(div);
+}
+
+// Function to append given number of divs (squares) to parent div
+//..with the named class(es) associated
+function generateSquares(number, divName, classA, classB) {
+  for(let i=0; i<number; i++) {
+    appendDiv(divName, classA, classB);
+  }
+}
+
+// Run function above to generate squares for game grid, gridBase and preview grid
+generateSquares(200, grid, 'square');
+generateSquares(10, gridBase, 'square', 'frozen');
+
+generateSquares(16, nextGrid, 'next-square');
+
+// Create Array of all sqaures on game grid
+let squaresArr = Array.from(document.getElementsByClassName('square'));
+
+//Create Array of all sqaures on preview grid
+let nextArr = Array.from(document.getElementsByClassName('next-square'));
+
+
+// Create Tetriminoes to be used on main grid - array for each, containing 4 diff rotations
+const lType = [[1, width+1, width*2+1, 2], [width, width+1, width+2, width*2+2], [1, width+1, width*2+1, width*2], [width, width*2, width*2+1, width*2+2]];
+const zType = [[0, width, width+1, width*2+1], [width+1, width+2, width*2, width*2+1], [0, width, width+1, width*2+1], [width+1, width+2, width*2, width*2+1]];
+const tType = [[1, width, width+1, width+2], [1, width+1, width+2, width*2+1], [width, width+1, width+2, width*2+1], [1, width, width+1, width*2+1]];
+const oType = [[0, 1, width, width+1], [0, 1, width, width+1], [0, 1, width, width+1], [0, 1, width, width+1]];
+const iType = [[1, width+1, width*2+1, width*3+1], [width, width+1, width+2, width+3], [1, width+1, width*2+1, width*3+1], [width, width+1, width+2, width+3]];
+
+// Create array of all 5 Tetriminoes to be used on main grid, with each one containing own array of 4 rotations)
+const tetArr = [lType, zType, tType, oType, iType];
+
+
+// Create Tetriminoes to be used on the preview grid - array for each, containing 4 diff rotations
+const lTypeNext = [[1, nextWidth+1, nextWidth*2+1, 2], [nextWidth, nextWidth+1, nextWidth+2, nextWidth*2+2], [1, nextWidth+1, nextWidth*2+1, nextWidth*2], [nextWidth, nextWidth*2, nextWidth*2+1, nextWidth*2+2]];
+const zTypeNext = [[0, nextWidth, nextWidth+1, nextWidth*2+1], [nextWidth+1, nextWidth+2, nextWidth*2, nextWidth*2+1], [0, nextWidth, nextWidth+1, nextWidth*2+1], [nextWidth+1, nextWidth+2, nextWidth*2, nextWidth*2+1]];
+const tTypeNext = [[1, nextWidth, nextWidth+1, nextWidth+2], [1, nextWidth+1, nextWidth+2, nextWidth*2+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth*2+1], [1, nextWidth, nextWidth+1, nextWidth*2+1]];
+const oTypeNext = [[0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1]];
+const iTypeNext = [[1, nextWidth+1, nextWidth*2+1, nextWidth*3+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth+3], [1, nextWidth+1, nextWidth*2+1, nextWidth*3+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth+3]];
+
+// Create array of all 5 Tetriminoes to be used on the preview grid, with each one containing own array of 4 rotations)
+const tetArrNext = [lTypeNext, zTypeNext, tTypeNext, oTypeNext, iTypeNext];
+
+
+// Create variables and function to select Next(preview) Tetrimino and Current Tetrimino
+let nextType;
+let nextRotation;
+
+let nextTet = [];
+
+let currType;
+let currentRotation;
+let ifRotated;
+
+let currentTet = [];
+
+function nextTetrimino() {
+  nextType = Math.floor(Math.random()*tetArr.length);
+  nextRotation = Math.floor(Math.random()*4);
+  nextTet = tetArrNext[nextType][nextRotation];
+}
+
+// Function to draw the nextTetrimino
+function drawNext() {
+  nextTet.forEach(index => nextArr[index].classList.add("tetrimino"));
+}
+
+//Function to undraw the nextTetrimino
+function undrawNext() {
+  nextTet.forEach(index => nextArr[index].classList.remove("tetrimino"));
+}
+
+//Function to create a new Tetrimo for the main grid, copied from preview grid
+let currentPosition;
+
+//Function to draw the initial rotation of a Tetrimino i.e. currentTet
+function draw() {
+  currentTet.forEach(index => squaresArr[currentPosition+index].classList.add("tetrimino"))
+}
+
+//Function to undraw the currentTetrimino
+function undraw() {
+  currentTet.forEach(index => squaresArr[currentPosition+index].classList.remove("tetrimino"))
+}
+
+function newTetrimino() {
+  currType = nextType;
+  currentRotation = nextRotation;
+  ifRotated = (currentRotation + 1)%currType.length;
+  currentTet = tetArr[nextType][nextRotation];
+  currentPosition = 4;
+  undrawNext();
+  nextTetrimino();
+  drawNext();
+  draw();
+}
+
+//Start/Pause button functionality
+startBtn.addEventListener("click", () => {
+  points = 0;
+  score.innerHTML = points;
+  undraw();
+  undrawNext();
+  nextTetrimino();
+  newTetrimino();
 })
