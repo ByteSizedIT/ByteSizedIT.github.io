@@ -453,24 +453,26 @@ let ifRotated;
 
 let currentTet = [];
 
+let currentPosition;
+
+//variable to store/identify whether currentTet has another tetrimino below
+let atBott = false;
+
 function nextTetrimino() {
   nextType = Math.floor(Math.random()*tetArr.length);
   nextRotation = Math.floor(Math.random()*4);
   nextTet = tetArrNext[nextType][nextRotation];
 }
 
-// Function to draw the nextTetrimino
+// Function to draw the nextTet
 function drawNext() {
   nextTet.forEach(index => nextArr[index].classList.add("tetrimino"));
 }
 
-// Function to undraw the nextTetrimino
+// Function to undraw the nextTet
 function undrawNext() {
   nextTet.forEach(index => nextArr[index].classList.remove("tetrimino"));
 }
-
-// Function to create a new Tetrimo for the main grid, copied from preview grid
-let currentPosition;
 
 // Function to draw the initial rotation of a Tetrimino i.e. currentTet
 function draw() {
@@ -492,27 +494,45 @@ function newTetrimino() {
   currentPosition = 4;
   undrawNext();
   nextTetrimino();
+  atBott = false;
   drawNext();
   draw();
+}
+
+function setFrozen() {
+  currentTet.forEach(index => squaresArr[currentPosition + index].classList.add('frozen'));
+;}
+
+// Function to freeze movement of currentTetrimino if space below (+gridWidth) is frozen
+function freeze() {
+  if(currentTet.some(index => squaresArr[currentPosition + index + gridWidth].classList.contains('frozen'))) {
+    atBott = true;
+    window.setTimeout(()=> {setFrozen(); newTetrimino();}, 500);
+  }
+}
+
+// Function to move current Tetrimo down
+function moveDown() {
+  if(!atBott) {
+    undraw();
+    currentPosition += gridWidth;
+    draw();
+    freeze();
+  }
 }
 
 // Functions to confirm space to the left/right of Tetrimino
 
 function spaceLeft(tetrimino) {
   const atLeftBoundary = tetrimino.some(index => (currentPosition + index)%gridWidth === 0);
-  return (!atLeftBoundary)? true: false;
+  const lAdjoiningFrozen = tetrimino.some(index => squaresArr[currentPosition + index - 1].classList.contains('frozen'));
+  return (!atLeftBoundary && !lAdjoiningFrozen)? true: false;
 }
 
 function spaceRight(tetrimino) {
   const atRightBoundary = tetrimino.some(index => (currentPosition + index)%gridWidth === 9);
-  return (!atRightBoundary)? true: false;
-}
-
-// Function to move current Tetrimo down
-function moveDown() {
-  undraw();
-  currentPosition += gridWidth;
-  draw();
+  const rAdjoiningFrozen = tetrimino.some(index => squaresArr[currentPosition + index - 1].classList.contains('frozen'));
+  return (!atRightBoundary && !rAdjoiningFrozen)? true: false;
 }
 
 // Function to move currentTetrimino left
@@ -571,5 +591,4 @@ startBtn.addEventListener("click", () => {
   undrawNext();
   nextTetrimino();
   newTetrimino();
-  console.log(currentTet);
 })
