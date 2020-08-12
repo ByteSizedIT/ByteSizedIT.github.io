@@ -369,7 +369,6 @@ window.addEventListener('click', (e) => {
   }
 })
 
-
 // Inititialise Tetris game variables
 
 const startBtn = document.getElementById('start-button');
@@ -408,12 +407,14 @@ function generateSquares(number, divName, classA, classB) {
 
 // Run function above to generate squares for game grid, gridBase and preview grid
 generateSquares(200, grid, 'square');
-generateSquares(10, gridBase, 'square', 'frozen');
+generateSquares(10, gridBase, 'baseSquare', 'frozen');
 
 generateSquares(16, nextGrid, 'next-square');
 
 // Create Array of all sqaures on game grid
 let squaresArr = Array.from(document.getElementsByClassName('square'));
+let baseArr = Array.from(document.getElementsByClassName('baseSquare'));
+squaresArr = squaresArr.concat(baseArr);
 
 //Create Array of all sqaures on preview grid
 let nextArr = Array.from(document.getElementsByClassName('next-square'));
@@ -501,13 +502,13 @@ function newTetrimino() {
 
 function setFrozen() {
   currentTet.forEach(index => squaresArr[currentPosition + index].classList.add('frozen'));
-;}
+}
 
 // Function to freeze movement of currentTetrimino if space below (+gridWidth) is frozen
 function freeze() {
   if(currentTet.some(index => squaresArr[currentPosition + index + gridWidth].classList.contains('frozen'))) {
     atBott = true;
-    window.setTimeout(()=> {setFrozen(); newTetrimino();}, 500);
+    window.setTimeout(() => {setFrozen(); completedLines(); newTetrimino()}, 500);
   }
 }
 
@@ -553,7 +554,6 @@ function moveRight() {
   }
 }
 
-
 // Function to rotate currentTetrimino
 function rotate() {
   undraw();
@@ -562,7 +562,6 @@ function rotate() {
   currentTet = tetArr[currType][currentRotation];
   draw();
 }
-
 
 // Event listener to run movement functions (down/left/right/down - rotate block)
 document.addEventListener('keydown', (e) => {
@@ -591,4 +590,32 @@ startBtn.addEventListener("click", () => {
   undrawNext();
   nextTetrimino();
   newTetrimino();
+  // Invoke move function every second to play
+  setInterval(moveDown, 1000);
 })
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+  grid.removeChild(parent.firstChild);
+  }
+}
+
+function completedLines() {
+  for(let i=0; i<squaresArr.length-10; i+=gridWidth){
+    let row = [];
+    for(let j=i; j<i+gridWidth; j++){
+      row.push(j);
+    }
+    //const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
+    if(row.every(index=>squaresArr[index].classList.contains('frozen'))) {
+      row.forEach(index=>squaresArr[index].classList.remove('frozen'));
+      row.forEach(index=>squaresArr[index].classList.remove('tetrimino'));
+      const squaresRemoved = squaresArr.splice(i,gridWidth);
+      squaresArr = squaresRemoved.concat(squaresArr);
+      removeAllChildNodes(grid);
+      for(let k=0; k<squaresArr.length-10; k++) {
+        grid.appendChild(squaresArr[k]);
+      }
+    }
+  }
+}
