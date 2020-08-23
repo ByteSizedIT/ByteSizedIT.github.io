@@ -556,11 +556,13 @@ function moveRight() {
 
 // Function to rotate currentTetrimino
 function rotate() {
-  undraw();
-  currentRotation ++;
-  currentRotation = currentRotation%4;
-  currentTet = tetArr[currType][currentRotation];
-  draw();
+  if(spaceLeft(currentTet) && spaceRight(currentTet)) {
+    undraw();
+    currentRotation ++;
+    currentRotation = currentRotation%4;
+    currentTet = tetArr[currType][currentRotation];
+    draw();
+  }
 }
 
 // Event listener to run movement functions (down/left/right/down - rotate block)
@@ -616,6 +618,12 @@ function completedLines() {
       for(let k=0; k<squaresArr.length-10; k++) {
         grid.appendChild(squaresArr[k]);
       }
+      addScore();
     }
   }
+}
+
+function addScore() {
+  points +=10;
+  score.innerHTML = points;
 }
