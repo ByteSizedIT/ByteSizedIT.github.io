@@ -456,8 +456,17 @@ let currentTet = [];
 
 let currentPosition;
 
-//variable to store/identify whether currentTet has another tetrimino below
+// Create variable to store/identify whether currentTet has another tetrimino below
 let atBott = false;
+
+// Create variable to hold interval timing of automated movement downwards
+let movementTimer;
+
+// Create variable to hold boolean value indicating when game over
+let gameFinished;
+
+//  Create variable to hold boolean value indicating when game paused
+let gamePaused;
 
 function nextTetrimino() {
   nextType = Math.floor(Math.random()*tetArr.length);
@@ -506,6 +515,7 @@ function setFrozen() {
 
 // Function to freeze movement of currentTetrimino if space below (+gridWidth) is frozen
 function freeze() {
+  gameOver();
   if(currentTet.some(index => squaresArr[currentPosition + index + gridWidth].classList.contains('frozen'))) {
     atBott = true;
     window.setTimeout(() => {setFrozen(); completedLines(); newTetrimino()}, 500);
@@ -566,7 +576,8 @@ function rotate() {
 }
 
 // Event listener to run movement functions (down/left/right/down - rotate block)
-document.addEventListener('keydown', (e) => {
+function keysPressed(e) {
+  //prevent keys from moving around underlying page when tetris modal is displayed
   if(tModal.style.display === "block") {
     e.preventDefault();
     if(e.keyCode === 37){
@@ -582,23 +593,59 @@ document.addEventListener('keydown', (e) => {
       moveDown();
     }
   }
-})
+}
 
 //Start/Pause button functionality
 startBtn.addEventListener("click", () => {
-  points = 0;
-  score.innerHTML = points;
-  undraw();
-  undrawNext();
-  nextTetrimino();
-  newTetrimino();
-  // Invoke move function every second to play
-  setInterval(moveDown, 1000);
+  // If not pausing a game in progress
+  if (!movementTimer){
+
+    // If not the first game to be played since opening Tetris modulo
+    if (gameFinished) {
+      removeAllChildNodes(grid);
+      removeAllChildNodes(gridBase);
+      generateSquares(200, grid, 'square');
+      generateSquares(10, gridBase, 'square', 'frozen');
+      squaresArr = Array.from(document.getElementsByClassName('square'));
+      gameFinished = 0;
+    }
+    // If starting any new game (first or otherwise)
+    if (!gamePaused){
+      points = 0;
+      score.innerHTML = points;
+      undraw();
+      undrawNext();
+      nextTetrimino();
+      newTetrimino();
+    }
+    // If unpausing/resuming the game
+    else if (gamePaused) {
+      gamePaused = 0;
+    }
+
+    // Whether starting a new game or resuming one
+
+    // Invoke move function every second to play
+    movementTimer = setInterval(moveDown, 1000);
+    // Start event listener for arrow keys being pressed
+    document.addEventListener('keydown', keysPressed);
+    startBtn.innerHTML = "Pause";
+  }
+
+  // If pausing a game in progress
+  else {
+    clearInterval(movementTimer);
+    movementTimer = null;
+    document.removeEventListener('keydown', keysPressed);
+    startBtn.innerHTML = "Resume";
+    gamePaused = 1;
+  }
 })
+
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
-  grid.removeChild(parent.firstChild);
+  parent.removeChild(parent.firstChild);
   }
 }
 
@@ -626,4 +673,16 @@ function completedLines() {
 function addScore() {
   points +=10;
   score.innerHTML = points;
+}
+
+function gameOver() {
+  if(currentTet.some(index=>squaresArr[index+currentPosition].classList.contains('frozen'))) {
+    gameFinished = 1;
+    // clear move function to stop auto movement of tetrimino
+    clearInterval(movementTimer);
+    movementTimer = null;
+    // clear event listener for arrow keys being pressed
+    document.removeEventListener('keydown', keysPressed);
+    startBtn.innerHTML = "New Game";
+  }
 }
