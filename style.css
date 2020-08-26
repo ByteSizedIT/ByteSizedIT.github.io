@@ -662,6 +662,7 @@ figure {
 
 /*Name all prereqs items, ready for grid container*/
 #closeTetris {grid-area: close;}
+#high-display {grid-area: high;}
 #score-display {grid-area: score;}
 #start-button {grid-area: startbtn;}
 #next-grid {grid-area: next;}
@@ -669,20 +670,21 @@ figure {
 #dash {
   display: grid;
   margin: 0 1vh;
-  grid-column-gap: 4vh;
+  grid-column-gap: 2vh;
   align-items: center;
-  grid-template-columns: repeat(2, 17vh);
+  grid-template-columns: repeat(2, 18vh);
   grid-template-rows: repeat(4, 4.5vh);
   grid-template-areas:
   "close next"
-  ". next"
+  "high next"
   "score next"
   "startbtn next"
 }
 
-#score-display {
+#score-display, #high-display {
   font-size: 2vh;
   text-align: center;
+  line-height: normal;
 }
 
 #start-button {

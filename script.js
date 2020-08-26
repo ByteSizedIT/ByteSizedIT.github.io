@@ -376,6 +376,8 @@ const startBtn = document.getElementById('start-button');
 const score = document.getElementById('score');
 let points = 0;
 
+const highScore = document.getElementById('high-score');
+
 const grid = document.getElementById('grid');
 const gridBase = document.getElementById('grid-base');
 
@@ -673,6 +675,9 @@ function completedLines() {
 function addScore() {
   points +=10;
   score.innerHTML = points;
+  if(points>highScore.innerHTML){
+    highScore.innerHTML = points;
+  }
 }
 
 function gameOver() {
