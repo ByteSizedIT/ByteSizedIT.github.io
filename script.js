@@ -376,7 +376,12 @@ const startBtn = document.getElementById('start-button');
 const score = document.getElementById('score');
 let points = 0;
 
+
+// Add event listener to assign value from local storage variable to highscore
 const highScore = document.getElementById('high-score');
+document.addEventListener('DOMContentLoaded', () => {
+  localStorage.getItem('highScore')? highScore.innerHTML = localStorage.getItem('highScore'): highScore.innerHTML = 0;
+})
 
 const grid = document.getElementById('grid');
 const gridBase = document.getElementById('grid-base');
@@ -496,8 +501,8 @@ function undraw() {
   currentTet.forEach(index => squaresArr[currentPosition+index].classList.remove("tetrimino"))
 }
 
-// Function to redefine 'current Tetrimino' based on 'next Tetrimino' type and rotation,
-// ...before selecting a new 'Next Tetrimino and '
+// Function to redefine 'current Tetrimino' based on 'next Tetrimino' type and rotation
+// ...before selecting a new 'Next Tetrimino and drawing them both
 function newTetrimino() {
   currType = nextType;
   currentRotation = nextRotation;
@@ -517,7 +522,6 @@ function setFrozen() {
 
 // Function to freeze movement of currentTetrimino if space below (+gridWidth) is frozen
 function freeze() {
-  gameOver();
   if(currentTet.some(index => squaresArr[currentPosition + index + gridWidth].classList.contains('frozen'))) {
     atBott = true;
     window.setTimeout(() => {setFrozen(); completedLines(); newTetrimino()}, 500);
@@ -530,6 +534,7 @@ function moveDown() {
     undraw();
     currentPosition += gridWidth;
     draw();
+    gameOver();
     freeze();
   }
 }
@@ -597,7 +602,60 @@ function keysPressed(e) {
   }
 }
 
-//Start/Pause button functionality
+// Function to remove all chilld nodes from a parent element
+// ... used in complatedLines function or if starting a new game
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+  parent.removeChild(parent.firstChild);
+  }
+}
+
+// Function to splice line when complete, deleting classes, then adding it to top of grid
+function completedLines() {
+  for(let i=0; i<squaresArr.length-10; i+=gridWidth){
+    let row = [];
+    for(let j=i; j<i+gridWidth; j++){
+      row.push(j);
+    }
+    //const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
+    if(row.every(index=>squaresArr[index].classList.contains('frozen'))) {
+      row.forEach(index=>squaresArr[index].classList.remove('frozen'));
+      row.forEach(index=>squaresArr[index].classList.remove('tetrimino'));
+      const squaresRemoved = squaresArr.splice(i,gridWidth);
+      squaresArr = squaresRemoved.concat(squaresArr);
+      removeAllChildNodes(grid);
+      for(let k=0; k<squaresArr.length-10; k++) {
+        grid.appendChild(squaresArr[k]);
+      }
+      addScore();
+    }
+  }
+}
+
+// Function to add points to score, using local storage to maintain highScore
+function addScore() {
+  points +=10;
+  score.innerHTML = points;
+  if(points>highScore.innerHTML){
+    highScore.innerHTML = points;
+    localStorage.setItem('highScore',  points);
+  }
+}
+
+// Funtion to test whether all squares are frozen/filled, ending the game
+function gameOver() {
+  if(currentTet.some(index=>squaresArr[index+currentPosition].classList.contains('frozen'))) {
+    gameFinished = 1;
+    // clear move function to stop auto movement of tetrimino
+    clearInterval(movementTimer);
+    movementTimer = null;
+    // clear event listener for arrow keys being pressed
+    document.removeEventListener('keydown', keysPressed);
+    startBtn.innerHTML = "New Game";
+  }
+}
+
+// Start/Pause button functionality
 startBtn.addEventListener("click", () => {
   // If not pausing a game in progress
   if (!movementTimer){
@@ -643,51 +701,3 @@ startBtn.addEventListener("click", () => {
     gamePaused = 1;
   }
 })
-
-
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-  parent.removeChild(parent.firstChild);
-  }
-}
-
-function completedLines() {
-  for(let i=0; i<squaresArr.length-10; i+=gridWidth){
-    let row = [];
-    for(let j=i; j<i+gridWidth; j++){
-      row.push(j);
-    }
-    //const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
-    if(row.every(index=>squaresArr[index].classList.contains('frozen'))) {
-      row.forEach(index=>squaresArr[index].classList.remove('frozen'));
-      row.forEach(index=>squaresArr[index].classList.remove('tetrimino'));
-      const squaresRemoved = squaresArr.splice(i,gridWidth);
-      squaresArr = squaresRemoved.concat(squaresArr);
-      removeAllChildNodes(grid);
-      for(let k=0; k<squaresArr.length-10; k++) {
-        grid.appendChild(squaresArr[k]);
-      }
-      addScore();
-    }
-  }
-}
-
-function addScore() {
-  points +=10;
-  score.innerHTML = points;
-  if(points>highScore.innerHTML){
-    highScore.innerHTML = points;
-  }
-}
-
-function gameOver() {
-  if(currentTet.some(index=>squaresArr[index+currentPosition].classList.contains('frozen'))) {
-    gameFinished = 1;
-    // clear move function to stop auto movement of tetrimino
-    clearInterval(movementTimer);
-    movementTimer = null;
-    // clear event listener for arrow keys being pressed
-    document.removeEventListener('keydown', keysPressed);
-    startBtn.innerHTML = "New Game";
-  }
-}
