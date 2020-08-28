@@ -186,6 +186,9 @@ navDots.addEventListener('click', (e) => {
 })
 
 
+
+
+
 // ******** WHY CODING? SECTION OF WEBSITE ********
 
 //Initialise `Google 'empty' (X) buttton and 'search box' as objects in JS
@@ -207,6 +210,51 @@ searchBox.addEventListener("keyup", toggleEmpty);
 
 //Make the text in the Google Search page's text box disappear when the 'empty' button (X) is pressed
 empty.addEventListener("click", () => searchBox.value = "");
+
+
+
+
+
+// ******** WHY ME? SECTION OF WEBSITE ********
+
+// Initialse variable with the date of next Founders and Coders course
+const courseDate = new Date("Mar 3, 2021 09:45:00").getTime();
+
+let days;
+let hours;
+let minutes;
+let seconds;
+
+const countDown = setInterval(() => {
+
+  // Initialise variable with today's date and time
+  const now = new Date().getTime();
+
+  // Initialise variable with timeframe from now until count down date
+  const timeframe = courseDate - now;
+
+  //  Calculate days, hours, minutes and seconds
+  days = Math.floor(timeframe / (1000 * 60 * 60 * 24));
+  hours = Math.floor((timeframe % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  minutes = Math.floor((timeframe % (1000 * 60 * 60)) / (1000 * 60));
+  seconds = Math.floor((timeframe % (1000 * 60)) / 1000);
+
+  // If timeframe is positive numer
+  if (timeframe > 0) {
+    // Output days, hours, mins, secs to course in html element with id="cdTimer"
+    document.getElementById("preTimer").innerHTML = "Countdown to Founders & Coders Spring 2021: ";
+    document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    document.getElementById("postTimer").style.display = "none";
+  }
+  else {
+    // Output days, hours, mins, secs to course in html element with id="cdTimer"
+    document.getElementById("preTimer").innerHTML = "Time since Founders & Coders Spring 2021 started: ";
+    document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    document.getElementById("postTimer").style.display = "block";
+  }
+}, 1000);
+
+
 
 
 // ******** WHY ME? SECTION OF WEBSITE ********
@@ -345,6 +393,11 @@ for(let i=0; i<operators.length; i++) {
   })
 }
 
+
+
+
+
+// ******** PREREQUISITES SECTION OF WEBSITE ********
 
 // Initialise Tetris modal elements as variables in JS
 
@@ -725,3 +778,14 @@ startBtn.addEventListener("click", () => {
     pauseGame();
   }
 })
+
+
+
+
+
+// ******** BYTESIZEDIT SECTION OF WEBSITE ********
+
+
+
+
+// ******** MY ROBOT PROTOTYPE SECTION OF WEBSITE ********

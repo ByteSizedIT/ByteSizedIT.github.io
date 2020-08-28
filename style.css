@@ -74,6 +74,9 @@ nav h2 {
 }
 
 
+
+
+
 /* ********ALL SECTIONS******** */
 
 /*Alternate the background coloring of individual webpage sections identified in the navigation bar*/
@@ -130,6 +133,9 @@ button:hover {
 }
 
 
+
+
+
 /* ********ALL MODALS******** */
 
 .modal {
@@ -152,6 +158,10 @@ button:hover {
   color: var(--pink);
   cursor: pointer;
 }
+
+
+
+
 
 /* ********CAROUSEL SECTION******** */
 
@@ -286,6 +296,9 @@ button:hover {
 }
 
 
+
+
+
 /* ******** WHY CODING SECTION ******** */
 
 /*Google Search Form*/
@@ -352,7 +365,40 @@ input[type=submit]:hover {
   box-shadow: 0 1px 5px #ddd;
 }
 
+
+
+
+
 /* ******** WHY F&C SECTION ******** */
+
+#fandc {
+  position: relative;
+}
+
+#countdown {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--pink);
+  border-radius: 25px;
+  margin-bottom: 4vh;
+  line-height: 80%;
+}
+
+
+#preTimer, #timer {
+  text-align: center;
+}
+
+#timer {
+  font-weight: bold;
+}
+
+#postTimer {
+  display: none;
+}
+
 
 
 /* ******** WHY ME? SECTION OF WEBSITE ******** */
