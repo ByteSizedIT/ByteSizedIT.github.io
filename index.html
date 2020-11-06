@@ -44,13 +44,16 @@
 
         <!--Carousel div, housing arrow buttons and carousel viewing area-->
         <div id="carousel">
+
+          <button id="popup">Click here to add 'class' to slide 3!</button>
+
           <!-- Previous arrow button -->
           <button class="carousel__arrows carousel__arrows--prev hidden">&#10094;</button>
 
           <!--Viewing space in which the 'current' slide in the carousel deck can be viewed-->
           <div id="carousel__viewer">
             <!--Deck (list) of carousel slides-->
-            <ul id="carousel__deck">
+            <ul id="carousel__deck">                    
               <!--Individual carousel slides and the images contained-->
               <li class="carousel__slide current-slide">
                 <img class="image" src="slides/Slide1.png" alt="Slide 1 of Carousel">
@@ -59,7 +62,7 @@
                 <img class="image" src="slides/Slide2.png" alt="Slide 2 of Carousel">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide3.png" alt="Slide 3 of Carousel">
+                <img class="image" id="slide3" src="slides/Slide3.png" alt="Slide 3 of Carousel">
               </li>
               <li class="carousel__slide">
                 <img class="image" src="slides/Slide4.png" alt="Slide 4 of Carousel">

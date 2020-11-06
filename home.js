@@ -38,9 +38,16 @@ let slideInterval;
 //Get width of individual slides and initialise as a variable (number)
 let slideWidth = slidesArr[0].getBoundingClientRect().width;
 
+//Initilise a variable for pop up span element for slide 3
+const pop = document.getElementById('popup');
+
+//Iniitalise a variable for slide 3 img element itself
+const slide3 = document.getElementById('slide3');
+
+
+
 //Spread out the deck of slides in a line
 //(i.e. instead of on top of each other now position = absolute)
-
 const positionSlide = (slide, index) => {
     slide.style.left = slideWidth * index + "px";
 }
@@ -93,6 +100,12 @@ const viewTargetSlide = (targetSlide) => {
     prevArrow.classList.remove("hidden");
     nextArrow.classList.remove("hidden");
   }
+  if(currentSlide === slidesArr[2]) {
+    pop.style.visibility = "visible";
+  }
+  else {
+      pop.style.visibility = "hidden"
+  }
 }
 
 //Function to setInterval method to 'play' through slides at 3 sec interval
@@ -115,10 +128,23 @@ const playSlides = () => {
 //Function to clear('pause') setInterval method
 const pauseSlides = () => clearInterval(slideInterval);
 
+//Function to toggle bewteen slide 3 (prototype version) and slide 3b (class version)
+const togglePop = () =>  {
+  console.log('hey');
+  if(pop.innerHTML === "Click here to add 'class' to slide 3!"){
+      pop.innerHTML = "Click for the 'prototype' slide 3!";
+      slide3.src = "slides/slide3b.png";
+  }
+  else {
+      pop.innerHTML = "Click here to add 'class' to slide 3!"
+      slide3.src = "slides/slide3.png";
+  }
+}
+
 //Toggle between 'play' and 'pause' slides when controlButton is clicked
 controlButton.addEventListener('click', () => {
   controlButton.classList.toggle("pause");
-//Play slides from current position, return to start, or pause
+  //Play slides from current position, return to start, or pause
   if(!controlButton.classList.contains("pause") && currentSlide !== slidesArr[slidesArr.length-1]){
     controlButton.innerHTML = "Pause";
     targetSlide = currentSlide.nextElementSibling;
@@ -185,3 +211,6 @@ navDots.addEventListener('click', (e) => {
     viewTargetSlide(targetSlide);
   }
 })
+
+//Event listener to toggle between slides 3 and 3b when pop up is clicked
+pop.addEventListener('click', togglePop);

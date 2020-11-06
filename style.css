@@ -6,7 +6,7 @@
   --blue: #1de8ff;
   --black: #000000;
   --white: #ffffff;
-  --lightgrey: #f0f0f0;
+  --lightgrey: #eee;
   --darkgrey: #303841;
   --grey-blue: #45567d;
 }
@@ -172,7 +172,7 @@ button:hover {
 
 /*Sizing and positioning of 'carousel' div (containing the viewer and arrow buttons)*/
 #carousel {
-  //height: 30vw;
+  /*height: 30vw;*/
   padding-top: 5vw;
   padding-bottom: 5vw;
   position: relative;
@@ -204,7 +204,7 @@ button:hover {
 .carousel__arrows:hover {
   background-color: black;
   color: var(--orange);
-  //transition: 1s;
+  transition: 1s;
 }
 
 /*Hidden class, to be called on prev/next arrows at start/end of carousel*/
@@ -260,24 +260,24 @@ button:hover {
 }
 
 #control-panel button{
-  //font-size: 20px;
+  /*font-size: 20px;*/
   font-size: 1.5vw;
 }
 
 /* Div for the dots/bullets/indicators */
 #dots{
-  //min-height: 5vh;
+  /*min-height: 5vh;*/
   padding-top: 3vh;
   text-align: center;
 }
 
 .dot {
-  //height: 15px;
+  /*height: 15px;*/
   height: 1.5vw;
   width: 1.5vw;
-  //width: 15px;
+  /*width: 15px;*/
   border-radius: 50%;
-  //margin: 10px 2px;
+  /*margin: 10px 2px;*/
   margin: 1vw 0.2vw;
   background-color: var(--pink);
 
@@ -293,6 +293,43 @@ button:hover {
 
 .current-dot  {
   background-color: var(--orange);
+}
+
+/* Slide 3 popup prompt */
+#popup {
+  overflow: visible;
+  visibility: hidden;
+  height: 6vw;
+  width: 18vw;
+  background-color: var(--lightgrey);
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 10;
+  bottom: -2vw;
+  right: 25vw;
+  transform: translateX(50%);
+  font-size: 1.2vw;
+  color: #777;
+}
+
+/* Slide 3 popup prompt arrow */
+#popup::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 1vw;
+  border-style: solid;
+  border-color: transparent transparent var(--lightgrey) transparent;
+}
+
+#popup:hover {
+  color: black;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 5px #ddd;
 }
 
 
@@ -441,15 +478,15 @@ input[type=submit]:hover {
     padding-top: 10vw;
   }
 
-  #closeCalc {
-    font-size: 2vw;
-    padding-left: 1.5vw;
-  }
-
   #calculator {
     height: 80vw;
     width: 50vw;
     padding-top: 1.5vw;
+  }
+
+  #closeCalc {
+    font-size: 2vw;
+    padding-left: 1.5vw;
   }
 
   #calculation {
@@ -484,20 +521,20 @@ input[type=submit]:hover {
     padding-top: 10vh;
   }
 
-  #closeCalc {
-    font-size: 2vh;
-    padding-left: 1.5vh;
-  }
-
   #calculator {
     height: 80vh;
     width: 50vh;
     padding-top: 1.5vh;
   }
 
+  #closeCalc {
+    font-size: 2vh;
+    padding-left: 1.5vh;
+  }
+
   #calculation {
-    height: 4vh;C
-    padding-top: 2vh;
+    height: 4vh;
+    /*padding-top: 2vh;*/
     font-size: 3vh;
   }
 
@@ -560,7 +597,7 @@ figure {
   grid-gap: 2vw;
   padding: 2vw;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: (2, 16.5vw);
+  grid-template-rows: (3, 16.5vw);
   grid-template-areas:
   "intro intro intro intro intro intro"
   "codeCamp codeCamp codeWarsSquare CS50 CS50 codecademySquare"
@@ -576,10 +613,11 @@ figure {
 
   #prereqs__grid-container {
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto (1, 16.5vw);
+    grid-template-rows: auto (2, 16.5vw);
     grid-template-areas:
     "intro intro intro intro intro intro"
     "codeCamp codeCamp codeWarsSquare CS50 CS50 codecademySquare "
+  }
 }
 
 /*Large Mobile Devices, e.g. landscape tablets*/
