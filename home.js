@@ -133,11 +133,11 @@ const togglePop = () =>  {
   console.log('hey');
   if(pop.innerHTML === "Click here to add 'class' to slide 3!"){
       pop.innerHTML = "Click for the 'prototype' slide 3!";
-      slide3.src = "slides/slide3b.png";
+      slide3.src = "slides/Slide3b.png";
   }
   else {
       pop.innerHTML = "Click here to add 'class' to slide 3!"
-      slide3.src = "slides/slide3.png";
+      slide3.src = "slides/Slide3.png";
   }
 }
 
