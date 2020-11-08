@@ -4,9 +4,12 @@
   --orange: #ffce1d;
   --pink: #ff1d83;
   --blue: #1de8ff;
-  --black: #000000;
-  --white: #ffffff;
+  --black: #000;
+  --white: #fff;
   --lightgrey: #eee;
+  --border-grey: #ddd;
+  --mid-grey: #aaa;
+  --grey-text: #777;
   --darkgrey: #303841;
   --grey-blue: #45567d;
 }
@@ -58,7 +61,7 @@ nav {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 nav h2 {
@@ -306,12 +309,12 @@ button:hover {
   border-radius: 6px;
   padding: 8px 0;
   position: absolute;
-  z-index: 10;
+  z-index: 1;
   bottom: -2vw;
   right: 25vw;
   transform: translateX(50%);
   font-size: 1.2vw;
-  color: #777;
+  color: var(--grey-text);
 }
 
 /* Slide 3 popup prompt arrow */
@@ -328,8 +331,8 @@ button:hover {
 
 #popup:hover {
   color: black;
-  border: 1px solid #aaa;
-  box-shadow: 0 1px 5px #ddd;
+  border: 1px solid var(--mid-grey);
+  box-shadow: 0 1px 5px var(--box-grey);
 }
 
 
@@ -349,7 +352,7 @@ button:hover {
 #text {
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-grey);
   border-radius: 25px;
   font-size: 16px;
   background-image: url('images/Magnifying_glass_icon.svg');
@@ -360,7 +363,7 @@ button:hover {
 }
 
 #text:hover {
-  box-shadow: 0 0 10px #ddd;
+  box-shadow: 0 0 10px var(--border-grey);
 }
 
 #text:focus {
@@ -386,20 +389,20 @@ button:hover {
 
 input[type=submit] {
   margin-top: 2vw;
-  background-color: #eee;
+  background-color: var(--lightgrey);
   border: none;
   border-radius: 5px;
   padding: 0.75vw 1.5vw;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1vw;
-  color: #777;
+  color: var(--grey-text);
   cursor: pointer;
 }
 
 input[type=submit]:hover {
   color: black;
-  border: 1px solid #aaa;
-  box-shadow: 0 1px 5px #ddd;
+  border: 1px solid var(--mid-grey);
+  box-shadow: 0 1px 5px var(--border-grey);
 }
 
 
@@ -412,30 +415,51 @@ input[type=submit]:hover {
   position: relative;
 }
 
-#countdown {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--pink);
-  border-radius: 25px;
-  margin-bottom: 4vh;
-  line-height: 80%;
+.search-form {
+  max-width: 50vw;
+  margin: 5vw auto;
 }
 
-
-#preTimer, #timer {
+input.search {
+  position: relative;
+  width: 100%;
+  top: 0.3vw;
+  border-radius: 5px;
+  padding: 1vw 0;
+  font-size: 30px;
+  font-family: 'Nova Mono', monospace;
+  color: var(--grey-text);
   text-align: center;
+  outline: 0;
+  border: 5px solid var(--lightgrey);
+  box-shadow: 0 0 10px var(--border-grey);
 }
 
-#timer {
-  font-weight: bold;
+.suggestions {
+  position: relative;
+  width: 80%;
+  left: 10%;
+  margin: 0;
+  perspective: 10vw;
 }
 
-#postTimer {
-  display: none;
+.suggestions li {
+  padding: 1vw;
+  font-size: 15px;
+  color: var(--grey-text);
+  list-style: none; 
+  box-shadow: 0 0 20px var(--border-grey);
 }
 
+.suggestions li:nth-child(odd) {
+  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  background: linear-gradient(to bottom, var(--lightgrey) 0%, var(--white) 100%);
+}
+
+.suggestions li:nth-child(even) {
+  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  background: linear-gradient(to bottom, var(--white) 100% 0%, var(--lightgrey) 100%);
+}
 
 
 /* ******** WHY ME? SECTION OF WEBSITE ******** */
@@ -824,6 +848,10 @@ figure {
 
 /* ******** ROBOT PROTOTYPE SECTION ******** */
 
+#robot {
+  position: relative;
+}
+
 #robot__player {
   text-align:center;
 }
@@ -832,6 +860,32 @@ figure {
   height: 60vh;
   box-shadow: 0 2vh 4vh 0 var(--darkgrey), 0 3vh 10vh 0 var(--grey-blue);
 }
+
+#countdown {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--pink);
+  border-radius: 25px;
+  margin-bottom: 4vh;
+  line-height: 80%;
+}
+
+#preTimer, #timer {
+  text-align: center;
+}
+
+#timer {
+  font-weight: bold;
+}
+
+#postTimer {
+  display: none;
+}
+
+
+/* ******** FOOTER ******** */
 
 footer {
   background-color: var(--orange);
