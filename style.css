@@ -461,6 +461,11 @@ input.search {
   background: linear-gradient(to bottom, var(--white) 100% 0%, var(--lightgrey) 100%);
 }
 
+.highlight {
+  background: var(--pink);
+  font-weight: bold;
+}
+
 
 
 
