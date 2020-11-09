@@ -10,7 +10,7 @@
   --border-grey: #ddd;
   --mid-grey: #aaa;
   --grey-text: #777;
-  --darkgrey: #303841;
+  --darkgrey: #555;
   --grey-blue: #45567d;
 }
 
@@ -462,6 +462,9 @@ input.search {
 }
 
 
+
+
+
 /* ******** WHY ME? SECTION OF WEBSITE ******** */
 
 #calculator {
@@ -583,6 +586,10 @@ input.search {
   }
 
 }
+
+
+
+
 
 /*  ******** PREREQUISITES SECTION ******** */
 
@@ -846,6 +853,51 @@ figure {
 }
 
 
+
+
+
+/* ******** BYTESIZEDIT SECTION ******** */
+
+#feedback {
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.review {
+  width: 100%;
+  background-color: var(--mid-grey);
+  color: var(--pink);
+  padding-left: 5vw;
+  padding-right: 5vw;
+  font-size: 20px;
+  text-align: left;
+}
+
+.review:after {
+  content: '\002B';
+  float: right;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.review:hover, .active {
+  background-color: var(--darkgrey);
+}
+
+.content {
+  padding-left: 5vw;
+  padding-right: 5vw;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: var(--lightgrey);
+}
+
+
+
+
 /* ******** ROBOT PROTOTYPE SECTION ******** */
 
 #robot {
@@ -883,6 +935,9 @@ figure {
 #postTimer {
   display: none;
 }
+
+
+
 
 
 /* ******** FOOTER ******** */
