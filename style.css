@@ -863,16 +863,38 @@ figure {
 
 /* ******** BYTESIZEDIT SECTION ******** */
 
-#feedback {
+#projects, #feedback {
   padding-left: 5vw;
   padding-right: 5vw;
+}
+
+#projects {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.scratch {
+  width: 20vw;
+  height: 7vw;
+  text-align: center;
+}
+
+.scratch a:link {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 1.25vw;
+}
+
+.scratch a:visited {
+  color: var(--black);
 }
 
 .review {
   width: 100%;
   background-color: var(--mid-grey);
   color: var(--pink);
-  margin: 1vw 1vw 0 1vw;
+  margin: 1vw 0vw 0 0vw;
   padding-left: 5vw;
   padding-right: 5vw;
   font-size: 20px;
@@ -895,7 +917,6 @@ figure {
 .content {
   max-height: 0;
   width: 100%;
-  margin: 0 1vw;
   padding-left: 5vw;
   padding-right: 5vw;
   overflow: hidden;
