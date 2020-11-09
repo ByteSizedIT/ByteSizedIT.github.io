@@ -872,7 +872,7 @@ figure {
   width: 100%;
   background-color: var(--mid-grey);
   color: var(--pink);
-  margin: 1vw;
+  margin: 1vw 1vw 0 1vw;
   padding-left: 5vw;
   padding-right: 5vw;
   font-size: 20px;
