@@ -872,6 +872,7 @@ figure {
   width: 100%;
   background-color: var(--mid-grey);
   color: var(--pink);
+  margin: 1vw;
   padding-left: 5vw;
   padding-right: 5vw;
   font-size: 20px;
@@ -892,9 +893,11 @@ figure {
 }
 
 .content {
+  max-height: 0;
+  width: 100%;
+  margin: 0 1vw;
   padding-left: 5vw;
   padding-right: 5vw;
-  width: 100%;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: var(--lightgrey);
