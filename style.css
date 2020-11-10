@@ -343,7 +343,7 @@ button:hover {
 
 /*Google Search Form*/
 
-#search {
+#search{
   margin: auto;
   width: 40vw;
   position: relative;
@@ -370,19 +370,6 @@ button:hover {
   outline: none;
 }
 
-#empty {
-  font-family: Arial, Helvetica, sans-serif;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  border: none;
-  background-color: transparent;
-  z-index: 2;
-  cursor: pointer;
-  padding: 15px 12px;
-  visibility: hidden;
-}
-
 #submit {
     text-align: center;
 }
@@ -405,6 +392,20 @@ input[type=submit]:hover {
   box-shadow: 0 1px 5px var(--border-grey);
 }
 
+/* Both WHY CODING? Google Search Form && WHY FAC? FAC Search */
+#empty, #empty2{
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border: none;
+  background-color: transparent;
+  z-index: 2;
+  cursor: pointer;
+  padding: 15px 12px;
+  visibility: hidden;
+}
+
 
 
 
@@ -416,14 +417,18 @@ input[type=submit]:hover {
 }
 
 .search-form {
-  max-width: 50vw;
+  max-width: 80vw;
   margin: 5vw auto;
 }
 
-input.search {
+#search2 {
+  position: relative;
+  
+}
+
+#text2 {
   position: relative;
   width: 100%;
-  top: 0.3vw;
   border-radius: 5px;
   padding: 1vw 0;
   font-size: 30px;
@@ -437,36 +442,48 @@ input.search {
 
 .suggestions {
   position: relative;
-  width: 80%;
-  left: 10%;
-  margin: 0;
-  perspective: 10vw;
+  width: 88%;
+  margin: auto;
+  padding: 0;
+  perspective: 100vw;
 }
 
 .suggestions li {
+  height: 15vw;
   padding: 1vw;
+  overflow: hidden;
   font-size: 15px;
   color: var(--grey-text);
   list-style: none; 
   box-shadow: 0 0 20px var(--border-grey);
 }
 
+
 .suggestions li:nth-child(odd) {
-  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  margin-top: 2vw;
+  transform: perspective(50px) rotateX(-3deg) translateY(3px);
   background: linear-gradient(to bottom, var(--lightgrey) 0%, var(--white) 100%);
 }
 
 .suggestions li:nth-child(even) {
-  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  transform: perspective(50px) rotateX(3deg) translateY(3px) scale(1.001);
   background: linear-gradient(to bottom, var(--white) 100% 0%, var(--lightgrey) 100%);
+  margin-top: -1.5vw;
 }
 
-.highlight {
+.suggestions li:nth-child(1) {
+  margin-top: 1.25vw;
+}
+
+.highlight1 {
   background: var(--pink);
   font-weight: bold;
 }
 
-
+.highlight2 {
+  background: var(--orange);
+  font-weight: bold;
+}
 
 
 
