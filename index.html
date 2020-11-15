@@ -7,8 +7,10 @@
     <meta charset="UTF-8">
     <!--link to google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2|Major+Mono+Display|Nova+Mono|Fira+Code&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
 
-    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     <!-- advised by w3 school website = Setting the Viewport, RWD; -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -320,14 +322,33 @@
 
       <!--MY ROBOT PROTOTYPE' SECTION OF WEBPAGE-->
       <section id="robot">
-        <h2>My Robot Prototype</h2>
-        <p>Years in the making, click here to see a sneak preview of my robot prototype - inspired by Short Circuit and Toy Story...</p>
+        <h2>My Robot Prototype<sup>TM</sup></h2>
+        <p>Years in the making and inspired by Toy Story, click <button class="buzz-butt">here</button> to see a sneak preview of My Robot Prototype<sup>TM</sup>...</p>
+
+        <div id="buzz">
+          <button id="buzz-butt" class="buzz-butt"><img src="images/noun_buzz lightyear_1975668.svg"></button>
+          <p id="credit">*buzz by <a href="https://thenounproject.com/term/buzz-lightyear/1975668/" target="_blank">Soy Galem </a> from the <a href="https://thenounproject.com" target="_blank">Noun Project</a></p>
+        </div>
+
+        <div id="robot__player">
+          <iframe src="https://player.vimeo.com/video/478643820" id="robot__vid" frameborder="0" allow="autoplay; fullscreen" allowfullscreen title="My Robot Prototype"></iframe>
+        </div>
+
+        <div id="finalWord">
+          <p>Ok, so some poetic licence. But like a computer, My Robot Prototype<sup>TM</sup> relies on input, a processor, memory and output 
+          ... and just like working towards becoming a Full Stack Developer, it's been a huge learning curve for me. 
+          The road to development has involved many a late night, some grey hairs, plenty of ups ... and a few downs!
+          There's been lots of challenges, talking to myself, repetition (oh, the repetition!), team work, and the support of a community;
+          It's been awesome.
+          The potential is endless, the future exciting!</p>
+        </div>  
 
         <div id="countdown">
           <p id = "preTimer"></p>
           <p id = "timer"></p>
           <p id = "postTimer">Click <a href="https://github.com/ByteSizedIT">here</a> to see what happened next!</p>
         </div>
+        
       </section>
 
     </main>
@@ -335,6 +356,8 @@
     <footer>
       <h5>&copy; 2020 N.Keemer</h5>
     </footer>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
 
     <!--Link to JavaScript file-->
     <script src="home.js"></script>
