@@ -92,6 +92,15 @@ nav h2 {
   background-color: var(--white);
 }
 
+#coding h2 + p::first-letter, #me h2 + p::first-letter, #bytesized h2 + p::first-letter{
+  color: var(--pink);
+  float: left;
+  font-size: 140px;
+  line-height: 120px;
+  padding-right: 8px;
+  opacity: 0.5;
+}
+
 /*Sizing of the webpage sections identified in navigation bar, fonts, text alignment*/
 
 section {
@@ -653,7 +662,7 @@ figure {
   grid-gap: 2vw;
   padding: 2vw;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: (3, 16.5vw);
+  grid-template-rows: (3, auto);
   grid-template-areas:
   "intro intro intro intro intro intro"
   "codeCamp codeCamp codeWarsSquare CS50 CS50 codecademySquare"
@@ -669,7 +678,7 @@ figure {
 
   #prereqs__grid-container {
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto (2, 16.5vw);
+    grid-template-rows:  (2, auto);
     grid-template-areas:
     "intro intro intro intro intro intro"
     "codeCamp codeCamp codeWarsSquare CS50 CS50 codecademySquare "
@@ -688,9 +697,9 @@ figure {
   #prereqs__item11 {display: grid;}
 
   #prereqs__grid-container {
-  padding-bottom: 6vw;
+  /*padding-bottom: 6vw;*/
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 14vw);
+  grid-template-rows: (6, auto);
   grid-template-areas:
   "intro intro intro intro intro founders founders"
   "intro intro intro intro intro codecademy codecademy"
@@ -707,7 +716,7 @@ figure {
 
   #prereqs__grid-container {
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 14vw);
+  grid-template-rows: repeat(5, auto);
   grid-template-areas:
   "intro intro intro intro intro founders founders"
   "intro intro intro intro intro codecademy codecademy"
@@ -730,7 +739,7 @@ figure {
 
   #prereqs__grid-container {
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(5, 12.5vw);
+  grid-template-rows: repeat(5, auto);
   grid-template-areas:
   "intro intro intro intro intro codeCampSquare founders founders"
   "intro intro intro intro intro git git codeWarsSquare"
@@ -747,7 +756,7 @@ figure {
 
   #prereqs__grid-container {
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(4, 12.5vw);
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:
   "intro intro intro intro intro codeCampSquare founders founders"
   "intro intro intro intro intro git git codeWarsSquare"
@@ -763,7 +772,7 @@ figure {
 
   #prereqs__grid-container {
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(3, 12.5vw);
+  grid-template-rows: repeat(3, auto);
   grid-template-areas:
   "intro intro intro intro intro codeCampSquare founders founders"
   "intro intro intro intro intro git git codeWarsSquare"
