@@ -44,7 +44,7 @@ buzzButts.forEach(button => {
 });
 */
 
-// listener/function for hiding video and showing the last paragraph & countdown timer
+// Vimeo listener/function for hiding video and showing the last paragraph & countdown timer
 player.on('ended', function(data) { 
   console.log('done');
   robPlayer.style.display = "none";
@@ -72,12 +72,12 @@ const countDown = setInterval(() => {
     // Output days, hours, mins, secs to course in html element with id="cdTimer"
     document.getElementById("preTimer").innerHTML = "Countdown to Founders & Coders Spring 2021: ";
     document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-    document.getElementById("postTimer").style.visibility = "hidden";
+    document.getElementById("postTimer").style.display = "none";
   }
   else {
     // Output days, hours, mins, secs to course in html element with id="cdTimer"
     document.getElementById("preTimer").innerHTML = "Time since Founders & Coders Spring 2021 started: ";
     document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-    document.getElementById("postTimer").style.visibilty = "visible";
+    document.getElementById("postTimer").style.display = "block";
   }
 }, 1000);

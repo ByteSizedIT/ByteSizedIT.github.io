@@ -1,3 +1,27 @@
+// ******** NAV BAR >> ALL SECTIONS OF WEBSITE: PADDING TO SECTIONS ********
+
+//Initialise variables for nav and sections
+const sect = document.querySelectorAll('.sect');
+const nav = document.querySelector('nav');
+const navStyle = getComputedStyle(nav);
+
+//Function to add padding to allow for sticky nav bar, allowing setions headings to be on page when nav links are clicked
+const padSection = () => {
+  sect.forEach((section) => {
+  section.style.paddingTop = navStyle.height;
+  section.style.paddingBottom = navStyle.height;
+  })
+}
+
+//Event Listeners to update section padding on window load and resize
+window.addEventListener('resize', padSection);
+
+window.addEventListener('load', padSection);
+
+
+
+
+
 // ******** CAROUSEL SECTION OF WEBSITE ********
 
 

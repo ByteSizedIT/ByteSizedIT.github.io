@@ -21,19 +21,26 @@
 
     <header id="header">
       <h1>Neville Keemer</h1>
-      <h2>A Story in Development...</h2>
+      <h2>A Story in Development</h2>
     </header>
 
     <!--Horizontal navigation bar-->
     <nav>
       <h2>
-        <a href="#header" class="contents">Home</a> |
-        <a href="#coding" class="contents">Why Coding?</a> |
-        <a href="#fandc" class="contents">Why FAC?</a> |
-        <a href="#me" class="contents">Why Me?</a> |
-        <a href="#prereqs" class="contents">Course Prereqs</a> |
-        <a href="#bytesized" class="contents">ByteSizedIT</a> |
-        <a href="#robot" class="contents">My Robot Prototype</a>
+        <a href="#header" class="contents desktop">Home</a>
+        <a href="#header" class="contents mobile">Home</a> |
+        <a href="#coding" class="contents desktop">Why Coding?</a>
+        <a href="#coding" class="contents mobile">Coding</a> |
+        <a href="#fandc" class="contents desktop">Why FAC?</a>
+        <a href="#fandc" class="contents mobile">FAC</a> |
+        <a href="#me" class="contents desktop">Why Me?</a>
+        <a href="#me" class="contents mobile">Me</a> |
+        <a href="#prereqs" class="contents desktop">Course Prereqs</a>
+        <a href="#prereqs" class="contents mobile">Prereqs</a> |
+        <a href="#bytesized" class="contents desktop">ByteSizedIT</a>
+        <a href="#bytesized" class="contents mobile">ByteSized</a> |
+        <a href="#robot" class="contents desktop">My Robot Prototype</a>
+        <a href="#robot" class="contents mobile">MyRobot</a>
       </h2>
     </nav>
 
@@ -122,7 +129,7 @@
 
 
       <!-- ******** 'WHY CODING?' - SECTION OF WEBPAGE ******** -->
-      <section id="coding">
+      <section id="coding" class="sect">
         <div id="bio">
           <h2>Bio ~ Why Coding?</h2>
           <p>A 44-year-old father of one...</p>
@@ -144,7 +151,7 @@
 
 
       <!-- ******** 'WHY FOUNDERS AND CODERS?' SECTION OF WEBPAGE ******** -->
-      <section id="fandc">
+      <section id="fandc" class="sect">
         <h2>Why Founders and Coders?</h2>
         <p>The peer-led learning and collaborative approach fostered at Founders and Coders ....</p>
         <form class="search-form">
@@ -159,20 +166,20 @@
 
 
       <!--'WHY ME?' SECTION OF WEBPAGE-->
-      <section id="me">
+      <section id="me" class="sect">
         <h2>Why me?</h2>
         <p>One, two, three...Don't just trust me, click <button id="openCalc">here</button> and you can do the math &#128521;!</p>
 
         <div id="cModal" class="modal">
           <div id="calculator">
-            <span id="closeCalc" class="closeModal">close &times;</span><br>
+            <div id="closeCalc" class="closeModal">close &times;</div>
             <div id="display">
-              <div id="calculation">
-                <p id="calculation__value">Neville + FAC =</p>
-              </div>
-              <div id="output">
-                <p id="output__value">&#128525;</p>
-              </div>
+              <!-- <div id="calculation"> -->
+                <div id="calculation__value">Neville + FAC =</div>
+              <!-- </div>  -->
+              <!-- <div id="output"> -->
+                <div id="output__value">&#128525;</div>
+              <!-- </div>  -->
             </div>
             <div id="keyboard">
               <button class="operator" id="clear">C</button>
@@ -202,7 +209,7 @@
 
 
       <!-- ******** 'COURSE PREREQUISITES' SECTION OF WEBPAGE ******** -->
-      <section id="prereqs">
+      <section id="prereqs" class="sect">
         <h2>Course Prerequisites+</h2>
         <div  id="prereqs__grid-container">
           <div id="prereqs__intro">
@@ -281,7 +288,7 @@
 
 
       <!-- ******** 'ByteSizedIT' SECTION OF WEBPAGE ******** -->
-      <section id="bytesized">
+      <section id="bytesized" class="sect">
         <h2>ByteSizedIT</h2>
         <p>While addressing key learning objectives from the new computing curriculum, ByteSizedIT programmes give children the
         opportunity to apply problem solving, math and creative thinking skills, producing projects that allow their ideas and
@@ -289,9 +296,10 @@
         <p><strong>Sample projects by year 6 children:</strong></p>
         <div id="projects">
           <button class="scratch"><a href="https://scratch.mit.edu/projects/265126033/" target="_blank">Rudolph the fat reindeer, by Hania</a></button>
-          <button class="scratch"><a href="https://scratch.mit.edu/projects/222851239/" target="_blank">Messi V Ronaldo, by Daniel</a></button>
+          <button class="scratch"><a href="https://scratch.mit.edu/projects/251017243/" target="_blank">'The Red Terror', by Matthew</a></button>
           <button class="scratch"><a href="https://scratch.mit.edu/projects/222851239/" target="_blank">'What animals do when you're not around', by Alayna</a></button>
-          <button class="scratch"><a href="https://scratch.mit.edu/projects/251017243/" target="_blank">'The Red Terror', by Mathew</a></button>
+          <button class="scratch"><a href="https://scratch.mit.edu/projects/334480503/" target="_blank">Messi V Ronaldo, by Daniel</a></button>
+          <!-- <button class="scratch"><a href="https://scratch.mit.edu/projects/280393583/" target="_blank">'What has the world become', by Myla</a></button>-->
         </div>
         <p><strong>Feedback for ByteSizedIT:</strong></p>
         <div id="feedback">
@@ -321,17 +329,17 @@
 
 
       <!--MY ROBOT PROTOTYPE' SECTION OF WEBPAGE-->
-      <section id="robot">
+      <section id="robot" class="sect">
         <h2>My Robot Prototype<sup>TM</sup></h2>
         <p>Years in the making and inspired by Toy Story, click <button class="buzz-butt">here</button> to see a sneak preview of My Robot Prototype<sup>TM</sup>...</p>
 
         <div id="buzz">
           <button id="buzz-butt" class="buzz-butt"><img src="images/noun_buzz lightyear_1975668.svg"></button>
-          <p id="credit">*buzz by <a href="https://thenounproject.com/term/buzz-lightyear/1975668/" target="_blank">Soy Galem </a> from the <a href="https://thenounproject.com" target="_blank">Noun Project</a></p>
+          <div id="credit">*buzz by <a href="https://thenounproject.com/term/buzz-lightyear/1975668/" target="_blank">Soy Galem </a> from the <a href="https://thenounproject.com" target="_blank">Noun Project</a></div>
         </div>
 
         <div id="robot__player">
-          <iframe src="https://player.vimeo.com/video/478643820" id="robot__vid" frameborder="0" allow="autoplay; fullscreen" allowfullscreen title="My Robot Prototype"></iframe>
+          <iframe src="https://player.vimeo.com/video/482994080" id="robot__vid" frameborder="0" allow="autoplay; fullscreen" allowfullscreen title="My Robot Prototype"></iframe>
         </div>
 
         <div id="finalWord">
