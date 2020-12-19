@@ -57,12 +57,13 @@
           <button id="popup">Click here to add 'class' to slide 3!</button>
 
           <!-- Previous arrow button -->
-          <button class="carousel__arrows carousel__arrows--prev hidden">&#10094;</button>
+          <button id="carouselPrevArrow" class="carousel__arrows hidden">&#10094;</button>
 
           <!--Viewing space in which the 'current' slide in the carousel deck can be viewed-->
           <div id="carousel__viewer">
+
             <!--Deck (list) of carousel slides-->
-            <ul id="carousel__deck">                    
+            <ul id="carousel__deck-landscape" class="carousel__deck">                    
               <!--Individual carousel slides and the images contained-->
               <li class="carousel__slide current-slide">
                 <img class="image" src="slides/Slide1.png" alt="Slide 1 of Carousel">
@@ -95,10 +96,45 @@
                 <img class="image" src="slides/Slide10.png" alt="Slide 10 of Carousel">
               </li>
             </ul>
+
+            <ul id="carousel__deck-portrait" class="carousel__deck">
+              <!--Individual carousel slides and the images contained-->
+              <li class="carousel__slide current-slide">
+                <img class="image" src="slides/SlideP1.png" alt="Slide 1 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/SlideP2.png" alt="Slide 2 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img id="slideP3" class="image" src="slides/SlideP3a.png" alt="Slide 3 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/SlideP4.png" alt="Slide 4 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/SlideP5.png" alt="Slide 5 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/SlideP6.png" alt="Slide 6 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/SlideP7.png" alt="Slide 7 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/SlideP8.png" alt="Slide 8 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/SlideP9.png" alt="Slide 9 of Carousel">
+              </li>
+              <li class="carousel__slide">
+                <img class="image" src="slides/SlideP10.png" alt="Slide 10 of Carousel">
+              </li>
+            </ul>
+
           </div>
 
           <!--Next arrow button-->
-          <button class="carousel__arrows carousel__arrows--next">&#10095;</button>
+          <button id="carouselNextArrow" class="carousel__arrows">&#10095;</button>
 
         </div>
 
