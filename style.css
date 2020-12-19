@@ -281,12 +281,12 @@ button:hover {
 }
 
 /*Positioning the previous arrow button*/
-.carousel__arrows--prev {
+#carouselPrevArrow  {
   left: 5vw;
 }
 
 /*Positioning the next arrow button*/
-.carousel__arrows--next {
+#carouselNextArrow {
   right: 5vw;
 }
 
@@ -321,7 +321,7 @@ button:hover {
 }
 
 /*Deck(list) of slides for the viewer*/
-#carousel__deck {
+.carousel__deck {
   list-style: none;
 
   margin: 0;
@@ -329,10 +329,26 @@ button:hover {
   transition: transform 500ms ease-out;
 }
 
+@media (orientation: portrait) {
+  #carousel__deck-landscape{display:none; visibility: hidden;}
+  #carousel__deck-portrait{display:block; visibility: visible;}
+  #carousel__viewer{height: 110vw; width: 60vw;}
+  .carousel__slide{height: 110vw; width: 60vw;}
+  /*#carousel__viewer{height: 120vw; width: 40vw;}
+  .carousel__slide{height: 120vw; width: 40vw;}*/
+}
+
+@media (orientation: landscape) {
+  #carousel__deck-landscape{display:block; visibility: visible;}
+  #carousel__deck-portrait{display:none; visibility: hidden;}
+  #carousel__viewer{height: 25vw; width: 75vw;}
+  .carousel__slide{height: 25vw; width: 75vw;}
+}
+
 /*Size and positioning of individual slides within the queue(list)*/
 .carousel__slide {
-  height: 25vw;
-  width: 75vw;
+  /*height: 25vw;
+  width: 75vw;*/
 
   position: absolute;
 
