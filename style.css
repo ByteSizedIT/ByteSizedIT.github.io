@@ -260,6 +260,7 @@ button:hover {
 }
 */
 
+
 /*Sizing and positioning of 'carousel' div (containing the viewer and arrow buttons)*/
 #carousel {
   /*height: 30vw;*/
@@ -304,8 +305,8 @@ button:hover {
 
 /*Sizing and positioning of carousel viewing window, as well as the border*/
 #carousel__viewer {
-  height: 25vw;
-  width: 75vw;
+  /*height: 25vw;
+  width: 75vw;*/
 
   margin: 0 auto;
 
@@ -332,8 +333,10 @@ button:hover {
 @media (orientation: portrait) {
   #carousel__deck-landscape{display:none; visibility: hidden;}
   #carousel__deck-portrait{display:block; visibility: visible;}
-  #carousel__viewer{height: 110vw; width: 60vw;}
-  .carousel__slide{height: 110vw; width: 60vw;}
+  #carousel__viewer{height: 67vh; width: 36vh;}
+  .carousel__slide{height: 67.5vh; width: 36vh;}
+  /*#carousel__viewer{height: 110vw; width: 60vw;}
+  .carousel__slide{height: 110vw; width: 60vw;}*/
   /*#carousel__viewer{height: 120vw; width: 40vw;}
   .carousel__slide{height: 120vw; width: 40vw;}*/
 }

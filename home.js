@@ -92,13 +92,14 @@ slidesArrP.forEach(positionSlideP);
 
 //When window resizes, resize distance between target slides to resolve bug - x2 (landscape and portrait)
 window.onresize = () => {
+  console.log(currentSlideP);
   //updated previous version (that used location reload)..
   //..by recalculating dist to current slide and transitioning with no delay
   //better than location reload, which refreshed to first slide each time
   slideWidth = slidesArr[0].getBoundingClientRect().width;
   slideWidthP = slidesArrP[0].getBoundingClientRect().width;
   slidesArr.forEach(positionSlide);
-  slidesArrP.forEach(positionSlide);
+  slidesArrP.forEach(positionSlideP);
   dist = currentSlide.style.left;
   distP = currentSlideP.style.left;
   //remove timed transition used when shuffling with viewTargetSlide function
@@ -110,7 +111,7 @@ window.onresize = () => {
 }
 
 //Function to move target slide into the carousel viewer - x2 (landscape and portrait)
-const viewTargetSlide = (targetSlide, targetSlideP) => {
+const viewTargetSlide = () => {
   dist = targetSlide.style.left;
   distP = targetSlideP.style.left;
   //confirm timed transition used when shuffling with viewTargetSlide function
@@ -164,7 +165,7 @@ const playSlides = () => {
       targetSlide = currentSlide.nextElementSibling;
       targetSlideP = currentSlideP.nextElementSibling;
       //Run function to view target slide
-      viewTargetSlide(targetSlide, targetSlideP);
+      viewTargetSlide();
     }
     //Or exit method and change button to prompt 'play'
     else {
@@ -206,7 +207,7 @@ controlButton.addEventListener('click', () => {
     controlButton.innerHTML = "Pause";
     targetSlide = slidesArr[0];
     targetSlideP = slidesArrP[0];
-    viewTargetSlide(targetSlide, targetSlideP);
+    viewTargetSlide();
     targetSlide = slidesArr[1];
     targetSlideP = slidesArrP[1];
     playSlides();
@@ -222,7 +223,7 @@ nextArrow.addEventListener('click', () => {
   targetSlide = currentSlide.nextElementSibling;
   targetSlideP = currentSlideP.nextElementSibling;
   //Run function to view target slide
-  viewTargetSlide(targetSlide, targetSlideP);
+  viewTargetSlide();
 })
 
 //Identify target slide as previous in the deck when the right arrow is clicked
@@ -230,7 +231,7 @@ prevArrow.addEventListener('click', () => {
   targetSlide = currentSlide.previousElementSibling;
   targetSlideP = currentSlideP.previousElementSibling;
   //Run function to view target slide
-  viewTargetSlide(targetSlide, targetSlideP);
+  viewTargetSlide();
 })
 
 //Identify target slide as previous/next in the deck when the left/right keys are pressed
@@ -243,7 +244,7 @@ document.addEventListener('keydown', (e) => {
         targetSlide = currentSlide.previousElementSibling;
         targetSlideP = currentSlideP.previousElementSibling;
         //Run function to view target slide
-        viewTargetSlide(targetSlide);
+        viewTargetSlide();
       }
     }
     else if(e.keyCode === 39){
@@ -251,7 +252,7 @@ document.addEventListener('keydown', (e) => {
         targetSlide = currentSlide.nextElementSibling;
         targetSlideP = currentSlideP.nextElementSibling;
         //Run function to view target slide
-        viewTargetSlide(targetSlide);
+        viewTargetSlide();
       }
     }
   }
@@ -267,7 +268,7 @@ navDots.addEventListener('click', (e) => {
     targetIndex = dotsArr.findIndex(dot => dot === clickedDot);
     targetSlide = slidesArr[targetIndex];
     targetSlideP = slidesArrP[targetIndex];
-    viewTargetSlide(targetSlide);
+    viewTargetSlide();
   }
 })
 
