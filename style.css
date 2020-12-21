@@ -991,6 +991,7 @@ figure {
   opacity: 75%;
   background-color: var(--orange);
   font-size: 5vh;
+  touch-action: manipulation;
 }
 
 #tetrisSpin {
