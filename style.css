@@ -903,6 +903,7 @@ figure {
 
 /*size/centre/colour tetris container*/
 #tetris-container {
+  touch-action: manipulation;
   height: 95vh;
   width: 40vh;
   margin: auto auto;
