@@ -970,6 +970,7 @@ figure {
 .square, .next-square{
   width: 4vh;
   height: 4vh;
+  touch-action: manipulation;
 }
 
 .tetrimino {
