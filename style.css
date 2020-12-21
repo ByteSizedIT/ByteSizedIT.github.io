@@ -215,6 +215,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   outline: none;
+  z-index: 1;
 }
 
 button:hover {
@@ -222,7 +223,12 @@ button:hover {
   transition: 0.6s;
 }
 
-
+/* On hover, for carousel and tetris buttons*/
+.carousel__arrows:hover, .tetris__arrows:hover, #tetrisSpin:hover {
+  background-color: black;
+  color: var(--orange);
+  transition: 1s;
+}
 
 
 
@@ -282,20 +288,13 @@ button:hover {
 }
 
 /*Positioning the previous arrow button*/
-#carouselPrevArrow  {
+#carouselPrevArrow {
   left: 5vw;
 }
 
 /*Positioning the next arrow button*/
 #carouselNextArrow {
   right: 5vw;
-}
-
-/* On hover, add a black background color*/
-.carousel__arrows:hover {
-  background-color: black;
-  color: var(--orange);
-  transition: 1s;
 }
 
 /*Hidden class, to be called on prev/next arrows at start/end of carousel*/
@@ -959,7 +958,7 @@ figure {
 #grid-base {
   width: 40vh;
   height: 4vh;
-  background-color: red;
+  background-color: var(--orange);
 }
 
 .square, .next-square{
@@ -985,6 +984,38 @@ figure {
 
 
 
+.tetris__arrows {
+  position: absolute;
+  height: 7.5vh;
+  width: 7.5vh;
+  opacity: 75%;
+  background-color: var(--orange);
+  font-size: 5vh;
+}
+
+#tetrisSpin {
+  font-size: 3vh;
+}
+
+#tetrisLeftArrow, #tetrisRightArrow {
+  top: 45%;
+  transform: translateY(-50%);
+}
+
+#tetrisSpin, #tetrisDownArrow {
+  top: 55%;
+  transform: translateY(-50%);
+}
+
+/*Positioning the tetris left and down buttons*/
+#tetrisLeftArrow, #tetrisDownArrow {
+  left: 5vw;
+}
+
+/*Positioning the tetris right and rotate buttons*/
+#tetrisRightArrow, #tetrisSpin {
+  right: 5vw;
+}
 
 
 /* ******** BYTESIZEDIT SECTION ******** */

@@ -6,19 +6,24 @@
 const tModal = document.getElementById("tModal");
 const openTetris = document.getElementById("lego");
 const closeTetris = document.getElementById("closeTet");
+const tRight = document.getElementById("tetrisRightArrow");
+const tLeft = document.getElementById("tetrisLeftArrow");
+const tDown = document.getElementById("tetrisDownArrow");
+const tSpin = document.getElementById("tetrisSpin");
 
-// When the user clicks 'here' text, open the calculator modal
+
+// When the user clicks lego icon, open the Tetris modal
 openTetris.addEventListener('click', () => {
   tModal.style.display = "block";
 })
 
-// When the user clicks on close (x), close the calculator modal
+// When the user clicks on close (x), close the Tetris modal
 closeTetris.addEventListener('click', () => {
   pauseGame();
   tModal.style.display = "none";
 })
 
-// When the user clicks anywhere outside of the calculator modal, close it
+// When the user clicks anywhere outside of the Tetris modal, close it
 window.addEventListener('click', (e) => {
   if (e.target == tModal) {
     pauseGame();
@@ -249,7 +254,7 @@ function rotate() {
   }
 }
 
-// Event listener to run movement functions (down/left/right/down - rotate block)
+// Function to run movement functions (down/left/right/down - rotate block) dependent on key pressed
 function keysPressed(e) {
   //prevent keys from moving around underlying page when tetris modal is displayed
   if(tModal.style.display === "block") {
@@ -269,8 +274,10 @@ function keysPressed(e) {
   }
 }
 
-// Function to remove all chilld nodes from a parent element
-// ... used in complatedLines function or if starting a new game
+//tModal.addEventListener("touchstart", rotate);
+
+// Function to remove all child nodes from a parent element
+// ... used in completedLines function or if starting a new game
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
   parent.removeChild(parent.firstChild);
@@ -370,8 +377,16 @@ startBtn.addEventListener("click", () => {
 
     // Invoke move function every second to play
     movementTimer = setInterval(moveDown, speed);
+
     // Start event listener for arrow keys being pressed
     document.addEventListener('keydown', keysPressed);
+
+    tLeft.addEventListener('click', moveLeft);
+    tRight.addEventListener('click', moveRight);
+    tDown.addEventListener('click', moveDown);
+    tSpin.addEventListener('click', rotate);
+
+
     startBtn.innerHTML = "Pause";
   }
 
