@@ -958,6 +958,7 @@ figure {
   align-items: center;
   font-family: Baloo, monospace;
   font-size: 4vh;
+  touch-action: manipulation;
 }
 
 #grid-base {
@@ -971,7 +972,10 @@ figure {
   height: 4vh;
 }
 
-.tetrimino {background-color: var(--pink);}
+.tetrimino {
+  background-color: var(--pink);
+  touch-action: manipulation;
+}
 
 @media all and (orientation:portrait) {
   #closeTet {
