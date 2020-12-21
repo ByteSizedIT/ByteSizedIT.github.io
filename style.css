@@ -897,6 +897,10 @@ figure {
   font-size: 10px;
 }
 
+#tModal {
+  touch-action: manipulation;
+}
+
 /*size/centre/colour tetris container*/
 #tetris-container {
   height: 95vh;
