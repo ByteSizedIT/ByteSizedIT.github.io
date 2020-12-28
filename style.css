@@ -165,18 +165,11 @@ nav h2 {
 /*Sizing of the webpage sections identified in navigation bar, fonts, text alignment*/
 
 section {
-  /*min-height: 100vh;*/
   font-size: 16px;
   line-height: 2;
 
   vertical-align: center;
 }
-
-/*@media (min-height: 1000px) {
-  section {
-    min-height: 0vh;
-  }
-}*/
 
 section h2 {
   
@@ -215,7 +208,6 @@ button {
   border-radius: 5px;
   cursor: pointer;
   outline: none;
-  z-index: 1;
 }
 
 button:hover {
@@ -223,7 +215,7 @@ button:hover {
   transition: 0.6s;
 }
 
-/* On hover, for carousel and tetris buttons*/
+/* On hover, for carousel and tetris in play buttons*/
 .carousel__arrows:hover, .tetris__arrows:hover, #tetrisSpin:hover {
   background-color: black;
   color: var(--orange);
@@ -260,16 +252,8 @@ button:hover {
 
 /* ********CAROUSEL SECTION******** */
 
-/*Unique sizing of the first 'home' section of the webpage, containing the carousel and the control panel*/
-/*#home {
-  min-height: 80vh;
-}
-*/
-
-
 /*Sizing and positioning of 'carousel' div (containing the viewer and arrow buttons)*/
 #carousel {
-  /*height: 30vw;*/
   padding-top: 5vw;
   padding-bottom: 5vw;
   position: relative;
@@ -277,14 +261,24 @@ button:hover {
 
 /*Shared sizing and positioning of the arrow buttons for the carousel*/
 .carousel__arrows {
-  font-size: 3.5vw;
-
   padding: 1vw 1vh;
   margin: 1vw 1vh;
-
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 1;
+}
+
+@media (orientation: portrait) {
+  .carousel__arrows {
+    font-size: 3.5vh;
+  }
+}
+
+@media (orientation: landscape) {
+  .carousel__arrows {
+    font-size: 4vw;
+  }
 }
 
 /*Positioning the previous arrow button*/
@@ -304,56 +298,44 @@ button:hover {
 
 /*Sizing and positioning of carousel viewing window, as well as the border*/
 #carousel__viewer {
-  /*height: 25vw;
-  width: 75vw;*/
-
   margin: 0 auto;
-
   position: relative;
-
   border-style: solid;
   border-width: medium;
   border-color: black;
-
   overflow: hidden;
-
-  box-shadow: 0 2vh 4vh 0 var(--darkgrey), 0 3vh 10vh 0 var(--grey-blue);
 }
 
 /*Deck(list) of slides for the viewer*/
 .carousel__deck {
   list-style: none;
-
   margin: 0;
-
   transition: transform 500ms ease-out;
 }
 
 @media (orientation: portrait) {
   #carousel__deck-landscape{display:none; visibility: hidden;}
   #carousel__deck-portrait{display:block; visibility: visible;}
-  #carousel__viewer{height: 67vh; width: 36vh;}
+  #carousel__viewer{
+    height: 67vh; width: 36vh;
+    box-shadow: 0 2vw 4vw 0 var(--darkgrey), 0 3vw 10vw 0 var(--grey-blue);
+  }
   .carousel__slide{height: 67.5vh; width: 36vh;}
-  /*#carousel__viewer{height: 110vw; width: 60vw;}
-  .carousel__slide{height: 110vw; width: 60vw;}*/
-  /*#carousel__viewer{height: 120vw; width: 40vw;}
-  .carousel__slide{height: 120vw; width: 40vw;}*/
 }
 
 @media (orientation: landscape) {
   #carousel__deck-landscape{display:block; visibility: visible;}
   #carousel__deck-portrait{display:none; visibility: hidden;}
-  #carousel__viewer{height: 25vw; width: 75vw;}
+  #carousel__viewer{
+    height: 25vw; width: 75vw;
+    box-shadow: 0 2vh 4vh 0 var(--darkgrey), 0 3vh 10vh 0 var(--grey-blue);
+  }
   .carousel__slide{height: 25vw; width: 75vw;}
 }
 
 /*Size and positioning of individual slides within the queue(list)*/
 .carousel__slide {
-  /*height: 25vw;
-  width: 75vw;*/
-
   position: absolute;
-
   left:0;
 }
 
@@ -367,25 +349,26 @@ button:hover {
   text-align: center;
 }
 
-#control-panel button{
-  /*font-size: 20px;*/
-  font-size: 1.5vw;
+@media all and (orientation:portrait) {
+  #control-panel button{
+    font-size: 4vw;
+  }
+}
+
+@media all and (orientation:landscape) {
+  #control-panel button{
+    font-size: 3vh;
+  }
 }
 
 /* Div for the dots/bullets/indicators */
 #dots{
-  /*min-height: 5vh;*/
   padding-top: 3vh;
   text-align: center;
 }
 
 .dot {
-  /*height: 15px;*/
-  height: 1.5vw;
-  width: 1.5vw;
-  /*width: 15px;*/
   border-radius: 50%;
-  /*margin: 10px 2px;*/
   margin: 1vw 0.2vw;
   background-color: var(--pink);
 
@@ -403,23 +386,51 @@ button:hover {
   background-color: var(--orange);
 }
 
+@media all and (orientation:portrait) {
+  .dot{
+    height: 1.5vh;
+    width: 1.5vh;
+  }
+}
+
+@media all and (orientation:landscape) {
+  .dot{
+    height: 1.5vw;
+    width: 1.5vw;
+  }
+}
+
 /* Slide 3 popup prompt */
 #popup {
   overflow: visible;
   visibility: hidden;
-  height: 6vw;
-  width: 18vw;
   background-color: var(--lightgrey);
   text-align: center;
   border-radius: 6px;
-  padding: 8px 0;
+  padding: 1vh 1vw;
   position: absolute;
   z-index: 1;
-  bottom: -2vw;
   right: 25vw;
   transform: translateX(50%);
-  font-size: 1.2vw;
   color: var(--grey-text);
+}
+
+@media all and (orientation:portrait) {
+  #popup {
+  height: 24vw;
+  width: 30vw;
+  bottom: -18vw;
+  font-size: 4vw;
+  }
+}
+
+@media all and (orientation:landscape) {
+  #popup {
+    height: 14vh;
+    width: 30vh;
+    bottom: -8vh;
+    font-size: 3vh;
+  }
 }
 
 /* Slide 3 popup prompt arrow */
@@ -926,20 +937,29 @@ figure {
   grid-template-rows: repeat(4, 4.5vh);
   grid-template-areas:
   "close next"
-  "high next"
   "score next"
+  "high next"
   "startbtn next"
 }
 
 #score-display, #high-display {
   font-size: 2vh;
   text-align: center;
-  line-height: normal;
+  line-height: 0.75;
+  padding-bottom: 2vh;
+}
+
+
+#score-display {
+  padding-bottom: 2vh;
+}
+#high-display {
+  padding-bottom: 4vh;
 }
 
 #start-button {
-  margin-bottom: 1vh;
-  padding: 0;
+  margin-bottom: 3vh;
+  font-size: 2vh;
 }
 
 #next-grid {
@@ -980,14 +1000,14 @@ figure {
 
 @media all and (orientation:portrait) {
   #closeTet {
-    font-size: 1vw;
+    font-size: 2vw;
     padding-top: .5vw;
   }
 }
 
 @media all and (orientation:landscape) {
   #closeTet {
-    font-size: 1vh;
+    font-size: 2vh;
     padding-top: .5vh;
   }
 }
@@ -1039,21 +1059,44 @@ figure {
 #projects {
   display: flex;
   justify-content: space-between;
-
+  flex-wrap: wrap;
 }
 
 .scratch {
-  width: 20vw;
-  height: 7vw;
+  /*height: 7vw;*/
   text-align: center;
+  justify-content: center;
+  margin: 1vw 0vw 0 0vw;
+  padding: 1vw;
+  height: auto;
 }
 
 .scratch a:link {
   color: var(--black);
   text-decoration: none;
-  font-size: 1.25vw;
 }
 
+@media (max-width: 499px) {
+  .scratch {
+    flex-basis: 100%;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 500px) {
+  .scratch {
+    flex-basis: 49%;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 801px) {
+  .scratch {
+    flex-basis: 24%;
+    font-size: 20px;
+  }
+}
+  
 .scratch a:visited {
   color: var(--black);
 }
@@ -1104,8 +1147,6 @@ figure {
 }
 
 #buzz-butt {
-  width: 60vw;
-  height: 45vw;
   background-image: url('images/noun_buzz_lightyear_1975668.svg') no-repeat;
   background-color: transparent;
   margin-top: -5vw;
@@ -1119,7 +1160,7 @@ figure {
 
 #robot__player {
   position: relative;
-  height: 45vw;
+  padding: 0;
   /*position: absolute;
   top: 15vw;
   left: 50%;
@@ -1131,9 +1172,33 @@ figure {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  height: 35vw;
-  margin-top: 5vw;
   width: auto;
+}
+
+@media all and (orientation:landscape) {
+  #buzz-butt {
+    width: 60vw;
+    height: 45vw;
+  }
+  #robot__player {
+    height: 45vw;
+  }
+  #robot__vid {
+    height: 45vw;
+  }
+}
+
+@media all and (orientation:portrait) {
+  #buzz-butt {
+    width: 100vw;
+    height: 75vw;
+  }
+  #robot__player {
+    height: 75vw;
+  }
+  #robot__vid {
+    height: 75vw;
+  }
 }
 
 #finalWord {
@@ -1169,4 +1234,5 @@ footer {
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
+  z-index: 1;
 }

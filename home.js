@@ -74,7 +74,7 @@ let slideWidthP = slidesArrP[0].getBoundingClientRect().width;
 const pop = document.getElementById('popup');
 
 //Iniitalise a variable for slide 3 img element itself
-const slide3 = document.getElementById('slideP3');
+const slide3 = document.getElementById('slide3');
 const slideP3 = document.getElementById('slideP3');
 
 
@@ -182,14 +182,16 @@ const pauseSlides = () => clearInterval(slideInterval);
 const togglePop = () =>  {
   console.log('hey');
   if(pop.innerHTML === "Click here to add 'class' to slide 3!"){
-      pop.innerHTML = "Click for the 'prototype' slide 3!";
+      pop.innerHTML = "Click here for the 'prototype' slide 3!";
       slide3.src = "slides/Slide3b.png";
       slideP3.src = "slides/SlideP3b.png";
+      console.log('done');
   }
   else {
       pop.innerHTML = "Click here to add 'class' to slide 3!"
-      slide3.src = "slides/Slide3a.png";
+      slide3.src = "slides/Slide3.png";
       slideP3.src = "slides/SlideP3a.png";
+      console.log('done');
   }
 }
 
