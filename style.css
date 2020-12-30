@@ -109,11 +109,11 @@ nav h2 {
   color: var(--orange);
 }
 
-.desktop {
+#desktop {
   display: none;
 }
 
-.mobile {
+#mobile {
   display: inline-block;
 }
 
@@ -124,10 +124,10 @@ nav h2 {
 }
 
 @media (min-width: 875px) {
-  .desktop {
+  #desktop {
     display: inline-block;
   }
-  .mobile {
+  #mobile {
     display: none;
   }
 }
@@ -182,7 +182,7 @@ section h2 {
 @media (min-width: 750px) {
  section {
   font-size: 20px;
- }
+  }
   section h2 {
     font-size: 30px;
   }
@@ -509,7 +509,7 @@ input[type=submit]:hover {
 }
 
 /* Both WHY CODING? Google Search Form && WHY FAC? FAC Search */
-#empty, #empty2{
+#empty, #emptyGlossSearch{
   font-family: Arial, Helvetica, sans-serif;
   position: absolute;
   top: 0px;
@@ -528,25 +528,21 @@ input[type=submit]:hover {
 
 /* ******** WHY F&C SECTION ******** */
 
-#fandc {
-  position: relative;
-}
-
 .search-form {
   max-width: 80vw;
   margin: 5vw auto;
 }
 
-#search2 {
+#glossSearchBox {
   position: relative;
 }
 
-#text2 {
+#glossSearchText {
   position: relative;
   width: 100%;
   border-radius: 5px;
   padding: 1vw 0;
-  font-size: 30px;
+  /*font-size: 30px;*/
   font-family: 'Nova Mono', monospace;
   color: var(--grey-text);
   text-align: center;
@@ -555,40 +551,41 @@ input[type=submit]:hover {
   box-shadow: 0 0 10px var(--border-grey);
 }
 
-.suggestions {
+#glossSuggestions {
   position: relative;
-  width: 88%;
+  width: 100%;
   margin: auto;
   padding: 0;
-  perspective: 100vw;
+  /*perspective: 100vw;*/
 }
 
-.suggestions li {
-  height: 15vw;
+#glossSuggestions li {
+  /*height: 30vh;*/
   padding: 1vw;
-  overflow: hidden;
-  font-size: 15px;
+  /*overflow: hidden;*/
   color: var(--grey-text);
   list-style: none;
-  box-shadow: 0 0 20px var(--border-grey);
+  border-bottom-style: dashed;
+  border-bottom-color: var(--blue);
+  word-wrap:break-word;
+  /*box-shadow: 0 0 20px var(--border-grey);*/
 }
 
-
-.suggestions li:nth-child(odd) {
-  margin-top: 2vw;
-  transform: perspective(50px) rotateX(-3deg) translateY(3px);
-  background: linear-gradient(to bottom, var(--lightgrey) 0%, var(--white) 100%);
+#glossSuggestions li:nth-child(odd) {
+  /*transform: perspective(50px) rotateX(-1deg);*/
+  background: linear-gradient(var(--lightgrey), var(--white));
+  /*margin-top: 0.5vw;*/
 }
 
-.suggestions li:nth-child(even) {
-  transform: perspective(50px) rotateX(3deg) translateY(3px) scale(1.001);
-  background: linear-gradient(to bottom, var(--white) 100% 0%, var(--lightgrey) 100%);
-  margin-top: -1.5vw;
+#glossSuggestions li:nth-child(even) {
+  /*transform: perspective(50px) rotateX(1deg);*/
+  background: linear-gradient(var(--white),var(--lightgrey));
+  /*margin-top: -1vw;*/
 }
 
-.suggestions li:nth-child(1) {
-  margin-top: 1.25vw;
-}
+/*#glossSuggestions li:nth-child(1) {
+  margin-top: 0vw;
+}*/ 
 
 .highlight1 {
   background: var(--pink);
@@ -1231,7 +1228,6 @@ footer {
   text-align: center;
   margin-bottom: -1.5em;
   margin-top: -1.5em;
-  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   z-index: 1;

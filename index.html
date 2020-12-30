@@ -26,21 +26,23 @@
 
     <!--Horizontal navigation bar-->
     <nav>
-      <h2>
-        <a href="#header" class="contents desktop">Home</a>
-        <a href="#header" class="contents mobile">Home</a> |
-        <a href="#coding" class="contents desktop">Why Coding?</a>
-        <a href="#coding" class="contents mobile">Coding</a> |
-        <a href="#fandc" class="contents desktop">Why FAC?</a>
-        <a href="#fandc" class="contents mobile">FAC</a> |
-        <a href="#me" class="contents desktop">Why Me?</a>
-        <a href="#me" class="contents mobile">Me</a> |
-        <a href="#prereqs" class="contents desktop">Course Prereqs</a>
-        <a href="#prereqs" class="contents mobile">Prereqs</a> |
-        <a href="#bytesized" class="contents desktop">ByteSizedIT</a>
-        <a href="#bytesized" class="contents mobile">ByteSized</a> |
-        <a href="#robot" class="contents desktop">My Robot Prototype</a>
-        <a href="#robot" class="contents mobile">MyRobot</a>
+      <h2 id="mobile">
+        <a href="#header" class="contents">Home</a> |
+        <a href="#coding" class="contents">Coding</a> |
+        <a href="#fandc" class="contents">FAC</a> |
+        <a href="#me" class="contents">Me</a> |
+        <a href="#prereqs" class="contents">Prereqs</a> |
+        <a href="#bytesized" class="contents">ByteSized</a> |
+        <a href="#robot" class="contents">MyRobot</a>
+      </h2>
+      <h2 id="desktop">
+        <a href="#header" class="contents">Home</a> |
+        <a href="#coding" class="contents">Why Coding?</a> |
+        <a href="#fandc" class="contents">Why FAC?</a> |
+        <a href="#me" class="contents">Why Me?</a> |
+        <a href="#prereqs" class="contents">Course Prereqs</a> |
+        <a href="#bytesized" class="contents">ByteSizedIT</a> |
+        <a href="#robot" class="contents">My Robot Prototype</a>
       </h2>
     </nav>
 
@@ -187,11 +189,11 @@
         <h2>Why Founders and Coders?</h2>
         <p>The peer-led learning and collaborative approach fostered at Founders and Coders ....</p>
         <form class="search-form">
-          <div id="search2">
-            <input id="text2" type="text" placeholder="Enter Programming Term">
-            <button id="empty2" type="button">&#9587;</button>
+          <div id="glossSearchBox">
+            <input id="glossSearchText" type="text" placeholder="Enter Programming Term">
+            <button id="emptyGlossSearch" type="button">&#9587;</button>
           </div>
-          <ul class="suggestions">
+          <ul id="glossSuggestions">
           </ul>
         </form>
       </section>
