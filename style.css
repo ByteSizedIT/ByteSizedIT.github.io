@@ -1,3 +1,5 @@
+/* ********SITE WIDE SETTINGS******** */
+
 /*Custom properties/variables*/
 :root {
   --orange: #ffce1d;
@@ -18,41 +20,50 @@
   box-sizing: border-box;
 }
 
-/*Added to center images  - incl lego piece and Buzz*/
-img {
-  vertical-align: middle;
-}
+
+/*All Font families and sizes, excluding modals (see their own parent sections)*/
 
 body {
   font-family: 'Fira Code', monospace;
   margin: 0;
 }
 
-
-
-
-
-
-/* ********HEADER******** */
-
 header {
-  background-color: var(--orange);
   font-family: 'Major Mono Display', monospace;
-  text-align: center;
-  padding: 0.25em;
 }
 
 header h1 {
   font-size: 25px;
-  margin-top: 0em;
-  margin-bottom: 0em;
 }
 
 header h2 {
   font-size: 18px;
-  margin-top: 0em;
-  margin-bottom: 0em;
-  padding: 0.3em;
+}
+
+nav h2 {
+  font-family: 'Nova Mono', monospace;
+  font-size: 20px;
+}
+
+button {
+  font-family: 'Nova Mono', monospace;
+}
+
+section h2, #glossSearchTxt {
+  font-family: 'Nova Mono', monospace;
+  font-size: 20px;
+}
+
+section, button, #popup, #googleSearchTxt {
+  font-size: 16px;
+}
+
+#emptyGoogleSearch, input[type=submit] {
+  font-size: 14px;
+}
+
+input[type=submit] {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (min-width: 350px) {
@@ -77,7 +88,93 @@ header h2 {
   header h2 {
     font-size: 30px;
   }
+  nav h2 {
+    font-size: 30px;
+  }
+  #coding h2 + p::first-letter, #me h2 + p::first-letter, #bytesized h2 + p::first-letter {
+    font-size: 70px;
+  }
+  section, button, #popup, #googleSearchTxt, #emptyGoogleSearch, input[type=submit] {
+  font-size: 20px;
+  }
+  section h2, #glossSearchTxt {
+    font-size: 30px;
+  }
 }
+
+@media (orientation: portrait) {
+  .carousel__arrows {
+    font-size: 4vh;
+  }
+  #play-pause {
+    font-size: 4vw;
+  }
+  /* #popup {
+    font-size: 4vw;
+  } */
+}
+
+@media (orientation: landscape) {
+  .carousel__arrows {
+    font-size: 4vw;
+  }
+  #play-pause {
+    font-size: 3vh;
+  }
+  /* #popup {
+    font-size: 3vh;
+  } */
+}
+
+
+
+
+
+/* ********HEADER******** */
+
+header {
+  background-color: var(--orange);
+  /*font-family: 'Major Mono Display', monospace;*/
+  text-align: center;
+  padding: 0.25em;
+}
+
+header h1 {
+  /*font-size: 25px;*/
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+header h2 {
+  /*font-size: 18px;*/
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding: 0.3em;
+}
+
+/*@media (min-width: 350px) {
+  header h1 {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 600px) {
+  header h1 {
+    font-size: 40px;
+  }
+  header h2 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 750px) {
+  header h1 {
+    font-size: 70px;
+  }
+  header h2 {
+    font-size: 30px;
+  }
+}*/
 
 
 
@@ -87,7 +184,7 @@ header h2 {
 
 nav {
   background-color: var(--pink);
-  font-family: 'Nova Mono', monospace;
+  /*font-family: 'Nova Mono', monospace;*/
   text-align: center;
   /*make navigation bar stay at the top of the page when scrolling down*/
   position: -webkit-sticky;
@@ -97,7 +194,7 @@ nav {
 }
 
 nav h2 {
-  font-size: 20px;
+  /*font-size: 20px;*/
   margin: 0;
 }
 
@@ -117,11 +214,11 @@ nav h2 {
   display: inline-block;
 }
 
-@media (min-width: 750px) {
+/*@media (min-width: 750px) {
   nav h2 {
     font-size: 30px;
   }
-}
+}*/
 
 @media (min-width: 875px) {
   #desktop {
@@ -136,7 +233,7 @@ nav h2 {
 
 
 
-/* ********ALL SECTIONS******** */
+/* ********ALL SECTIONS ON THE WEBPAGE******** */
 
 /*Alternate the background coloring of individual webpage sections identified in the navigation bar*/
 
@@ -148,45 +245,42 @@ nav h2 {
   background-color: var(--white);
 }
 
+/*Sizing of the webpage sections identified in navigation bar, text alignment etc*/
+
 @media (min-width: 750px) {
   #coding h2 + p::first-letter, #me h2 + p::first-letter, #bytesized h2 + p::first-letter {
   color: var(--pink);
   float: left;
-  font-size: 70px;
+  /*font-size: 70px;*/
   line-height: 60px;
   padding-right: 8px;
   padding-top: 0;
   padding-bottom: 0;
-
   opacity: 0.5;
   }
 }
 
-/*Sizing of the webpage sections identified in navigation bar, fonts, text alignment*/
-
 section {
-  font-size: 16px;
+  /*font-size: 16px;*/
   line-height: 2;
-
   vertical-align: center;
 }
 
 section h2 {
-  
-  font-family: 'Nova Mono', monospace;
+  /* font-family: 'Nova Mono', monospace; */
   text-align: center;
-  font-size: 20px;
+  /*font-size: 20px;*/
   margin: 0;
 }
 
-@media (min-width: 750px) {
+/*@media (min-width: 750px) {
  section {
   font-size: 20px;
   }
   section h2 {
     font-size: 30px;
   }
-}
+}*/
 
 section p {
   padding-left: 5vw;
@@ -201,8 +295,8 @@ section p {
 
 button {
   background-color: var(--pink);
-  height: 3em;
-  font-family: 'Nova Mono', monospace;
+  height: 2em;
+  /* font-family: 'Nova Mono', monospace; */
   font-weight: bold;
   border: none;
   border-radius: 5px;
@@ -224,7 +318,9 @@ button:hover {
 
 
 
-/* ********ALL MODALS******** */
+
+
+/* ********ALL MODALS ON WEBPAGE******** */
 
 .modal {
   width: 100%;
@@ -250,6 +346,17 @@ button:hover {
 
 
 
+/* ********ALL IMAGES ON WEBPAGE******** */
+
+/*Added to center images  - incl lego piece and Buzz*/
+img {
+  vertical-align: middle;
+}
+
+
+
+
+
 /* ********CAROUSEL SECTION******** */
 
 /*Sizing and positioning of 'carousel' div (containing the viewer and arrow buttons)*/
@@ -261,6 +368,7 @@ button:hover {
 
 /*Shared sizing and positioning of the arrow buttons for the carousel*/
 .carousel__arrows {
+  height: 3em;
   padding: 1vw 1vh;
   margin: 1vw 1vh;
   position: absolute;
@@ -269,9 +377,9 @@ button:hover {
   z-index: 1;
 }
 
-@media (orientation: portrait) {
+/* @media (orientation: portrait) {
   .carousel__arrows {
-    font-size: 3.5vh;
+    font-size: 4vh;
   }
 }
 
@@ -279,7 +387,7 @@ button:hover {
   .carousel__arrows {
     font-size: 4vw;
   }
-}
+} */
 
 /*Positioning the previous arrow button*/
 #carouselPrevArrow {
@@ -346,10 +454,11 @@ button:hover {
 
 /* Div for the Carousel control button(s)*/
 #control-panel{
+  position: relative;
   text-align: center;
 }
 
-@media all and (orientation:portrait) {
+/* @media all and (orientation:portrait) {
   #control-panel button{
     font-size: 4vw;
   }
@@ -359,7 +468,7 @@ button:hover {
   #control-panel button{
     font-size: 3vh;
   }
-}
+} */
 
 /* Div for the dots/bullets/indicators */
 #dots{
@@ -405,31 +514,31 @@ button:hover {
   overflow: visible;
   visibility: hidden;
   background-color: var(--lightgrey);
+  color: var(--grey-text);
   text-align: center;
   border-radius: 6px;
+  height: auto;
   padding: 1vh 1vw;
   position: absolute;
-  z-index: 1;
   right: 25vw;
   transform: translateX(50%);
-  color: var(--grey-text);
+  top: -5vw;
+  z-index: 1;
 }
 
 @media all and (orientation:portrait) {
   #popup {
-  height: 24vw;
+  /* height: 24vw; */
   width: 30vw;
-  bottom: -18vw;
-  font-size: 4vw;
+  /*font-size: 4vw;*/
   }
 }
 
 @media all and (orientation:landscape) {
   #popup {
-    height: 14vh;
-    width: 30vh;
-    bottom: -8vh;
-    font-size: 3vh;
+    /* height: 14vh; */
+    width: 20vw;
+    /*font-size: 3vh;*/
   }
 }
 
@@ -459,18 +568,24 @@ button:hover {
 
 /*Google Search Form*/
 
-#search{
+#googleSearch {
+  width: 80vw;
   margin: auto;
-  width: 40vw;
   position: relative;
 }
 
-#text {
+@media (min-width: 750px) {
+  #googleSearch {
+    width: 60vw;
+  }
+}
+
+#googleSearchTxt {
   width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--border-grey);
   border-radius: 25px;
-  font-size: 16px;
+  /*font-size: 16px;*/
   background-image: url('images/Magnifying_glass_icon.svg');
   background-size: auto 35%;
   background-position: 15px 12px;
@@ -478,16 +593,16 @@ button:hover {
   padding: 12px 20px 12px 40px;
 }
 
-#text:hover {
+#googleSearchTxt:hover {
   box-shadow: 0 0 10px var(--border-grey);
 }
 
-#text:focus {
+#googleSearchTxt:focus {
   outline: none;
 }
 
-#submit {
-    text-align: center;
+#googleSubmit {
+  text-align: center;
 }
 
 input[type=submit] {
@@ -496,8 +611,8 @@ input[type=submit] {
   border: none;
   border-radius: 5px;
   padding: 0.75vw 1.5vw;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1vw;
+  /* font-family: Arial, Helvetica, sans-serif;
+  font-size: 1vw; */
   color: var(--grey-text);
   cursor: pointer;
 }
@@ -509,7 +624,7 @@ input[type=submit]:hover {
 }
 
 /* Both WHY CODING? Google Search Form && WHY FAC? FAC Search */
-#empty, #emptyGlossSearch{
+#emptyGoogleSearch, #emptyGlossSearch{
   font-family: Arial, Helvetica, sans-serif;
   position: absolute;
   top: 0px;
@@ -528,16 +643,18 @@ input[type=submit]:hover {
 
 /* ******** WHY F&C SECTION ******** */
 
-.search-form {
+/*.search-form {
   max-width: 80vw;
   margin: 5vw auto;
-}
+}*/
 
-#glossSearchBox {
+#glossSearch {
+  margin: 5vw auto;
+  max-width: 80vw;
   position: relative;
 }
 
-#glossSearchText {
+#glossSearchTxt {
   position: relative;
   width: 100%;
   border-radius: 5px;
@@ -946,7 +1063,6 @@ figure {
   padding-bottom: 2vh;
 }
 
-
 #score-display {
   padding-bottom: 2vh;
 }
@@ -1008,8 +1124,6 @@ figure {
     padding-top: .5vh;
   }
 }
-
-
 
 .tetris__arrows {
   position: absolute;

@@ -2,26 +2,24 @@
 
 
 //Initialise 'search box' and Google 'empty' (X) buttton as objects in JS
-const searchBox = document.getElementById('text');
-const empty = document.getElementById('empty');
+const googleSearchText = document.getElementById('googleSearchTxt');
+const emptyGoogle = document.getElementById('emptyGoogleSearch');
 
 //Make the 'empty' button (X) appear in Google Search text box (when text is entered)
 function toggleEmpty() {
-    if(searchBox.value === "") {
-        empty.style.visibility = "hidden";
+    if(googleSearchText.value === "") {
+        emptyGoogle.style.visibility = "hidden";
         action.style.action = "";
     }
     else {
-        empty.style.visibility = "visible";
+        emptyGoogle.style.visibility = "visible";
     }
 }
 
-searchBox.addEventListener("keyup", toggleEmpty);
+googleSearchText.addEventListener("keyup", toggleEmpty);
 
 //Make the text in the Google Search page's text box disappear when the 'empty' button (X) is pressed
-empty.addEventListener("click", () => {
-    empty.style.visibility = "hidden";
-    searchBox.value = "";
+emptyGoogle.addEventListener("click", () => {
+    emptyGoogle.style.visibility = "hidden";
+    googleSearchText.value = "";
 });
-
-

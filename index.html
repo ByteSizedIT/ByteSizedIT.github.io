@@ -56,7 +56,7 @@
         <!--Carousel div, housing arrow buttons and carousel viewing area-->
         <div id="carousel">
 
-          <button id="popup">Click here to add 'class' to slide 3!</button>
+          
 
           <!-- Previous arrow button -->
           <button id="carouselPrevArrow" class="carousel__arrows hidden">&#10094;</button>
@@ -142,6 +142,7 @@
 
         <!--Carousel play/pause button-->
         <div id="control-panel">
+          <button id="popup">Click here to add 'class' to slide 3!</button>
           <button id="play-pause" class="pause">Play</button>
         </div>
 
@@ -164,23 +165,16 @@
 
       <!-- ******** 'WHY CODING?' - SECTION OF WEBPAGE ******** -->
       <section id="coding" class="sect">
-        <div id="bio">
           <h2>Bio ~ Why Coding?</h2>
           <p>A 44-year-old father of one...</p>
-        </div>
-        <div id="google">
-          <form action="https://google.com/search">
-              <div id="search">
-                  <input id="text" type="text" name="q" required>
-                  <button id="empty" type="button">&#9587;</button>
-              </div>
-              <div id="submit">
-                  <input type="submit" value="Google Search">
-                  <input type="submit" value="I'm Feeling Lucky" name="btnI">
-              </div>
-          </form>
-        </div>
-
+        <form id="googleSearch" action="https://google.com/search">
+          <input id="googleSearchTxt" type="text" name="q" required>
+          <button id="emptyGoogleSearch" type="button">&#9587;</button>
+          <div id="googleSubmit">
+              <input type="submit" value="Google Search">
+              <input type="submit" value="I'm Feeling Lucky" name="btnI">
+          </div>
+        </form>
       </section>
 
 
@@ -188,11 +182,9 @@
       <section id="fandc" class="sect">
         <h2>Why Founders and Coders?</h2>
         <p>The peer-led learning and collaborative approach fostered at Founders and Coders ....</p>
-        <form class="search-form">
-          <div id="glossSearchBox">
-            <input id="glossSearchText" type="text" placeholder="Enter Programming Term">
-            <button id="emptyGlossSearch" type="button">&#9587;</button>
-          </div>
+        <form id="glossSearch">
+          <input id="glossSearchTxt" class="searchTxt" type="text" placeholder="Enter Programming Term">
+          <button id="emptyGlossSearch" type="button">&#9587;</button>
           <ul id="glossSuggestions">
           </ul>
         </form>
@@ -321,7 +313,6 @@
           <button id="tetrisDownArrow" class="tetris__arrows">&#x25BC;</button>
           <button id="tetrisSpin" class="tetris__arrows">&#xAA5C;</button>
         </div>
-
       </section>
 
 
@@ -393,8 +384,7 @@
           <p id = "preTimer"></p>
           <p id = "timer"></p>
           <p id = "postTimer">Click <a href="https://github.com/ByteSizedIT">here</a> to see what happened next!</p>
-        </div>
-        
+        </div>    
       </section>
 
     </main>
