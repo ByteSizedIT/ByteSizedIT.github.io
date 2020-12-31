@@ -2,7 +2,7 @@
 
 
 // Initialise js variables for search box and suggestion elements
-const glossSearchText = document.querySelector('#glossSearchText');
+const glossSearchText = document.querySelector('#glossSearchTxt');
 const emptyGloss = document.querySelector('#emptyGlossSearch');
 
 const suggestions = document.querySelector('#glossSuggestions');                                     
