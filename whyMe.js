@@ -74,10 +74,10 @@ for(let i=0; i<numbers.length; i++) {
   numbers[i].addEventListener('click', function() {
     outputData = unformatNum(getOutput());
     if(isNaN(outputData)) { // Lines to remove initial emoji value etc
-      outputData = 0;
+      setOutput(this.id);
       setCalculation("");
     }
-    if (sumDone == true) {
+    else if (sumDone == true) {
       outputData = this.id;
       setOutput(outputData);
       sumDone = false;
@@ -99,34 +99,37 @@ for(let i=0; i<operators.length; i++) {
     }
 
     else if (this.id == "CE") {
-    outputData = unformatNum(getOutput()).toString(); //remove commas and convert to string
-    outputData = outputData.substring(0, outputData.length-1);
+      outputData = unformatNum(getOutput()).toString(); //remove commas and convert back to string
+      outputData = outputData.substring(0, outputData.length-1); //remove last digit
       if(isNaN(outputData)) { // lines to remove initial emoji value etc
         outputData = 0;
         setCalculation("");
       }
-    setOutput(outputData);
+      setOutput(outputData);
     }
 
     else {
-      outputData = getOutput();
-      calcData = getCalculation();
+      outputData = unformatNum(getOutput())
+      console.log(`output1: ${outputData}`)
+      //outputData = getOutput();
+      console.log(`output2: ${outputData}`)
+      //calcData = getCalculation();
       if(isNaN(outputData)) { // lines to remove initial emoji value etc
         setCalculation("0"+this.id);
         output.innerText = "";
       }
-
-      else if (outputData!="") {
-        outputData = unformatNum(outputData);
-        calcData = calcData + outputData;
+      else {
         if (this.id == "=") {
+          calcData = getCalculation() + outputData;
           let result = eval(calcData);
           setOutput(result);
           setCalculation("");
           sumDone = true;
         }
         else {
-          calcData = calcData + this.id;
+          console.log(`calcData1: ${calcData}`)
+          calcData = getCalculation() + outputData + this.id;
+          console.log(`calcData2: ${calcData}`)
           setCalculation(calcData);
           output.innerText = "";
         }

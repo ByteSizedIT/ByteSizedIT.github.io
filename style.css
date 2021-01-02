@@ -58,8 +58,12 @@ section, button, #popup, #googleSearchTxt {
   font-size: 16px;
 }
 
-#emptyGoogleSearch, input[type=submit] {
+input[type=submit] {
   font-size: 14px;
+}
+
+#emptyGoogleSearch {
+  font-size: 10px;
 }
 
 input[type=submit] {
@@ -94,8 +98,14 @@ input[type=submit] {
   #coding h2 + p::first-letter, #me h2 + p::first-letter, #bytesized h2 + p::first-letter {
     font-size: 70px;
   }
-  section, button, #popup, #googleSearchTxt, #emptyGoogleSearch, input[type=submit] {
+  section, button, #popup, #googleSearchTxt {
   font-size: 20px;
+  }
+  #input[type=submit] {
+    font-size: 18px;
+  }
+  #emptyGoogleSearch {
+    font-size: 14px;
   }
   section h2, #glossSearchTxt {
     font-size: 30px;
@@ -755,45 +765,45 @@ input[type=submit]:hover {
 
 @media all and (orientation:portrait) {
   #cModal {
-    padding-top: 10vw;
+    padding-top: 12vw;
   }
 
   #calculator {
-    height: 80vw;
-    width: 50vw;
-    padding-top: 1.5vw;
+    height: 120vw;
+    width: 75vw;
+    padding-top: 2.25vw;
   }
 
   #closeCalc {
-    font-size: 2vw;
-    padding-left: 1.5vw;
+    font-size: 3vw;
+    padding-left: 2.25vw;
   }
 
   #calculation__value {
-    height: 4vw;
-    padding-top: 2vw;
-    font-size: 3vw;
+    height: 6vw;
+    padding-top: 3vw;
+    font-size: 4.5vw;
   }
 
   #output__value {
-    height: 10vw;
-    font-size: 6vw;
+    height: 15vw;
+    font-size: 9vw;
   }
 
   #calculation__value, #output__value {
-    padding: 0vw 6vw;
+    padding: 0vw 9vw;
   }
 
   #keyboard {
-    height: 60vw;
-    padding: 0 1vw;
+    height: 90vw;
+    padding: 0 1.5vw;
   }
 
   .operator, .number, .blank {
-    height: 8vw;
-    width: 8vw;
-    margin: 2vw;
-    font-size: 3vw;
+    height: 12vw;
+    width: 12vw;
+    margin: 3vw;
+    font-size: 4.5vw;
   }
 }
 
@@ -1214,6 +1224,7 @@ figure {
 
 .review {
   width: 100%;
+  HEIGHT: 3em;
   background-color: var(--mid-grey);
   color: var(--pink);
   margin: 1vw 0vw 0 0vw;
