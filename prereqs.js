@@ -6,6 +6,7 @@
 const tModal = document.getElementById("tModal");
 const openTetris = document.getElementById("lego");
 const closeTetris = document.getElementById("closeTet");
+
 const tRight = document.getElementById("tetrisRightArrow");
 const tLeft = document.getElementById("tetrisLeftArrow");
 const tDown = document.getElementById("tetrisDownArrow");
@@ -41,9 +42,7 @@ let points = 0;
 
 // Add event listener to assign value from local storage variable to highscore
 const highScore = document.getElementById('high-score');
-document.addEventListener('DOMContentLoaded', () => {
-  localStorage.getItem('highScore')? highScore.innerHTML = localStorage.getItem('highScore'): highScore.innerHTML = 0;
-})
+const highPoints = localStorage.getItem('highScore')? highScore.innerHTML = localStorage.getItem('highScore'): highScore.innerHTML = 0;
 
 const grid = document.getElementById('grid');
 const gridBase = document.getElementById('grid-base');
@@ -74,18 +73,23 @@ function generateSquares(number, divName, classA, classB) {
   }
 }
 
-// Run function above to generate squares for game grid, gridBase and preview grid
+// Run function above to generate squares for game grid, gridBase and preview grid...
+/*....NO LONGER NEEDED UNTIL START BUTTON IS PUSHED DUE TO WELCOME TEXT
 generateSquares(200, grid, 'square');
 generateSquares(10, gridBase, 'baseSquare', 'frozen');
+*/
 
 generateSquares(16, nextGrid, 'next-square');
 
 // Create Array of all sqaures on game grid
+/*....NO LONGER NEEDED UNTIL START BUTTON IS PUSHED DUE TO WELCOME TEXT
 let squaresArr = Array.from(document.getElementsByClassName('square'));
 let baseArr = Array.from(document.getElementsByClassName('baseSquare'));
 squaresArr = squaresArr.concat(baseArr);
+*/
+let squaresArr;
 
-//Create Array of all sqaures on preview grid
+//Create Array of all squares on preview grid
 let nextArr = Array.from(document.getElementsByClassName('next-square'));
 
 
@@ -131,14 +135,17 @@ let atBott = false;
 // Create variable to hold interval timing of automated movement downwards
 let movementTimer;
 
-// Create variabkle to hold the speed of automated movement downwards
+// Create variable to hold the speed of automated movement downwards
 let speed = 1000;
 
-// Create variable to hold boolean value indicating when game over
-let gameFinished;
+// // Create variable to hold boolean value indicating when game over
+// let gameFinished;
 
 //  Create variable to hold boolean value indicating when game paused
 let gamePaused;
+
+// Create variable to hold interval timing of blinking message (Game Over or Game Paused)
+let blinkTimer
 
 function nextTetrimino() {
   nextType = Math.floor(Math.random()*tetArr.length);
@@ -171,7 +178,7 @@ function undraw() {
 function newTetrimino() {
   currType = nextType;
   currentRotation = nextRotation;
-  ifRotated = (currentRotation + 1)%currType.length;
+  // = (currentRotation + 1)%currType.length;
   currentTet = tetArr[nextType][nextRotation];
   currentPosition = 4;
   undrawNext();
@@ -213,15 +220,16 @@ function moveDown() {
 
 // Functions to confirm space to the left/right of Tetrimino
 
-function spaceLeft(tetrimino) {
-  const atLeftBoundary = tetrimino.some(index => (currentPosition + index)%gridWidth === 0);
-  const lAdjoiningFrozen = tetrimino.some(index => squaresArr[currentPosition + index - 1].classList.contains('frozen'));
+function spaceLeft() {
+  const atLeftBoundary = currentTet.some(index => (currentPosition + index)%gridWidth === 0);
+  currentTet.forEach(index => console.log(index));
+  const lAdjoiningFrozen = currentTet.some(index => squaresArr[currentPosition + index - 1].classList.contains('frozen'));
   return (!atLeftBoundary && !lAdjoiningFrozen)? true: false;
 }
 
-function spaceRight(tetrimino) {
-  const atRightBoundary = tetrimino.some(index => (currentPosition + index)%gridWidth === 9);
-  const rAdjoiningFrozen = tetrimino.some(index => squaresArr[currentPosition + index - 1].classList.contains('frozen'));
+function spaceRight() {
+  const atRightBoundary = currentTet.some(index => (currentPosition + index)%gridWidth === 9);
+  const rAdjoiningFrozen = currentTet.some(index => squaresArr[currentPosition + index - 1].classList.contains('frozen'));
   return (!atRightBoundary && !rAdjoiningFrozen)? true: false;
 }
 
@@ -236,7 +244,7 @@ function moveLeft() {
 
 // Function to move currentTetrimino right
 function moveRight() {
-  if (spaceRight(currentTet)){
+  if (spaceRight()){
     undraw();
     currentPosition +=1;
     draw();
@@ -323,13 +331,28 @@ function addScore() {
   }
 }
 
+function blink() {
+  if (grid.innerHTML === "") {
+    if(points>=highPoints) {
+      grid.innerHTML = `<p id="gameOver">GAME OVER!<br><br>Congratulations, you have the highest score, ${points}!</p>`;
+    }
+    else {
+      grid.innerHTML = `<p id="gameOver">GAME OVER!<br><br>You scored ${points}. Click 'New Game' to try again...</p>`;
+    };
+  }
+  else {
+    grid.innerHTML = "";
+  };
+}
+
 // Funtion to test whether all squares are frozen/filled, ending the game
 function gameOver() {
   if(currentTet.some(index=>squaresArr[index+currentPosition].classList.contains('frozen'))) {
-    gameFinished = 1;
+    // gameFinished = 1;
     // clear move function to stop auto movement of tetrimino
     clearInterval(movementTimer);
     movementTimer = null;
+    blinkTimer = setInterval(blink, 500);
     // clear event listener for arrow keys being pressed
     document.removeEventListener('keydown', keysPressed);
     startBtn.innerHTML = "New Game";
@@ -350,20 +373,26 @@ startBtn.addEventListener("click", () => {
   if (!movementTimer){
 
     // If not the first game to be played since opening Tetris modulo
-    if (gameFinished) {
+    // if (gameFinished) {
+    //   removeAllChildNodes(grid);
+    //   removeAllChildNodes(gridBase);
+    //   generateSquares(200, grid, 'square');
+    //   generateSquares(10, gridBase, 'square', 'frozen');
+    //   squaresArr = Array.from(document.getElementsByClassName('square'));
+    //   // gameFinished = 0;
+    // }
+    //If starting any new game (first or otherwise)
+    if (!gamePaused){
+      points = 0;
+      score.innerHTML = points;
+      clearInterval(blinkTimer);
+      undraw();
+      undrawNext();
       removeAllChildNodes(grid);
       removeAllChildNodes(gridBase);
       generateSquares(200, grid, 'square');
       generateSquares(10, gridBase, 'square', 'frozen');
       squaresArr = Array.from(document.getElementsByClassName('square'));
-      gameFinished = 0;
-    }
-    // If starting any new game (first or otherwise)
-    if (!gamePaused){
-      points = 0;
-      score.innerHTML = points;
-      undraw();
-      undrawNext();
       nextTetrimino();
       newTetrimino();
       speed = 1000;

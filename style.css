@@ -1066,23 +1066,39 @@ figure {
   "startbtn next"
 }
 
-#score-display, #high-display {
-  font-size: 2vh;
-  text-align: center;
-  line-height: 0.75;
-  padding-bottom: 2vh;
+#closeTet {
+  font-size: 1vh;
+  padding-top: .25vh;
 }
 
-#score-display {
-  padding-bottom: 2vh;
+#score-display, #high-display, #start-button {
+  font-size: 2vh;
 }
-#high-display {
-  padding-bottom: 4vh;
+
+#score-display, #high-display {
+  padding-bottom: 3vh;
 }
 
 #start-button {
-  margin-bottom: 3vh;
-  font-size: 2vh;
+  margin-bottom: 2vh;
+}
+
+#score-display, #high-display, #tetHead, #tetFoot, #gameOver {
+  text-align: center;
+}
+
+#tetHead {
+  font-size: 4vh;
+}
+
+#tetFoot, #tetPara {
+  font-size: 2.5vh;
+}
+
+#grid p {
+  line-height: 2;
+  margin: 0;
+  padding: 3%;
 }
 
 #next-grid {
@@ -1099,8 +1115,8 @@ figure {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  font-family: Baloo, monospace;
-  font-size: 4vh;
+  font-family: 'Nova Mono', monospace;
+  font-size: 3vh;
   touch-action: manipulation;
 }
 
@@ -1121,7 +1137,7 @@ figure {
   touch-action: manipulation;
 }
 
-@media all and (orientation:portrait) {
+/* @media all and (orientation:portrait) {
   #closeTet {
     font-size: 2vw;
     padding-top: .5vw;
@@ -1133,7 +1149,7 @@ figure {
     font-size: 2vh;
     padding-top: .5vh;
   }
-}
+} */
 
 .tetris__arrows {
   position: absolute;
