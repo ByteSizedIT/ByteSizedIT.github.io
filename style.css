@@ -329,10 +329,11 @@ button {
     background-color: var(--orange);
     transition: 0.6s;
   }
-/* Works on Chrome developer, with arrow shhowing on simulated mobiles, but not on SafariDesign Responsive mode*/
+/* Hiding arrows on non touch screens.
+Commented out pending further thought/testing. Works on Chrome developer, with arrow showing on simulated mobiles, but not on SafariDesign Responsive mode. Tetris instructions (#tetPara would also need ref to arrows ammended when not a touch screen
   .tetris__arrows {
     display: none;
-  }
+  }*/
 }
 
 
