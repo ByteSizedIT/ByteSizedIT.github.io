@@ -1290,30 +1290,40 @@ figure {
 
 /* ******** ROBOT PROTOTYPE SECTION ******** */
 
+#request {
+  display: none;
+}
+
 #robot {
   position: relative;
   text-align: center;
 }
 
-#buzz-butt {
+#buzz-icon {
   background-image: url('images/noun_buzz_lightyear_1975668.svg') no-repeat;
   background-color: transparent;
+  margin: auto;
   margin-top: -5vw;
   background-size: cover;
   overflow: hidden;
+  transition: 1s;
 }
 
-#buzz p {
-  text-align: left;
+.fade-in {
+  animation: fadeIn ease 2s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
 }
 
 #robot__player {
   position: relative;
   padding: 0;
-  /*position: absolute;
-  top: 15vw;
-  left: 50%;
-  transform: translateX(-50%);*/
   display: none;
 }
 
@@ -1325,7 +1335,7 @@ figure {
 }
 
 @media all and (orientation:landscape) {
-  #buzz-butt {
+  #buzz-icon {
     width: 60vw;
     height: 45vw;
   }
@@ -1338,7 +1348,7 @@ figure {
 }
 
 @media all and (orientation:portrait) {
-  #buzz-butt {
+  #buzz-icon {
     width: 100vw;
     height: 75vw;
   }

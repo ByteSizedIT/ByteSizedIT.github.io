@@ -1,8 +1,10 @@
 // ******** MY ROBOT PROTOTYPE SECTION OF WEBSITE ********
 
 
-// Initialise variable for the Buzz icon/button
-const buzzButts = document.querySelectorAll(".buzz-butt");
+// Initialise variables incl. the Buzz icon/button
+const request = document.getElementById('request');
+const buzzIcon = document.getElementById('buzz-icon');
+const buzzButts = document.querySelectorAll(".buzz-butts");
 const buzz = document.querySelector("#buzz");
 
 // Initialise variable for robot video
@@ -10,7 +12,7 @@ const robPlayer = document.querySelector("#robot__player");
 const iframe = document.querySelector('iframe');
 
 // Initialise variable with the date of next Founders and Coders course
-const courseDate = new Date("Mar 3, 2021 09:45:00").getTime();
+const courseDate = new Date("Mar 8, 2021 10:00:00").getTime();
 
 // Assign Vimeo Player method to a variable
 const player = new Vimeo.Player(iframe);
@@ -26,16 +28,28 @@ let seconds;
 // Initialise variables for the last paragrahs
 const lastWord = document.querySelector('#lastWord');
 
+
+function spinIn() {
+  request.style.display = "block";
+  request.classList.add('fade-in');
+  buzzIcon.style.transform = 'rotate(3turn) scale(0,0)';
+}
+
 function showtime() {
   buzz.hidden = true;
   robPlayer.style.display = "block";
+  robPlayer.classList.add('fade-in');
   finalWord.style.display = "none";
   countdown.style.display = "none";
 }
 
 //Add Listeners to the play button and Buzz image to call function and show video
 buzzButts.forEach(button => { 
-  button.addEventListener('click', showtime)
+  button.addEventListener('click', function() {
+    console.log('spin in fired');
+    spinIn();
+    setTimeout(showtime, 1000);
+  })
 })
 
 // listener/function for action on playing video - may be add a pop up promting to watch til the end!!!
@@ -50,6 +64,8 @@ player.on('ended', function(data) {
   robPlayer.style.display = "none";
   finalWord.style.display = "block";
   countdown.style.display = "block";
+  finalWord.classList.add('fade-in');
+  countdown.classList.add('fade-in');
 }); 
 
 // Window set interval method to call a function that re-evaluates the countdown timer every second
