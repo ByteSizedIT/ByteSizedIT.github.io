@@ -121,29 +121,31 @@ let movementTimer;
 // Create variable to hold the speed of automated movement downwards
 let speed = 1000;
 
-//  Create variable to hold boolean value indicating when game paused
-let gamePaused;
+// Create variable to hold boolean values indicating when game in progress and game paused
+let gameOn = false;
+let gamePaused = false;
 
 // Create variable to hold interval timing of blinking message (Game Over or Game Paused)
 let blinkTimer
 
+// Function to create the next Tetrimino
 function nextTetrimino() {
   nextType = Math.floor(Math.random()*tetArr.length);
   nextRotation = Math.floor(Math.random()*4);
   nextTet = tetArrNext[nextType][nextRotation];
 }
 
-// Function to draw the nextTet
+// Function to draw the next Tetrimino
 function drawNext() {
   nextTet.forEach(index => nextArr[index].classList.add("tetrimino"));
 }
 
-// Function to undraw the nextTet
+// Function to undraw the next Tetrimino
 function undrawNext() {
   nextTet.forEach(index => nextArr[index].classList.remove("tetrimino"));
 }
 
-// Function to redefine 'current Tetrimino' based on 'next Tetrimino' type and rotation
+// Function to define the 'current Tetrimino' based on 'next Tetrimino' type and rotation
 // ...before selecting a new 'Next Tetrimino and drawing them both
 function newTetrimino() {
   currType = nextType;
@@ -306,8 +308,7 @@ function addScore() {
   // Increase speed of automatic downward movement every 50 points
   if(speed>250 && points%50===0){
     clearInterval(movementTimer);
-    movementTimer = null;
-    speed-=50;
+    speed -= 50;
     movementTimer = setInterval(moveDown, speed);
   }
 }
@@ -332,6 +333,7 @@ function gameOver() {
     // clear move function to stop auto movement of tetrimino
     clearInterval(movementTimer);
     movementTimer = null;
+    gameOn = false;
     blinkTimer = setInterval(blink, 500);
     // clear event listener for arrow keys being pressed
     document.removeEventListener('keydown', keysPressed);
@@ -348,53 +350,51 @@ function pauseGame() {
   tDown.removeEventListener('click', moveDown);
   tSpin.removeEventListener('click', rotate);
   startBtn.innerHTML = "Resume";
-  gamePaused = 1;
+  gamePaused = true;
 }
 
 // Start/Pause button functionality
 startBtn.addEventListener("click", () => {
-  // If not pausing a game in progress
-  if (!movementTimer){
-    //If starting any new game (first or otherwise)
-    if (!gamePaused){
-      points = 0;
-      score.innerHTML = points;
-      clearInterval(blinkTimer);
-      undraw();
-      undrawNext();
-      removeAllChildNodes(grid);
-      removeAllChildNodes(gridBase);
-      generateSquares(200, grid, 'square');
-      generateSquares(10, gridBase, 'square', 'frozen');
-      squaresArr = Array.from(document.getElementsByClassName('square'));
-      nextTetrimino();
-      newTetrimino();
-      speed = 1000;
-    }
-    // If unpausing/resuming the game
-    else if (gamePaused) {
-      gamePaused = 0;
-    }
-
-    // Whether starting a new game or resuming one
-
-    // Invoke move function every second to play
-    movementTimer = setInterval(moveDown, speed);
-
-    // Start event listener for arrow keys being pressed
-    document.addEventListener('keydown', keysPressed);
-
-    // Start event listeners for onscreen buttons being pressed
-    tLeft.addEventListener('click', moveLeft);
-    tRight.addEventListener('click', moveRight);
-    tDown.addEventListener('click', moveDown);
-    tSpin.addEventListener('click', rotate);
-
-    startBtn.innerHTML = "Pause";
-  }
-
-  // If pausing a game in progress
-  else {
+  // If a game is in play and not currently paused, then pause it
+  if (gameOn && !gamePaused) {
     pauseGame();
+  }
+  else {
+    //if a game is paused, then unpause it
+    if (gamePaused) {
+      gamePaused = false;
+    }
+    //if there is no game on, then start one!
+    else if (!gameOn) {
+    points = 0;
+    score.innerHTML = points;
+    clearInterval(blinkTimer);
+    undraw();
+    undrawNext();
+    removeAllChildNodes(grid);
+    removeAllChildNodes(gridBase);
+    generateSquares(200, grid, 'square');
+    generateSquares(10, gridBase, 'square', 'frozen');
+    squaresArr = Array.from(document.getElementsByClassName('square'));
+    nextTetrimino();
+    newTetrimino();
+    speed = 1000;
+    gameOn = true
+    }
+
+  // Whether starting a new game or unpausing one
+  // Invoke move function every second to play
+  movementTimer = setInterval(moveDown, speed);
+
+  // Start event listener for arrow keys being pressed
+  document.addEventListener('keydown', keysPressed);
+
+  // Start event listeners for onscreen buttons being pressed
+  tLeft.addEventListener('click', moveLeft);
+  tRight.addEventListener('click', moveRight);
+  tDown.addEventListener('click', moveDown);
+  tSpin.addEventListener('click', rotate);
+
+  startBtn.innerHTML = "Pause";
   }
 })
