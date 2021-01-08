@@ -1,6 +1,6 @@
 /* ********SITE WIDE SETTINGS******** */
 
-/*Custom properties/variables*/
+/*Custom variables*/
 :root {
   --orange: #ffce1d;
   --pink: #ff1d83;
@@ -21,8 +21,7 @@
 }
 
 /*Declare preloaded font-face styles */
-
-@font-face {
+/* @font-face {
   font-family: 'Major Mono Display';
   font-style: normal;
   font-weight: 400;
@@ -56,6 +55,43 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/orbitron/v16/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nymymBoWg1fDAlp7lk.woff) format('woff');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}  */
+
+/*Declare preloaded local copy of google font styles */
+@font-face {
+  font-family: 'Major Mono Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Major Mono Display'), local('Major-Mono-Display'),
+  url('fonts/major-mono-display-v5-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+  url('fonts/major-mono-display-v5-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+@font-face {
+  font-family: 'Nova Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nova Mono'), local('Nova-Mono'),
+  url('fonts/nova-mono-v11-latin-regular.woff2') format('woff2'),
+  url('fonts/nova-mono-v11-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Fira Code'), local('Fira-Code'),
+  url('fonts/fira-code-v9-latin-regular.woff2') format('woff2'),
+  url('fonts/fira-code-v9-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Orbitron'),
+  url('fonts/orbitron-v16-latin-800.woff2') format('woff2'),
+  url('fonts/orbitron-v16-latin-800.woff') format('woff');
 }
 
 /*Set all Font families and sizes to selectors, excluding modals (see their own parent sections)*/

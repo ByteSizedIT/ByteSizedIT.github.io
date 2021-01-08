@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- metadata elements -->
   <head>
     <title>Founders and Coders Application: Neville Keemer</title>
 
@@ -10,26 +9,29 @@
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com">  -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet"> -->
 
-    <link rel="preload" href="https://fonts.gstatic.com/s/majormonodisplay/v5/RWmVoLyb5fEqtsfBX9PDZIGr2tFubRh7DXeRAHRfwg.woff2" as="font" crossorigin="anonymous">
+    <!--Preload google fonts-->
+    <!-- <link rel="preload" href="https://fonts.gstatic.com/s/majormonodisplay/v5/RWmVoLyb5fEqtsfBX9PDZIGr2tFubRh7DXeRAHRfwg.woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="https://fonts.gstatic.com/s/novamono/v11/Cn-0JtiGWQ5Ajb--MRKvZ2ZZj9AtSw.woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="https://fonts.gstatic.com/s/firacode/v9/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7MOzlojwUKQ.woff" as="font" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/orbitron/v16/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nymymBoWg1fDAlp7lk.woff" as="font" crossorigin="anonymous">
+    <link rel="preload" href="https://fonts.gstatic.com/s/orbitron/v16/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nymymBoWg1fDAlp7lk.woff" as="font" crossorigin="anonymous"> -->
+
+    <!--Preload local copy of google fonts-->
+    <!-- <link rel="preload" href="fonts/major-mono-display-v5-latin-regular.woff2" as="font" crossorigin>
+    <link rel="preload" href="fonts/nova-mono-v11-latin-regular.woff2" as="font" crossorigin>
+    <link rel="preload" href="fonts/fira-code-v9-latin-regular.woff2" as="font" crossorigin>
+    <link rel="preload" href="fonts/orbitron-v16-latin-800.woff2" as="font" crossorigin> -->
 
     <link rel="stylesheet" type="text/css" href="style.css">
-
-    <!-- advised by w3 school website = Setting the Viewport, RWD; -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
-  <!--Page contents-->
   <body>
-
     <header id="header">
       <h1>Neville Keemer</h1>
       <h2>A Story in Development...</h2>
     </header>
 
-    <!--Horizontal navigation bar-->
+    <!-- ******** HORIZONTAL NAVIGATION BAR ******** -->
     <nav>
       <h2 id="mobile">
         <a href="#header" class="contents">Home</a> |
@@ -52,24 +54,16 @@
     </nav>
 
     <main>
-
-      
-      <!-- ******** HOME SECTION OF WEBPAGE ******** -->
-      <!-- housing carousel (incl arrow buttons & viewer) and play/pause -->
+      <!-- ******** HOME SECTION OF WEBPAGE (CAROUSEL) ******** -->
       <section id="home">
-
-        <!--Carousel div, housing arrow buttons and carousel viewing area-->
+        <!--Carousel div, including arrow buttons and carousel viewer-->
         <div id="carousel">
 
-          
-
-          <!-- Previous arrow button -->
           <button id="carouselPrevArrow" class="carousel__arrows hidden">&#10094;</button>
-
           <!--Viewing space in which the 'current' slide in the carousel deck can be viewed-->
-          <div id="carousel__viewer">
 
-            <!--Deck (list) of carousel slides-->
+          <div id="carousel__viewer">
+            <!--Lanscape deck (list) of carousel slides-->
             <ul id="carousel__deck-landscape" class="carousel__deck">                    
               <!--Individual carousel slides and the images contained-->
               <li class="carousel__slide current-slide">
@@ -103,7 +97,7 @@
                 <img class="image" src="slides/Slide10.png" alt="Slide 10 of Carousel">
               </li>
             </ul>
-
+            <!--Portrait deck (list) of carousel slides-->
             <ul id="carousel__deck-portrait" class="carousel__deck">
               <!--Individual carousel slides and the images contained-->
               <li class="carousel__slide current-slide">
@@ -137,7 +131,6 @@
                 <img class="image" src="slides/SlideP10.png" alt="Slide 10 of Carousel">
               </li>
             </ul>
-
           </div>
 
           <!--Next arrow button-->
@@ -164,14 +157,13 @@
           <span class="dot"></span>
           <span class="dot"></span>
         </div>
-
       </section>
-
 
       <!-- ******** 'WHY CODING?' - SECTION OF WEBPAGE ******** -->
       <section id="coding" class="sect">
-          <h2>Bio ~ Why Coding?</h2>
-          <p>A 44-year-old father of one...</p>
+        <h2>Bio ~ Why Coding?</h2>
+        <p>A 44-year-old father of one...</p>
+
         <form id="googleSearch" action="https://google.com/search">
           <input id="googleSearchTxt" type="text" name="q" required>
           <button id="emptyGoogleSearch" type="button">&#9587;</button>
@@ -182,11 +174,11 @@
         </form>
       </section>
 
-
       <!-- ******** 'WHY FOUNDERS AND CODERS?' SECTION OF WEBPAGE ******** -->
       <section id="fandc" class="sect">
         <h2>Why Founders and Coders?</h2>
         <p>The peer-led learning and collaborative approach fostered at Founders and Coders ....</p>
+
         <form id="glossSearch">
           <input id="glossSearchTxt" class="searchTxt" type="text" placeholder="Enter Programming Term">
           <button id="emptyGlossSearch" type="button">&#9587;</button>
@@ -195,22 +187,18 @@
         </form>
       </section>
 
-
-      <!--'WHY ME?' SECTION OF WEBPAGE-->
+      <!-- ******** 'WHY ME?' SECTION OF WEBPAGE ******** -->
       <section id="me" class="sect">
         <h2>Why me?</h2>
         <p>One, two, three...Don't just trust me, click <button id="openCalc">here</button> and you can do the math &#128521;!</p>
 
+        <!--Calculator modal-->
         <div id="cModal" class="modal">
           <div id="calculator">
             <div id="closeCalc" class="closeModal">close &times;</div>
             <div id="display">
-              <!-- <div id="calculation"> -->
                 <div id="calculation__value">Neville + FAC =</div>
-              <!-- </div>  -->
-              <!-- <div id="output"> -->
                 <div id="output__value">&#128525;</div>
-              <!-- </div>  -->
             </div>
             <div id="keyboard">
               <button class="operator" id="clear">C</button>
@@ -238,11 +226,11 @@
         </div>
       </section>
 
-
       <!-- ******** 'COURSE PREREQUISITES' SECTION OF WEBPAGE ******** -->
       <section id="prereqs" class="sect">
         <h2>Course Prerequisites+</h2>
         <div  id="prereqs__grid-container">
+          <!--Text content-->
           <div id="prereqs__intro">
             <p>You can click on the links below to see my freeCodeCamp and CodeWars profile pages, as well as Codecademy courses that I have used to solidify and
               extend my learning in areas including Git. I have also found HarvardX to be awesome in helping me to understand many concepts.<br>
@@ -258,7 +246,7 @@
             <p>Click <a href="https://github.com/ByteSizedIT/ByteSizedIT.github.io" target="_blank">here</a> for this site's GitHub repo.<br></p>
             <p id="credit">*lego brick by <a href="https://thenounproject.com/search/?q=lego%20brick&i=847021" target="_blank">Lluisa Iborra</a> from the <a href="https://thenounproject.com" target="_blank">Noun Project</a></p>
           </div>
-
+          <!--Linked logos-->
           <figure id="prereqs__item1">
             <a href="https://www.freecodecamp.org" target="_blank"><img class="prereqs__item" src="images/CodeCamp.png" alt="Code Camp logo"></a>
           </figure>
@@ -294,9 +282,10 @@
           </figure>
         </div>
 
+        <!--Tetris modal and game-->
         <div id="tModal" class="modal">
           <div id="tetris-container">
-
+            <!--'Dashboard containg score, start button and mini grid for next 'tetrimino'-->
             <div id="dash">
               <span id="closeTet" class="closeModal">close &times;</span>
               <h3 id="score-display">Score: <span id="score">0</span></h3>
@@ -305,25 +294,24 @@
               <div id="next-grid">
               </div>
             </div>
-
+            <!--Main grid for the Tetris game-->
             <div id="grid">
               <p id="tetHead">Welcome to Tetris!</p>
               <p id="tetPara">Move left: left arrow on keyboard OR <span class="fauxBtn">&#x25C0;</span> button on touch screen;<br>Move right: right arrow key OR <span class="fauxBtn">&#x25B6;</span> button;<br>
                 Move down: down arrow key OR <span class="fauxBtn">&#x25BC;</span> button;<br>Spin: up arrow key OR <span class="fauxBtn"></span>&#xAA5C;</span> button.<br></p>
               <p id="tetFoot">Click the Start button to begin. Good Luck!</p>
             </div>
-
+            <!--Row at the base of the main grid-->
             <div id="grid-base">
             </div>
-
           </div>
+          <!--Buttons to control the 'tetriminoes' in play-->
           <button id="tetrisLeftArrow" class="tetris__arrows">&#x25C0;</button>
           <button id="tetrisRightArrow" class="tetris__arrows">&#x25B6;</button>
           <button id="tetrisDownArrow" class="tetris__arrows">&#x25BC;</button>
           <button id="tetrisSpin" class="tetris__arrows">&#xAA5C;</button>
         </div>
       </section>
-
 
       <!-- ******** 'ByteSizedIT' SECTION OF WEBPAGE ******** -->
       <section id="bytesized" class="sect">
@@ -337,7 +325,6 @@
           <button class="scratch"><a href="https://scratch.mit.edu/projects/251017243/" target="_blank">'The Red Terror',<br>by Matthew</a></button>
           <button class="scratch"><a href="https://scratch.mit.edu/projects/222851239/" target="_blank">'What animals do when you're not around', by Alayna</a></button>
           <button class="scratch"><a href="https://scratch.mit.edu/projects/334480503/" target="_blank">Messi V Ronaldo,<br>by Daniel</a></button>
-          <!-- <button class="scratch"><a href="https://scratch.mit.edu/projects/280393583/" target="_blank">'What has the world become', by Myla</a></button>-->
         </div>
         <p><strong>Feedback for ByteSizedIT:</strong></p>
         <div id="feedback">
@@ -364,7 +351,6 @@
           </div>
         </div>
       </section>
-
 
       <!--MY ROBOT PROTOTYPE' SECTION OF WEBPAGE-->
       <section id="robot" class="sect">
