@@ -1,25 +1,34 @@
 // ******** WHY CODING? SECTION OF WEBSITE ********
 
+// ******** Variables ******** 
 
-//Initialise 'search box' and Google 'empty' (X) buttton as objects in JS
+//Initialise Google 'search box' and empty' (X) buttton in JS
 const googleSearchText = document.getElementById('googleSearchTxt');
-const emptyGoogle = document.getElementById('emptyGoogleSearch');
+const emptyGoogleBtn = document.getElementById('emptyGoogleBtn');
 
-//Make the 'empty' button (X) appear in Google Search text box (when text is entered)
-function toggleEmpty() {
+
+// ******** Functions ******** 
+
+//Function to make the 'empty' button (X) appear/disappear in Google Search text box (when text is entered/removed)
+function toggleEmptyGoogleBtn() {
     if(googleSearchText.value === "") {
-        emptyGoogle.style.visibility = "hidden";
+        emptyGoogleBtn.style.visibility = "hidden";
         action.style.action = "";
     }
     else {
-        emptyGoogle.style.visibility = "visible";
+        emptyGoogleBtn.style.visibility = "visible";
     }
 }
 
-googleSearchText.addEventListener("keyup", toggleEmpty);
-
-//Make the text in the Google Search page's text box disappear when the 'empty' button (X) is pressed
-emptyGoogle.addEventListener("click", () => {
-    emptyGoogle.style.visibility = "hidden";
+//Function to clear the Google Search Text when the 'empty' button (X) is clicked
+function clearGoogle() {
+    emptyGoogleBtn.style.visibility = "hidden";
     googleSearchText.value = "";
-});
+}
+
+
+// ******** Event Listeners ******** 
+
+googleSearchText.addEventListener("keyup", toggleEmptyGoogleBtn);
+
+emptyGoogleBtn.addEventListener("click", clearGoogle);

@@ -62,34 +62,31 @@
   font-family: 'Major Mono Display';
   font-style: normal;
   font-weight: 400;
-  src: local('Major Mono Display'), local('Major-Mono-Display'),
+  src: 
   url('fonts/major-mono-display-v5-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
   url('fonts/major-mono-display-v5-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-
 @font-face {
   font-family: 'Nova Mono';
   font-style: normal;
   font-weight: 400;
-  src: local('Nova Mono'), local('Nova-Mono'),
+  src: 
   url('fonts/nova-mono-v11-latin-regular.woff2') format('woff2'),
   url('fonts/nova-mono-v11-latin-regular.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Fira Code';
   font-style: normal;
   font-weight: 400;
-  src: local('Fira Code'), local('Fira-Code'),
+  src: 
   url('fonts/fira-code-v9-latin-regular.woff2') format('woff2'),
   url('fonts/fira-code-v9-latin-regular.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Orbitron';
   font-style: normal;
   font-weight: 800;
-  src: local('Orbitron'),
+  src: 
   url('fonts/orbitron-v16-latin-800.woff2') format('woff2'),
   url('fonts/orbitron-v16-latin-800.woff') format('woff');
 }
@@ -135,7 +132,7 @@ input[type=submit] {
   font-size: 14px;
 }
 
-#emptyGoogleSearch {
+#emptyGoogleBtn, #emptyGlossBtn {
   font-size: 10px;
 }
 
@@ -177,7 +174,7 @@ input[type=submit] {
   #input[type=submit] {
     font-size: 18px;
   }
-  #emptyGoogleSearch {
+  #emptyGoogleBtn, #emptyGlossBtn {
     font-size: 14px;
   }
   section h2, #glossSearchTxt {
@@ -192,9 +189,6 @@ input[type=submit] {
   #play-pause {
     font-size: 4vw;
   }
-  /* #popup {
-    font-size: 4vw;
-  } */
 }
 
 @media (orientation: landscape) {
@@ -204,72 +198,35 @@ input[type=submit] {
   #play-pause {
     font-size: 3vh;
   }
-  /* #popup {
-    font-size: 3vh;
-  } */
 }
 
 
-
-
-
-/* ********HEADER******** */
+/* ********WEBPAGE HEADER******** */
 
 header {
   background-color: var(--orange);
-  /*font-family: 'Major Mono Display', monospace;*/
   text-align: center;
   padding: 0.25em;
 }
 
 header h1 {
-  /*font-size: 25px;*/
   margin-top: 0em;
   margin-bottom: 0em;
 }
 
 header h2 {
-  /*font-size: 18px;*/
   margin-top: 0em;
   margin-bottom: 0em;
   padding: 0.3em;
 }
 
-/*@media (min-width: 350px) {
-  header h1 {
-    font-size: 30px;
-  }
-}
-
-@media (min-width: 600px) {
-  header h1 {
-    font-size: 40px;
-  }
-  header h2 {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 750px) {
-  header h1 {
-    font-size: 70px;
-  }
-  header h2 {
-    font-size: 30px;
-  }
-}*/
 
 
-
-
-
-/* ********NAVIGATION BAR******** */
+/* ********WEBPAGE NAVIGATION BAR******** */
 
 nav {
   background-color: var(--pink);
-  /*font-family: 'Nova Mono', monospace;*/
   text-align: center;
-  /*make navigation bar stay at the top of the page when scrolling down*/
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -277,7 +234,6 @@ nav {
 }
 
 nav h2 {
-  /*font-size: 20px;*/
   margin: 0;
 }
 
@@ -297,12 +253,6 @@ nav h2 {
   display: inline-block;
 }
 
-/*@media (min-width: 750px) {
-  nav h2 {
-    font-size: 30px;
-  }
-}*/
-
 @media (min-width: 875px) {
   #desktop {
     display: inline-block;
@@ -314,17 +264,15 @@ nav h2 {
 
 
 
-
-
 /* ********ALL SECTIONS ON THE WEBPAGE******** */
 
 /*Alternate the background coloring of individual webpage sections identified in the navigation bar*/
 
-#home, #fandc, #prereqs, #robot{
+#home, #fandc, #prereqs, #robot {
   background-color: var(--blue);
 }
 
-#coding, #me, #bytesized{
+#coding, #me, #bytesized {
   background-color: var(--white);
 }
 
@@ -334,7 +282,6 @@ nav h2 {
   #coding h2 + p::first-letter, #me h2 + p::first-letter, #bytesized h2 + p::first-letter {
   color: var(--pink);
   float: left;
-  /*font-size: 70px;*/
   line-height: 60px;
   padding-right: 8px;
   padding-top: 0;
@@ -344,26 +291,14 @@ nav h2 {
 }
 
 section {
-  /*font-size: 16px;*/
   line-height: 2;
   vertical-align: center;
 }
 
 section h2 {
-  /* font-family: 'Nova Mono', monospace; */
   text-align: center;
-  /*font-size: 20px;*/
   margin: 0;
 }
-
-/*@media (min-width: 750px) {
- section {
-  font-size: 20px;
-  }
-  section h2 {
-    font-size: 30px;
-  }
-}*/
 
 section p {
   padding-left: 5vw;
@@ -372,24 +307,17 @@ section p {
 
 
 
-
-
-/* ********ALL BUTTONS ON WEBPAGE - including 'Home'(carousel) and 'Robot Prototype' sections******** */
+/* ********CROSS SECTION SETTING FOR BUTTONS - including 'Home'(carousel) and 'Robot Prototype' sections******** */
 
 button {
   background-color: var(--pink);
   height: 2em;
-  /* font-family: 'Nova Mono', monospace; */
   font-weight: bold;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   outline: none;
 }
-
-
-
-
 
 /* On hover, for carousel and tetris in play buttons*/
 @media(hover: hover) and (pointer: fine) {
@@ -402,16 +330,7 @@ button {
     background-color: var(--orange);
     transition: 0.6s;
   }
-/* Hiding arrows on non touch screens.
-Commented out pending further thought/testing. Works on Chrome developer, with arrow showing on simulated mobiles, but not on SafariDesign Responsive mode. Tetris instructions (#tetPara would also need ref to arrows ammended when not a touch screen
-  .tetris__arrows {
-    display: none;
-  }*/
 }
-
-
-
-
 
 /* ********ALL MODALS ON WEBPAGE******** */
 
@@ -425,17 +344,13 @@ Commented out pending further thought/testing. Works on Chrome developer, with a
   z-index: 2;
   display: none;
 }
-
 .closeModal {
   font-weight: bold;
 }
-
 .closeModal:hover {
   color: var(--pink);
   cursor: pointer;
 }
-
-
 
 
 
@@ -448,9 +363,7 @@ img {
 
 
 
-
-
-/* ********CAROUSEL SECTION******** */
+/* ********HOME (CAROUSEL) SECTION OF WEBPAGE******** */
 
 /*Sizing and positioning of 'carousel' div (containing the viewer and arrow buttons)*/
 #carousel {
@@ -470,28 +383,13 @@ img {
   z-index: 1;
 }
 
-/* @media (orientation: portrait) {
-  .carousel__arrows {
-    font-size: 4vh;
-  }
-}
-
-@media (orientation: landscape) {
-  .carousel__arrows {
-    font-size: 4vw;
-  }
-} */
-
-/*Positioning the previous arrow button*/
+/*Positioning arrow buttons*/
 #carouselPrevArrow {
   left: 5vw;
 }
-
-/*Positioning the next arrow button*/
 #carouselNextArrow {
   right: 5vw;
 }
-
 /*Hidden class, to be called on prev/next arrows at start/end of carousel*/
 .hidden {
   display: none;
@@ -507,7 +405,7 @@ img {
   overflow: hidden;
 }
 
-/*Deck(list) of slides for the viewer*/
+/*Decks(lists) of slides for the viewer (Portrait and Landscape)*/
 .carousel__deck {
   list-style: none;
   margin: 0;
@@ -534,56 +432,40 @@ img {
   .carousel__slide{height: 25vw; width: 75vw;}
 }
 
-/*Size and positioning of individual slides within the queue(list)*/
+/*Size and positioning of individual slides within the deck(list)*/
 .carousel__slide {
   position: absolute;
   left:0;
 }
-
 .image{
   height: inherit;
   width: inherit;
 }
 
 /* Div for the Carousel control button(s)*/
-#control-panel{
+#play-panel{
   position: relative;
   text-align: center;
 }
 
-/* @media all and (orientation:portrait) {
-  #control-panel button{
-    font-size: 4vw;
-  }
-}
-
-@media all and (orientation:landscape) {
-  #control-panel button{
-    font-size: 3vh;
-  }
-} */
-
-/* Div for the dots/bullets/indicators */
+/* Positioning of the slide dots div */
 #dots{
   padding-top: 3vh;
   text-align: center;
 }
 
+/*Positioning etc of individual dots*/
 .dot {
   border-radius: 50%;
   margin: 1vw 0.2vw;
   background-color: var(--pink);
-
   display: inline-block;
-
   cursor: pointer;
   transition: 0.6s;
 }
-
 .dot:hover {
   background-color: var(--orange);
 }
-
 .current-dot  {
   background-color: var(--orange);
 }
@@ -593,6 +475,9 @@ img {
     height: 1.5vh;
     width: 1.5vh;
   }
+  #popup {
+    width: 30vw;
+    }
 }
 
 @media all and (orientation:landscape) {
@@ -600,11 +485,13 @@ img {
     height: 1.5vw;
     width: 1.5vw;
   }
+  #popup {
+    width: 20vw;
+  }
 }
 
-/* Slide 3 popup prompt */
+/* Slide 3 popup prompt - absolute to parent (#play-panel div)*/
 #popup {
-  overflow: visible;
   visibility: hidden;
   background-color: var(--lightgrey);
   color: var(--grey-text);
@@ -618,23 +505,6 @@ img {
   top: -5vw;
   z-index: 1;
 }
-
-@media all and (orientation:portrait) {
-  #popup {
-  /* height: 24vw; */
-  width: 30vw;
-  /*font-size: 4vw;*/
-  }
-}
-
-@media all and (orientation:landscape) {
-  #popup {
-    /* height: 14vh; */
-    width: 20vw;
-    /*font-size: 3vh;*/
-  }
-}
-
 /* Slide 3 popup prompt arrow */
 #popup::after {
   content: "";
@@ -646,14 +516,11 @@ img {
   border-style: solid;
   border-color: transparent transparent var(--lightgrey) transparent;
 }
-
 #popup:hover {
   color: black;
   border: 1px solid var(--mid-grey);
   box-shadow: 0 1px 5px var(--box-grey);
 }
-
-
 
 
 
@@ -666,7 +533,6 @@ img {
   margin: auto;
   position: relative;
 }
-
 @media (min-width: 750px) {
   #googleSearch {
     width: 60vw;
@@ -675,10 +541,8 @@ img {
 
 #googleSearchTxt {
   width: 100%;
-  box-sizing: border-box;
   border: 1px solid var(--border-grey);
   border-radius: 25px;
-  /*font-size: 16px;*/
   background-image: url('images/Magnifying_glass_icon.svg');
   background-size: auto 35%;
   background-position: 15px 12px;
@@ -704,42 +568,31 @@ input[type=submit] {
   border: none;
   border-radius: 5px;
   padding: 0.75vw 1.5vw;
-  /* font-family: Arial, Helvetica, sans-serif;
-  font-size: 1vw; */
   color: var(--grey-text);
   cursor: pointer;
 }
-
 input[type=submit]:hover {
   color: black;
   border: 1px solid var(--mid-grey);
   box-shadow: 0 1px 5px var(--border-grey);
 }
 
-/* Both WHY CODING? Google Search Form && WHY FAC? FAC Search */
-#emptyGoogleSearch, #emptyGlossSearch{
+
+/*  ******** Both WHY CODING? && WHY FAC? search forms  ******** */
+#emptyGoogleBtn, #emptyGlossBtn{
   font-family: Arial, Helvetica, sans-serif;
   position: absolute;
   top: 0px;
   right: 0px;
   border: none;
   background-color: transparent;
-  /*z-index: 2;*/
   cursor: pointer;
   padding: 15px 12px;
   visibility: hidden;
 }
 
 
-
-
-
 /* ******** WHY F&C SECTION ******** */
-
-/*.search-form {
-  max-width: 80vw;
-  margin: 5vw auto;
-}*/
 
 #glossSearch {
   margin: 5vw auto;
@@ -748,12 +601,9 @@ input[type=submit]:hover {
 }
 
 #glossSearchTxt {
-  position: relative;
   width: 100%;
   border-radius: 5px;
   padding: 1vw 0;
-  /*font-size: 30px;*/
-  font-family: 'Nova Mono', monospace;
   color: var(--grey-text);
   text-align: center;
   outline: 0;
@@ -762,52 +612,34 @@ input[type=submit]:hover {
 }
 
 #glossSuggestions {
-  position: relative;
   width: 100%;
   margin: auto;
   padding: 0;
-  /*perspective: 100vw;*/
 }
-
 #glossSuggestions li {
-  /*height: 30vh;*/
   padding: 1vw;
-  /*overflow: hidden;*/
   color: var(--grey-text);
   list-style: none;
   border-bottom-style: dashed;
   border-bottom-color: var(--blue);
   word-wrap:break-word;
-  /*box-shadow: 0 0 20px var(--border-grey);*/
 }
-
 #glossSuggestions li:nth-child(odd) {
-  /*transform: perspective(50px) rotateX(-1deg);*/
   background: linear-gradient(var(--lightgrey), var(--white));
-  /*margin-top: 0.5vw;*/
 }
-
 #glossSuggestions li:nth-child(even) {
-  /*transform: perspective(50px) rotateX(1deg);*/
   background: linear-gradient(var(--white),var(--lightgrey));
-  /*margin-top: -1vw;*/
 }
 
-/*#glossSuggestions li:nth-child(1) {
-  margin-top: 0vw;
-}*/ 
-
+/*Classes to highlight search text within suggestions*/
 .highlight1 {
   background: var(--pink);
   font-weight: bold;
 }
-
 .highlight2 {
   background: var(--orange);
   font-weight: bold;
 }
-
-
 
 
 
@@ -821,17 +653,12 @@ input[type=submit]:hover {
 }
 
 #calculation__value {
-  /*text-align: right;*/
   color: var(--darkgrey);
 }
-
 #output__value {
-  /*text-align: right;*/
   color: var(--grey-blue);
 }
-
 #calculation__value, #output__value {
-  /*margin: 0;*/
   text-align: right;
 }
 
@@ -845,43 +672,35 @@ input[type=submit]:hover {
   background-color: var(--blue);
 }
 
-
 @media all and (orientation:portrait) {
   #cModal {
     padding-top: 12vw;
   }
-
   #calculator {
     height: 120vw;
     width: 75vw;
     padding-top: 2.25vw;
   }
-
   #closeCalc {
     font-size: 3vw;
     padding-left: 2.25vw;
   }
-
   #calculation__value {
     height: 6vw;
     padding-top: 3vw;
     font-size: 4.5vw;
   }
-
   #output__value {
     height: 15vw;
     font-size: 9vw;
   }
-
   #calculation__value, #output__value {
     padding: 0vw 9vw;
   }
-
   #keyboard {
     height: 90vw;
     padding: 0 1.5vw;
   }
-
   .operator, .number, .blank {
     height: 12vw;
     width: 12vw;
@@ -894,49 +713,37 @@ input[type=submit]:hover {
   #cModal {
     padding-top: 10vh;
   }
-
   #calculator {
     height: 80vh;
     width: 50vh;
     padding-top: 1.5vh;
   }
-
   #closeCalc {
     font-size: 2vh;
     padding-left: 1.5vh;
   }
-
   #calculation__value {
     height: 4vh;
-    /*padding-top: 2vh;*/
     font-size: 3vh;
   }
-
   #output__value {
     height: 10vh;
     font-size: 6vh;
   }
-
   #calculation__value, #output__value {
     padding: 0vh 6vh;
   }
-
   #keyboard {
     height: 60vh;
     padding: 0 1vh;
   }
-
   .operator, .number, .blank {
     height: 8vh;
     width: 8vh;
     margin: 2vh;
     font-size: 3vh;
   }
-
 }
-
-
-
 
 
 /*  ******** PREREQUISITES SECTION ******** */
@@ -983,13 +790,11 @@ figure {
   "foundersSquare git git codeCampSquare codeWars codeWars"
 }
 
-/*Medium Mobile Devices e.g landscape mobile phones and tablets*/
 @media (min-width: 480px) {
   #prereqs__item2 {display: none;}
   #prereqs__item7 {display: none;}
   #prereqs__item10 {display: none;}
   #prereqs__item11 {display: none;}
-
   #prereqs__grid-container {
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows:  (2, auto);
@@ -999,7 +804,6 @@ figure {
   }
 }
 
-/*Large Mobile Devices, e.g. landscape tablets*/
 @media (min-width: 830px) {
   #prereqs__item2 {display: none;}
   #prereqs__item3 {display: none;}
@@ -1009,7 +813,6 @@ figure {
   #prereqs__item7 {display: grid;}
   #prereqs__item9 {display: grid;}
   #prereqs__item11 {display: grid;}
-
   #prereqs__grid-container {
   /*padding-bottom: 6vw;*/
   grid-template-columns: repeat(7, 1fr);
@@ -1024,10 +827,8 @@ figure {
   }
 }
 
-/*Extra-Large Mobile Devices, e.g. large tablets, laptops*/
 @media (min-width: 900px) {
   #prereqs__item6 {display: none;}
-
   #prereqs__grid-container {
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, auto);
@@ -1040,7 +841,6 @@ figure {
   }
 }
 
-/*Small non-Mobile*/
 @media (min-width: 1000px) {
   #prereqs__item4 {display: none;}
   #prereqs__item2 {display: grid;}
@@ -1049,8 +849,6 @@ figure {
   #prereqs__item6 {display: grid;}
   #prereqs__item8 {display: grid;}
   #prereqs__item10 {display: grid;}
-
-
   #prereqs__grid-container {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(5, auto);
@@ -1063,11 +861,9 @@ figure {
   }
 }
 
-/*Medium non-Mobile*/
 @media (min-width: 1200px) {
   #prereqs__item1 {display: none;}
   #prereqs__item10 {display: none;}
-
   #prereqs__grid-container {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(4, auto);
@@ -1079,11 +875,9 @@ figure {
   }
 }
 
-/*Large non-Mobile*/
 @media (min-width: 1300px) {
   #prereqs__item8 {display: none;}
   #prereqs__item11 {display: none;}
-
   #prereqs__grid-container {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(3, auto);
@@ -1115,13 +909,12 @@ figure {
   font-size: 10px;
 }
 
-#tModal {
+#tModal, #tetris-container, #grid, .square, .next-square, .tetrimino, .tetris__arrows {
   touch-action: manipulation;
 }
 
 /*size/centre/colour tetris container*/
 #tetris-container {
-  touch-action: manipulation;
   height: 95vh;
   width: 40vh;
   margin: auto auto;
@@ -1170,26 +963,29 @@ figure {
   text-align: center;
 }
 
+/*Introductory text to Tetris game*/
 #tetHead {
   font-size: 4vh;
 }
-
 #tetFoot, #tetPara {
   font-size: 2.5vh;
 }
 
+/*Default text, including game end*/
 #grid p {
   line-height: 2;
   margin: 0;
   padding: 3%;
 }
 
+/*Grid for next Tetrimino*/
 #next-grid {
   background-color: var(--orange);
   display: flex;
   flex-wrap: wrap;
 }
 
+/*Main game grid*/
 #grid {
   width: 40vh;
   height: 80vh;
@@ -1200,7 +996,6 @@ figure {
   align-items: center;
   font-family: 'Nova Mono', monospace;
   font-size: 3vh;
-  touch-action: manipulation;
 }
 
 #grid-base {
@@ -1212,28 +1007,13 @@ figure {
 .square, .next-square{
   width: 4vh;
   height: 4vh;
-  touch-action: manipulation;
 }
 
 .tetrimino {
   background-color: var(--pink);
-  touch-action: manipulation;
 }
 
-/* @media all and (orientation:portrait) {
-  #closeTet {
-    font-size: 2vw;
-    padding-top: .5vw;
-  }
-}
-
-@media all and (orientation:landscape) {
-  #closeTet {
-    font-size: 2vh;
-    padding-top: .5vh;
-  }
-} */
-
+/*Ingame controls, esp for touch screen/mobile*/
 .tetris__arrows {
   position: absolute;
   padding: 0;
@@ -1242,29 +1022,22 @@ figure {
   opacity: 75%;
   background-color: var(--orange);
   font-size: 5vh;
-  touch-action: manipulation;
 }
-
 #tetrisSpin {
   font-size: 3vh;
 }
-
 #tetrisLeftArrow, #tetrisRightArrow {
   top: 40%;
   transform: translateY(-50%);
 }
-
 #tetrisSpin, #tetrisDownArrow {
   top: 60%;
   transform: translateY(-50%);
 }
-
-/*Positioning the tetris left and down buttons*/
+/*Horizontal positioning the tetris buttons*/
 #tetrisLeftArrow, #tetrisDownArrow {
   left: 5vw;
 }
-
-/*Positioning the tetris right and rotate buttons*/
 #tetrisRightArrow, #tetrisSpin {
   right: 5vw;
 }
@@ -1276,7 +1049,6 @@ figure {
   padding-left: 5vw;
   padding-right: 5vw;
 }
-
 #projects {
   display: flex;
   justify-content: space-between;
@@ -1284,17 +1056,18 @@ figure {
 }
 
 .scratch {
-  /*height: 7vw;*/
   text-align: center;
   justify-content: center;
   margin: 1vw 0vw 0 0vw;
   padding: 1vw;
   height: auto;
 }
-
 .scratch a:link {
   color: var(--black);
   text-decoration: none;
+}
+.scratch a:visited {
+  color: var(--black);
 }
 
 @media (max-width: 499px) {
@@ -1303,23 +1076,17 @@ figure {
     font-size: 16px;
   }
 }
-
 @media (min-width: 500px) {
   .scratch {
     flex-basis: 49%;
     font-size: 16px;
   }
 }
-
 @media (min-width: 801px) {
   .scratch {
     flex-basis: 24%;
     font-size: 20px;
   }
-}
-  
-.scratch a:visited {
-  color: var(--black);
 }
 
 .review {
@@ -1333,16 +1100,13 @@ figure {
   font-size: 20px;
   text-align: left;
 }
-
 .review:after {
   content: '\002B';
   float: right;
 }
-
 .active:after {
   content: "\2212";
 }
-
 .review:hover, .active {
   background-color: var(--darkgrey);
 }
@@ -1352,13 +1116,10 @@ figure {
   width: 100%;
   padding-left: 5vw;
   padding-right: 5vw;
-  overflow: hidden;
+  overflow: hidden; /*i.e the paragraphs inside*/
   transition: max-height 0.2s ease-out;
   background-color: var(--lightgrey);
 }
-
-
-
 
 
 /* ******** ROBOT PROTOTYPE SECTION ******** */
@@ -1368,15 +1129,12 @@ figure {
 }
 
 #robot {
-  position: relative;
   text-align: center;
 }
 
 #buzz-icon {
   background-image: url('images/noun_buzz_lightyear_1975668.svg') no-repeat;
   background-color: transparent;
-  margin: auto;
-  margin-top: -5vw;
   background-size: cover;
   overflow: hidden;
   transition: 1s;
@@ -1411,6 +1169,7 @@ figure {
   #buzz-icon {
     width: 60vw;
     height: 45vw;
+    margin-top: -6vw;
   }
   #robot__player {
     height: 45vw;
@@ -1424,6 +1183,7 @@ figure {
   #buzz-icon {
     width: 100vw;
     height: 75vw;
+    margin-top: -10vw;
   }
   #robot__player {
     height: 75vw;

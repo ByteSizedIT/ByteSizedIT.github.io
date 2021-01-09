@@ -67,34 +67,34 @@
             <ul id="carousel__deck-landscape" class="carousel__deck">                    
               <!--Individual carousel slides and the images contained-->
               <li class="carousel__slide current-slide">
-                <img class="image" src="slides/Slide1.png" alt="Slide 1 of Carousel">
+                <img class="image" src="slides/Slide1.png" alt="Text reading 'Like all good scripts it began with a blank page...'. Text also represented by an image and in computer code.">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide2.png" alt="Slide 2 of Carousel">
+                <img class="image" src="slides/Slide2.png" alt="Text reading '...the start of something new'. Text also represented by an image and in computer code.">
               </li>
               <li class="carousel__slide">
-                <img class="image" id="slide3" src="slides/Slide3.png" alt="Slide 3 of Carousel">
+                <img class="image" id="slide3" src="slides/Slide3.png" alt="Text reading 'Inheriting properties and attributes...'. Text also represented by an image and in code. ">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide4.png" alt="Slide 4 of Carousel">
+                <img class="image" src="slides/Slide4.png" alt="Text reading '...and adding new ones too'. Text also represented by an image and in code.">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide5.png" alt="Slide 5 of Carousel">
+                <img class="image" src="slides/Slide5.png" alt="Text reading 'Connecting with the wider world...'. Text also represented by an image and in code.">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide6.png" alt="Slide 6 of Carousel">
+                <img class="image" src="slides/Slide6.png" alt="Text reading '...and developing a unique style'. Text also represented by an image and in code.">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide7.png" alt="Slide 7 of Carousel">
+                <img class="image" src="slides/Slide7.png" alt="Text reading 'Sharing methods and values'. Text also represented by an image and in code.">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide8.png" alt="Slide 8 of Carousel">
+                <img class="image" src="slides/Slide8.png" alt="Text reading 'Overcoming challenges and resolving promises'. Text also represented by an image and in code.">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide9.png" alt="Slide 9 of Carousel">
+                <img class="image" src="slides/Slide9.png" alt="Text reading 'Mixin with others to learn and support'. Text also represented by an image and in code.">
               </li>
               <li class="carousel__slide">
-                <img class="image" src="slides/Slide10.png" alt="Slide 10 of Carousel">
+                <img class="image" src="slides/Slide10.png" alt="Text reading 'Looking ahead to what the next page holds'. Text also represented by an image and in code.">
               </li>
             </ul>
             <!--Portrait deck (list) of carousel slides-->
@@ -138,8 +138,8 @@
 
         </div>
 
-        <!--Carousel play/pause button-->
-        <div id="control-panel">
+        <!--Carousel play/pause button (and slide 3 popup to use as parent for positioning-->
+        <div id="play-panel">
           <button id="popup">Click here to add 'class' to slide 3!</button>
           <button id="play-pause" class="pause">Play</button>
         </div>
@@ -166,7 +166,7 @@
 
         <form id="googleSearch" action="https://google.com/search">
           <input id="googleSearchTxt" type="text" name="q" required>
-          <button id="emptyGoogleSearch" type="button">&#9587;</button>
+          <button id="emptyGoogleBtn" type="button">&#9587;</button>
           <div id="googleSubmit">
               <input type="submit" value="Google Search">
               <input type="submit" value="I'm Feeling Lucky" name="btnI">
@@ -181,7 +181,7 @@
 
         <form id="glossSearch">
           <input id="glossSearchTxt" class="searchTxt" type="text" placeholder="Enter Programming Term">
-          <button id="emptyGlossSearch" type="button">&#9587;</button>
+          <button id="emptyGlossBtn" type="button">&#9587;</button>
           <ul id="glossSuggestions">
           </ul>
         </form>

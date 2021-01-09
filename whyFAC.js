@@ -1,19 +1,17 @@
 // ******** WHY FAC? SECTION OF WEBSITE ********
 
+// ******** Variables ******** 
 
-// Initialise js variables for search box and suggestion elements
+//Initialise Glossary 'search box', 'empty' (X) buttton and 'suggestions' list in JS
 const glossSearchText = document.querySelector('#glossSearchTxt');
-const emptyGloss = document.querySelector('#emptyGlossSearch');
-
+const emptyGlossBtn = document.querySelector('#emptyGlossBtn');
 const suggestions = document.querySelector('#glossSuggestions');                                     
 
 // Initialise variable for endpoint location of reference json file stored as a gist
 const endpoint = 'https://gist.githubusercontent.com/ByteSizedIT/1c8561bb56e71e56a93d77a9a40741d9/raw/264477a4f1c159bbc0bc01db39b376db2a16168a/FACglossary.json';
 
-// Initialise variable/array for storing entries returned frin reference gist file
+// Initialise variable/array for storing entries returned from reference gist file
 const entries = [];
-
-
 // Use fetch API method, passing in the endpoint of the json reference file
 fetch(endpoint)
   //convert/identify raw data returned in to a json format to make it readable
@@ -22,13 +20,15 @@ fetch(endpoint)
   .then(data => entries.push(...data));
 
 
-// Create a function to filter entries returned by fetch API
+// ******** Functions ******** 
+
+// Function to filter entries returned by fetch API
 function findMatches(text, entries) {
   const reg = new RegExp(text, 'gi');
   return entries.filter(entry => entry.term.match(reg) || entry.definition.match(reg))
 }
 
-// Create a function to display found matches
+// Function to display found matches
 function displayMatches() {
   const matches = findMatches(this.value, entries);
   const searchReg = new RegExp(this.value, 'gi');
@@ -47,26 +47,30 @@ function displayMatches() {
   suggestions.innerHTML = html;
 }
   
-//Make the 'empty' button (X) appear in Search's text box (when text is entered)
-function toggleEmptyGloss() {
-  console.log(this.value);
+//Function to make the 'empty' button (X) appear/disappear in Glossary Search text box (when text is entered/removed)
+function toggleEmptyGlossBtn() {
   if(this.value == "") {
-    emptyGloss.style.visibility = "hidden";
+    emptyGlossBtn.style.visibility = "hidden";
     suggestions.innerHTML = "";
   }
   else {
-    emptyGloss.style.visibility = "visible";
+    emptyGlossBtn.style.visibility = "visible";
   }
 }
+
+//Function to clear the Google Search Text when the 'empty' button (X) is clicked
+function clearGlossary() {
+  emptyGlossBtn.style.visibility = "hidden";
+  glossSearchText.value = "";
+  suggestions.innerHTML = "";
+}
+
+
+// ******** Event Listeners ******** 
 
 // Listener when typing new search term, to (find &) display matches
 glossSearchText.addEventListener('keyup', displayMatches);
 
-// Listener when typing/deleting search term, to show 'X'(empty) button or hide 'X' button and remove suggestions
-glossSearchText.addEventListener("keyup", toggleEmptyGloss);
+glossSearchText.addEventListener("keyup", toggleEmptyGlossBtn);
 
-emptyGloss.addEventListener("click", () => {
-  emptyGloss.style.visibility = "hidden";
-  glossSearchText.value = "";
-  suggestions.innerHTML = "";
-});
+emptyGlossBtn.addEventListener("click", clearGlossary);

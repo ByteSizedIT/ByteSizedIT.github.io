@@ -1,56 +1,90 @@
 // ******** PREREQUISITES SECTION OF WEBSITE (TETRIS) ********
 
+// ******** Variables ******** 
 
 // Initialise Tetris modal elements as variables in JS
-
 const tModal = document.getElementById("tModal");
 const openTetris = document.getElementById("lego");
 const closeTetris = document.getElementById("closeTet");
-
+// Initialise Tetris inplay controls as variables in JS
 const tRight = document.getElementById("tetrisRightArrow");
 const tLeft = document.getElementById("tetrisLeftArrow");
 const tDown = document.getElementById("tetrisDownArrow");
 const tSpin = document.getElementById("tetrisSpin");
 
-
-// When the user clicks lego icon, open the Tetris modal
-openTetris.addEventListener('click', () => {
-  tModal.style.display = "block";
-})
-
-// When the user clicks on close (x), close the Tetris modal
-closeTetris.addEventListener('click', () => {
-  pauseGame();
-  tModal.style.display = "none";
-})
-
-// When the user clicks anywhere outside of the Tetris modal, close it
-window.addEventListener('click', (e) => {
-  if (e.target == tModal) {
-    pauseGame();
-    tModal.style.display = "none";
-  }
-})
-
 // Inititialise Tetris game elements as variables in JS
-
 const startBtn = document.getElementById('start-button');
 
 const score = document.getElementById('score');
 let points = 0;
-
 const highScore = document.getElementById('high-score');
 const highPoints = localStorage.getItem('highScore')? highScore.innerHTML = localStorage.getItem('highScore'): highScore.innerHTML = 0;
 
 const grid = document.getElementById('grid');
 const gridBase = document.getElementById('grid-base');
-
 const nextGrid = document.getElementById('next-grid');
-
 const gridWidth = 10;
 const nextWidth = 4;
 
-// Function to create/append a div as child element of another (parent) div(divName)
+// Create variable to hold interval timing of automated movement downwards
+let movementTimer;
+
+// Create variable to hold the speed of automated movement downwards
+let speed = 1000;
+
+// Create variable to hold boolean values indicating when game in progress and game paused
+let gameOn = false;
+let gamePaused = false;
+
+// Create variable to hold interval timing of blinking message (Game Over or Game Paused)
+let blinkTimer
+
+
+// ******** Tetrimino Variables ******** 
+
+//Create Array of all squares on next grid
+let nextSquaresArr
+let squaresArr;
+
+// Create Tetriminoes to be used on main grid - array for each, containing 4 diff rotations
+const lType = [[1, gridWidth+1, gridWidth*2+1, 2], [0, 1, 2, gridWidth+2], [1, gridWidth+1, gridWidth*2+1, gridWidth*2], [0, gridWidth, gridWidth+1, gridWidth+2]];
+const zType = [[0, gridWidth, gridWidth+1, gridWidth*2+1], [1, 2, gridWidth, gridWidth+1], [0, gridWidth, gridWidth+1, gridWidth*2+1], [1, 2, gridWidth, gridWidth+1]];
+const tType = [[1, gridWidth, gridWidth+1, gridWidth+2], [1, gridWidth+1, gridWidth+2, gridWidth*2+1], [0, 1, 2, gridWidth+1], [1, gridWidth, gridWidth+1, gridWidth*2+1]];
+const oType = [[0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1]];
+const iType = [[1, gridWidth+1, gridWidth*2+1, gridWidth*3+1], [0, 1, 2, 3], [1, gridWidth+1, gridWidth*2+1, gridWidth*3+1], [0, 1, 2, 3]];
+
+// Create array of all 5 Tetrimino Types to be used on main grid, with each one containing own array of 4 rotations)
+const typesArr = [lType, zType, tType, oType, iType];
+
+
+// Create Tetriminoes to be used on the preview grid - array for each, containing 4 diff rotations
+const lTypeNext = [[1, nextWidth+1, nextWidth*2+1, 2], [nextWidth, nextWidth+1, nextWidth+2, nextWidth*2+2], [1, nextWidth+1, nextWidth*2+1, nextWidth*2], [nextWidth, nextWidth*2, nextWidth*2+1, nextWidth*2+2]];
+const zTypeNext = [[0, nextWidth, nextWidth+1, nextWidth*2+1], [nextWidth+1, nextWidth+2, nextWidth*2, nextWidth*2+1], [0, nextWidth, nextWidth+1, nextWidth*2+1], [nextWidth+1, nextWidth+2, nextWidth*2, nextWidth*2+1]];
+const tTypeNext = [[1, nextWidth, nextWidth+1, nextWidth+2], [1, nextWidth+1, nextWidth+2, nextWidth*2+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth*2+1], [1, nextWidth, nextWidth+1, nextWidth*2+1]];
+const oTypeNext = [[0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1]];
+const iTypeNext = [[1, nextWidth+1, nextWidth*2+1, nextWidth*3+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth+3], [1, nextWidth+1, nextWidth*2+1, nextWidth*3+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth+3]];
+
+// Create array of all 5 Tetriminoes to be used on the preview grid, with each one containing own array of 4 rotations)
+const typesArrNext = [lTypeNext, zTypeNext, tTypeNext, oTypeNext, iTypeNext];
+
+
+// Create variables and function to represent Next(preview) Tetrimino and Current Tetrimino
+let nextType;
+let nextRotation;
+
+let nextTet = [];
+
+let currType;
+let currentRotation;
+let ifRotated;
+
+let currentTet = [];
+let currentPosition;
+
+
+// ******** Grid Set Up Functions ******** 
+
+// Function to create/append a div as child element of another (parent) div (divName)
 // ...adding classA and classB to the the child div that has been created
 function appendDiv(divName, classA, classB) {
   let div = document.createElement('div');
@@ -71,78 +105,23 @@ function generateSquares(number, divName, classA, classB) {
   }
 }
 
-generateSquares(16, nextGrid, 'next-square');
-
-let squaresArr;
-
-//Create Array of all squares on preview grid
-let nextArr = Array.from(document.getElementsByClassName('next-square'));
-
-
-// Create Tetriminoes to be used on main grid - array for each, containing 4 diff rotations
-const lType = [[1, gridWidth+1, gridWidth*2+1, 2], [0, 1, 2, gridWidth+2], [1, gridWidth+1, gridWidth*2+1, gridWidth*2], [0, gridWidth, gridWidth+1, gridWidth+2]];
-const zType = [[0, gridWidth, gridWidth+1, gridWidth*2+1], [1, 2, gridWidth, gridWidth+1], [0, gridWidth, gridWidth+1, gridWidth*2+1], [1, 2, gridWidth, gridWidth+1]];
-const tType = [[1, gridWidth, gridWidth+1, gridWidth+2], [1, gridWidth+1, gridWidth+2, gridWidth*2+1], [0, 1, 2, gridWidth+1], [1, gridWidth, gridWidth+1, gridWidth*2+1]];
-const oType = [[0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1], [0, 1, gridWidth, gridWidth+1]];
-const iType = [[1, gridWidth+1, gridWidth*2+1, gridWidth*3+1], [0, 1, 2, 3], [1, gridWidth+1, gridWidth*2+1, gridWidth*3+1], [0, 1, 2, 3]];
-
-// Create array of all 5 Tetriminoes to be used on main grid, with each one containing own array of 4 rotations)
-const tetArr = [lType, zType, tType, oType, iType];
-
-
-// Create Tetriminoes to be used on the preview grid - array for each, containing 4 diff rotations
-const lTypeNext = [[1, nextWidth+1, nextWidth*2+1, 2], [nextWidth, nextWidth+1, nextWidth+2, nextWidth*2+2], [1, nextWidth+1, nextWidth*2+1, nextWidth*2], [nextWidth, nextWidth*2, nextWidth*2+1, nextWidth*2+2]];
-const zTypeNext = [[0, nextWidth, nextWidth+1, nextWidth*2+1], [nextWidth+1, nextWidth+2, nextWidth*2, nextWidth*2+1], [0, nextWidth, nextWidth+1, nextWidth*2+1], [nextWidth+1, nextWidth+2, nextWidth*2, nextWidth*2+1]];
-const tTypeNext = [[1, nextWidth, nextWidth+1, nextWidth+2], [1, nextWidth+1, nextWidth+2, nextWidth*2+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth*2+1], [1, nextWidth, nextWidth+1, nextWidth*2+1]];
-const oTypeNext = [[0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1], [0, 1, nextWidth, nextWidth+1]];
-const iTypeNext = [[1, nextWidth+1, nextWidth*2+1, nextWidth*3+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth+3], [1, nextWidth+1, nextWidth*2+1, nextWidth*3+1], [nextWidth, nextWidth+1, nextWidth+2, nextWidth+3]];
-
-// Create array of all 5 Tetriminoes to be used on the preview grid, with each one containing own array of 4 rotations)
-const tetArrNext = [lTypeNext, zTypeNext, tTypeNext, oTypeNext, iTypeNext];
-
-
-// Create variables and function to select Next(preview) Tetrimino and Current Tetrimino
-let nextType;
-let nextRotation;
-
-let nextTet = [];
-
-let currType;
-let currentRotation;
-let ifRotated;
-
-let currentTet = [];
-
-let currentPosition;
-
-// Create variable to hold interval timing of automated movement downwards
-let movementTimer;
-
-// Create variable to hold the speed of automated movement downwards
-let speed = 1000;
-
-// Create variable to hold boolean values indicating when game in progress and game paused
-let gameOn = false;
-let gamePaused = false;
-
-// Create variable to hold interval timing of blinking message (Game Over or Game Paused)
-let blinkTimer
+// ******** Tetrimino Functions ******** 
 
 // Function to create the next Tetrimino
 function nextTetrimino() {
-  nextType = Math.floor(Math.random()*tetArr.length);
+  nextType = Math.floor(Math.random()*typesArr.length);
   nextRotation = Math.floor(Math.random()*4);
-  nextTet = tetArrNext[nextType][nextRotation];
+  nextTet = typesArrNext[nextType][nextRotation];
 }
 
 // Function to draw the next Tetrimino
 function drawNext() {
-  nextTet.forEach(index => nextArr[index].classList.add("tetrimino"));
+  nextTet.forEach(index => nextSquaresArr[index].classList.add("tetrimino"));
 }
 
 // Function to undraw the next Tetrimino
 function undrawNext() {
-  nextTet.forEach(index => nextArr[index].classList.remove("tetrimino"));
+  nextTet.forEach(index => nextSquaresArr[index].classList.remove("tetrimino"));
 }
 
 // Function to define the 'current Tetrimino' based on 'next Tetrimino' type and rotation
@@ -150,8 +129,7 @@ function undrawNext() {
 function newTetrimino() {
   currType = nextType;
   currentRotation = nextRotation;
-  // = (currentRotation + 1)%currType.length;
-  currentTet = tetArr[nextType][nextRotation];
+  currentTet = typesArr[nextType][nextRotation];
   currentPosition = 4;
   undrawNext();
   nextTetrimino();
@@ -161,16 +139,17 @@ function newTetrimino() {
   gameOver();
 }
 
-// Function to draw the initial rotation of a Tetrimino i.e. currentTet
+// Function to draw the current Tetrimino
 function draw() {
   currentTet.forEach(index => squaresArr[currentPosition+index].classList.add("tetrimino"));
 }
 
-// Function to undraw the currentTetrimino
+// Function to undraw the current Tetrimino
 function undraw() {
   currentTet.forEach(index => squaresArr[currentPosition+index].classList.remove("tetrimino"))
 }
 
+// Function to freeze current Tetrimino, before checking completed lines and creating a new Tetrimino
 function setFrozen() {
   currentTet.forEach(index => squaresArr[currentPosition + index].classList.add('frozen'));
   completedLines();
@@ -190,20 +169,18 @@ function moveDown() {
 }
 
 //Functions to confirm space to the left/right of Tetrimino
-
 function spaceLeft() {
   const atLeftBoundary = currentTet.some(index => (currentPosition + index)%gridWidth === 0);
   const lAdjoiningFrozen = currentTet.some(index => squaresArr[currentPosition + index - 1].classList.contains('frozen'));
   return (!atLeftBoundary && !lAdjoiningFrozen)? true: false;
 }
-
 function spaceRight() {
   const atRightBoundary = currentTet.some(index => (currentPosition + index)%gridWidth === 9);
   const rAdjoiningFrozen = currentTet.some(index => squaresArr[currentPosition + index + 1].classList.contains('frozen'));
   return (!atRightBoundary && !rAdjoiningFrozen)? true: false;
 }
 
-// Function to move currentTetrimino left
+// Functions to move currentTetrimino left/right
 function moveLeft() {
   if (spaceLeft()) {
     undraw();
@@ -211,8 +188,6 @@ function moveLeft() {
     draw();
   }
 }
-
-// Function to move currentTetrimino right
 function moveRight() {
   if (spaceRight()) {
     undraw();
@@ -225,13 +200,11 @@ function moveRight() {
 function rotate() {
   if(spaceLeft() && spaceRight()) {
     undraw();
-    currentRotation ++;
-    currentRotation = currentRotation%4;
-    currentTet = tetArr[currType][currentRotation];
+    currentRotation = (currentRotation+1)%4;
+    currentTet = typesArr[currType][currentRotation];
     if(currentTet.some(index => squaresArr[currentPosition + index].classList.contains('frozen'))) {
-      currentRotation --;
-      currentRotation = currentRotation%4;
-      currentTet = tetArr[currType][currentRotation];
+      currentRotation = (currentRotation-1)%4;
+      currentTet = typesArr[currType][currentRotation];
       draw();
     }
     else {
@@ -260,17 +233,15 @@ function keysPressed(e) {
   }
 }
 
-//tModal.addEventListener("touchstart", rotate);
-
-// Function to remove all child nodes from a parent element
-// ... used in completedLines function or if starting a new game
+/* Function to remove all child nodes from a parent element
+... used in completedLines function or if starting a new game*/
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
   parent.removeChild(parent.firstChild);
   }
 }
 
-// Function to splice line when complete, deleting classes, then adding it to top of grid
+// Function to remove completed lines
 function completedLines() {
   //iterate through the array of squares, excluding the last 10 (base) squares
   for(let i=0; i<squaresArr.length-10; i+=gridWidth){
@@ -313,6 +284,7 @@ function addScore() {
   }
 }
 
+// Function to announce score at end of game
 function blink() {
   if (grid.innerHTML === "") {
     if(points>=highPoints) {
@@ -352,6 +324,33 @@ function pauseGame() {
   startBtn.innerHTML = "Resume";
   gamePaused = true;
 }
+
+
+// ******** Event Listeners ******** 
+
+window.addEventListener('load', () => {
+  generateSquares(16, nextGrid, 'next-square');
+  nextSquaresArr = Array.from(document.getElementsByClassName('next-square'));
+});
+
+// When the user clicks lego icon, open the Tetris modal
+openTetris.addEventListener('click', () => {
+  tModal.style.display = "block";
+});
+
+// When the user clicks on close (x), close the Tetris modal
+closeTetris.addEventListener('click', () => {
+  pauseGame();
+  tModal.style.display = "none";
+});
+
+// When the user clicks anywhere outside of the Tetris modal, close it
+window.addEventListener('click', (e) => {
+  if (e.target == tModal) {
+    pauseGame();
+    tModal.style.display = "none";
+  }
+});
 
 // Start/Pause button functionality
 startBtn.addEventListener("click", () => {
