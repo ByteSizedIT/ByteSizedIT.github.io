@@ -599,6 +599,10 @@ input[type=submit]:hover {
 
 /* ******** WHY ME? SECTION OF WEBSITE ******** */
 
+#calculator, #calculation__value, #output__value, .operator, .number, .blank {
+  touch-action: manipulation;
+}
+
 #calculator {
   background-color: var(--blue);
   margin: 0 auto;
