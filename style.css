@@ -38,12 +38,12 @@
   url('fonts/nova-mono-v11-latin-regular.woff') format('woff');
 }
 @font-face {
-  font-family: 'Fira Code';
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
   src: 
-  url('fonts/fira-code-v9-latin-regular.woff2') format('woff2'),
-  url('fonts/fira-code-v9-latin-regular.woff') format('woff');
+       url('fonts/open-sans-v18-latin-regular.woff2') format('woff2'),
+       url('fonts/open-sans-v18-latin-regular.woff') format('woff');
 }
 @font-face {
   font-family: 'Orbitron';
@@ -57,7 +57,7 @@
 /*Set all Font families and sizes to selectors, excluding modals (see their own parent sections)*/
 
 body {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
 }
 
