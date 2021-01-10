@@ -8,7 +8,7 @@ const emptyGlossBtn = document.querySelector('#emptyGlossBtn');
 const suggestions = document.querySelector('#glossSuggestions');                                     
 
 // Initialise variable for endpoint location of reference json file stored as a gist
-const endpoint = 'https://gist.githubusercontent.com/ByteSizedIT/1c8561bb56e71e56a93d77a9a40741d9/raw/264477a4f1c159bbc0bc01db39b376db2a16168a/FACglossary.json';
+const endpoint = 'https://gist.githubusercontent.com/ByteSizedIT/1c8561bb56e71e56a93d77a9a40741d9/raw/28f598e1faa702ec186facab6a7b26bffbaaf7f1/FACglossary.json';
 
 // Initialise variable/array for storing entries returned from reference gist file
 const entries = [];
