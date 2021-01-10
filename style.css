@@ -253,6 +253,12 @@ section p {
   padding-right: 5vw;
 }
 
+@media (min-width: 875px) {
+  #coding p, #fandc p, #me p {
+    padding-left: 12.5vw;
+    padding-right: 12.5vw;
+  }
+}
 
 
 /* ********CROSS SECTION SETTING FOR BUTTONS - including 'Home'(carousel) and 'Robot Prototype' sections******** */
@@ -544,7 +550,7 @@ input[type=submit]:hover {
 
 #glossSearch {
   margin: 5vw auto;
-  max-width: 80vw;
+  max-width: 75vw;
   position: relative;
 }
 
@@ -762,7 +768,6 @@ figure {
   #prereqs__item9 {display: grid;}
   #prereqs__item11 {display: grid;}
   #prereqs__grid-container {
-  /*padding-bottom: 6vw;*/
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: (6, auto);
   grid-template-areas:
